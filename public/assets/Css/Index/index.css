@@ -1,0 +1,643 @@
+
+/* CURRENT LANDING PAGE CCS */
+
+.header-class-landing-page {
+    margin: none;
+    font-family: sans-serif;
+    background-color: transparent;
+    padding: 0;
+    display: /*none*/flex;
+    max-height: 73px;
+    padding-left: 0.3%;
+    padding-right: 3%;
+    position: ;
+    z-index: 2;    
+    position: ; 
+}
+
+.landing-page-header-logo {
+    width: 30%;
+    min-width:150px;
+    background: transparent;
+    padding-top: 1.2rem;
+}
+
+
+.landing-page-header-logo:hover {
+    opacity: 0.7;
+    }
+
+.landing-page-nav {  
+  padding-top: 3%; 
+  padding-left: 3%;
+  padding-right: 3%;    
+}
+
+.landing-page-nav a {
+ color: white;
+ font-size: 20px;
+ font-weight: ;    
+ letter-spacing: 1px; 
+ text-decoration: none;
+ float: right;    
+}
+
+.landing-page-nav a:hover {
+ text-decoration: underline;    
+}
+
+
+.sign-up {
+  padding-top: 2.25%;    
+      
+}
+
+.landing-page-section-1 {
+  background-image: url(Images/Landing%20page%20banner.png); 
+  /* background-color: yellow; */    
+  padding: 20px;  
+  padding-bottom: 40px;
+  padding-top: 0px;    
+}
+
+.whoever-div {
+   font-size: 50px;
+   font-family: helvetica;
+   color: #707070;
+   letter-spacing: 1px;; 
+   background-color: ;
+   padding-bottom: 15px;  
+}
+
+.your-job { 
+  font-weight: normal;
+  color: white;     
+}
+
+.lets-brand-div {
+   background-color: ;
+   padding-bottom: 10px; 
+   font-size: 35px;
+   font-family: helvetica; 
+   color: #707070; 
+   letter-spacing: 1px;    
+}
+
+.weve-got-you {
+  color: #ff4647;
+  font-weight: normal;    
+}
+
+.register-as-container {
+   background-color: ;
+   width: 50%;
+   padding: 10px;
+   padding-top: 70px;    
+}
+
+.register-as-label {
+   background-color: ;
+   padding-bottom: 30px; 
+   font-size: 29px;
+   font-family: helvetica;
+   color: #707070;  
+   letter-spacing: 1px;    
+}
+
+.register-as-sections {
+  background-color: ;
+}
+
+.register-children {
+  background-color: red;
+  display: inline-block;
+  padding: 4px;    
+  /* width: 151.8px; */
+  width: 140px;    
+  border-radius: 2px;
+  color: white;
+  font-family: helvetica;
+  font-size: 21px;    
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);     
+}
+
+.register-children:hover {  
+  box-shadow: 0 6px 12px 0 rgba(0,0,0,0.5);
+  background-color: white; 
+  color: red;     
+}
+
+
+
+.have-an-account {
+  background-color: ;
+  font-family: helvetica;
+  font-size: 20px;
+  color: #575757; 
+  padding-top: 10px;
+  padding-bottom: 15px; 
+  letter-spacing: 1px;    
+}
+
+.landing-page-login-button {
+  width: 120px;
+  padding: 3px;   
+  background-color: white;
+  border-radius: 2px;    
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);    
+}
+
+.landing-page-login-button:hover {
+  box-shadow: 0 6px 12px 0 rgba(0,0,0,0.5);
+}
+
+.landing-page-login-button a {
+  font-family: helvetica;
+  font-size: 20px;
+  color: red;
+  font-weight: bold;    
+  text-decoration: none;  
+  letter-spacing: 2px;    
+}
+
+.landing-page-section-2 {
+    background-color: #f5f5f5;
+    padding: 20px;  
+    /* height: 550px; */
+    padding-top: 40px;  
+}
+
+.multi-talented-div {
+   font-size: 50px;
+   font-family: helvetica;
+   color: #707070;
+   letter-spacing: 1px;; 
+   background-color: ;
+   padding-bottom: px;     
+}
+
+.find-kokoruns-div {
+  background-color: ;
+   padding-bottom: 5px; 
+   font-size: 35px;
+   font-family: helvetica; 
+   color: #707070; 
+   letter-spacing: 1px;    
+}
+
+.landing-page-categories-div {
+ background-color: ;
+  width: 93%;    
+     
+}
+
+.landing-page-categories {
+  background-color: #0991ff;
+  color: white;
+  font-weight: bold;
+  font-family: helvetica;
+  font-size: 26px;    
+  display: inline-block;
+  padding: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin: 8px; 
+  border-radius: 2px;  
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);    
+}
+
+.landing-page-categories:hover {
+  background-color: white;
+  color: #0991ff;
+  box-shadow: 0 6px 12px 0 rgba(0,0,0,0.5);    
+}
+
+.illustration-div {
+  background-color: ; 
+  padding-right: 5%;    
+}
+
+.illustration-1 {
+ width: 60%;   
+}
+
+.landing-page-section-3 {
+   background-color: ;
+    padding: 20px;  
+    /* height: 550px; */
+    padding-top: 40px; 
+}
+
+.register-sponsored-events-div {
+   font-size: 50px;
+   font-family: helvetica;
+   color: #707070;
+   letter-spacing: 1px;; 
+   background-color: ;
+   padding-bottom: 15px;   
+}
+
+.landing-events-container {
+   background-color: ;
+   column-count: ;
+   display: inline-block;
+    margin: 41px;
+}
+
+.landing-events-div {
+  background-color: ;
+  width: 350px; 
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.event-image-container {
+  background-color: ;
+  position: relative;
+}
+
+
+.event-company-logo {
+ top: 0;
+ right: 0;
+ position: absolute;
+ width: 20%; 
+ border: solid 1px red;    
+}
+
+.event-image {
+ width: 350px;
+ height: 330px;    
+ object-fit: cover;    
+}
+
+.event-name-div {
+  color: #575757;
+  font-family: helvetica;
+  font-size: 23px; 
+  padding-top: 10px;
+  padding-top: 10px;    
+  letter-spacing: 1px;    
+}
+
+.date-location-div {
+    color: #575757;
+    font-family: helvetica;
+    font-size: 15px;
+    padding-top: px;
+    padding-bottom: 5px;
+    display: flex;
+    letter-spacing: 1px;
+}
+
+.website-div {
+    font-family: helvetica;
+    font-size: 14px;
+    padding-top: px;
+    padding-bottom: 10px;
+}
+
+.website-div a {
+  color: #0991ff;  
+}
+
+.website-div a:hover {
+    color: #d92727;
+}
+
+.learn-more-div { 
+ background-color: #0991ff;
+ color: white;
+ font-size: 14px;    
+ font-family: helvetica;
+ letter-spacing: 1px;    
+ padding: 5px;
+ padding-left: 12px;
+ padding-right: 12px;
+ width: 120px; 
+     
+}
+
+.learn-more-div:hover {
+    color: #0991ff;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.4);
+}
+
+.landing-page-section-4 {
+  background-color: #f5f5f5;
+    padding: 20px;  
+    /* height: 550px; */
+    padding-top: 40px;  
+}
+
+.find-join-create {
+  font-size: 50px;
+   font-family: helvetica;
+   color: #707070;
+   letter-spacing: 1px;; 
+   background-color: ;
+   padding-bottom: 15px;
+   width: 63%;  
+   letter-spacing: 1px; 
+   padding-bottom: 30px;    
+}
+
+.illustration-container {
+    background-color: ;
+    display: flex;
+}
+
+.get-started-div {
+   width: 45%; 
+   background-color: ;  
+   padding-top: 120px;     
+}
+
+.get-started {
+  background-color: #0991ff;
+  font-family: helvetica;
+  font-size: 25px;
+  color: white;
+  border-radius: 2px;    
+  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.3);       
+  font-weight: bold;
+  letter-spacing: 1px;    
+  width: 250px;  
+  padding: 10px;    
+}
+
+.get-started:hover {
+ box-shadow: 0 5px 10px 0 rgba(0,0,0,0.5);
+ color: #0991ff;
+ background-color: white;    
+}
+
+.send-us-email {
+  font-size: 19px;
+  font-family: helvetica;
+  color: #646464;  
+  letter-spacing: 1px; 
+  padding-top: 40px;
+  padding-bottom: 20px;    
+}
+
+.call-us {
+  font-size: 19px;
+  font-family: helvetica;    
+  color: #646464;    
+  letter-spacing: 1px;
+  padding-top: 20px;    
+}
+
+.illustration-2-div {
+  background-color: ;
+   width: 55% 
+}
+
+.illustration-2 {
+ width: 100%;    
+}
+
+
+/* CURRENT LANDING PAGE CSS */
+
+
+
+
+
+
+
+/* FORMER HOME PAGE CSS
+
+.home-page-container {
+ background-color: whitesmoke; 
+ padding-top: 205px;
+ padding-bottom: 300px;    
+}
+
+.login-form-container {
+ width: 60%;
+ min-width: 280px;
+ background: rgba(255, 255, 255, 1.0);
+ padding: 30px;   
+ box-shadow: 0 3px 7px 0 rgba(0,0,0,0.3);    
+}
+
+.login-form-container:hover {
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.5);  
+}
+
+.input-container {
+  display: grid;
+  padding-bottom: 30px;    
+}
+
+.login-page-container:hover {
+  box-shadow: 0 0px 0px 0 rgba(0,0,0,0);  
+}
+
+.label {
+  font-family: sans-serif; 
+    float:left; 
+    padding-left:px; 
+    padding-bottom: 10px; 
+    color: dimgray;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.line {
+ border: solid 1px darkgray;    
+}
+
+.form-header {
+    color: darkgray;
+    font-family: sans-serif;
+    font-size:37px;
+    font-weight: bold;
+    padding-bottom: 30px;
+    letter-spacing: 3px;    
+}
+
+
+.form-input {
+    padding: 10px;
+    padding-top: 15px;
+    padding-bottom: 13px;
+    padding-left: 13px;
+    border: solid 1px darkgray;
+    background-color: transparent;
+    font-family: sans-serif;
+    font-size: 16px;
+    letter-spacing: 1px;
+    border-radius: 2px;   
+}
+
+
+.sign-up-button-div {
+ padding-top: 10px;
+ padding-bottom: 30px;
+    
+}
+
+.sign-up-button {
+    border:none;
+    color: white;
+    padding: 7px;
+    text-align: center;
+    font-size: 17px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #0991ff;
+    width: 100%;  
+    letter-spacing: 2px; 
+    height: 50px;
+    
+}
+
+.sign-up-button:hover {
+  background-color:white ;
+  color: #0991ff;   
+  box-shadow: 0 5px 15px 0 rgba(0,0,0,0.3);   
+}
+
+
+.hr-div {
+ font-family: sans-serif; 
+    padding-bottom: 50px; 
+    color: dimgray;
+    font-size: 16px;
+    letter-spacing: 1px;
+    padding-top: 30px;
+}
+
+.login-button-div {
+  padding-top: px;
+  padding-bottom: 10px;    
+}
+
+.label-2 {
+    font-family: sans-serif; 
+    padding-bottom: 10px; 
+    color: dimgray;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.login-button {
+  font-family: sans-serif; 
+  letter-spacing: 1.5px;
+  background: none;
+  border: none;
+  color: #0991ff;
+  font-weight: bold; 
+  font-size: 16px;
+  text-decoration: none;    
+}
+
+.login-button:hover {
+ color: #d92727;   
+}
+
+.other-buttons-div {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  
+  justify-content: center;    
+}
+
+.google-button {
+    border: 2px solid darkgray;
+    color: dimgray;
+    padding: 7px;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: transparent;
+    width: 100%; 
+    letter-spacing: 2px; 
+    height: 50px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    font-weight: bold;
+    font-family: segoe ui historic;
+}
+
+.google-button:hover {
+    border: 2px solid #0991ff;
+    color: #0991ff;    
+}
+
+.facebook-button {
+    border: 2px solid darkgray;
+    color: dimgray;
+    padding: 7px;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: transparent;
+    width: 100%; 
+    letter-spacing: 2px; 
+    height: 50px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    font-weight: bold;
+    font-family: segoe ui historic;
+}
+
+.facebook-button:hover {
+   border: 2px solid #0991ff;
+   color: #0991ff;    
+}
+
+.apple-button {
+   border: 2px solid darkgray;
+    color: dimgray;
+    padding: 7px;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: transparent;
+    width: 100%; 
+    letter-spacing: 2px; 
+    height: 50px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    font-weight: bold;
+    font-family: segoe ui historic;
+}
+
+.apple-button:hover {
+   border: 2px solid #0991ff; 
+   color: #0991ff;    
+}
+
+.icons {
+ width: 20px;
+ padding-right: 15px; 
+ padding-top: px;    
+}
+
+
+@media screen and (max-width: 900px) {
+ 
+    
+}
+
+FORMER HOME PAGE CSS */
+
+
+
+
+
+

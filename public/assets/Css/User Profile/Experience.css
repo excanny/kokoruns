@@ -1,0 +1,369 @@
+
+/* BODY */
+
+ 
+/** Education **/
+
+.user-experience {
+  padding-left: 30px;
+  padding-right: 10px;
+  border-radius: 2px;    
+  width: 69.2%;    
+  background-color: white;
+    /*padding-top: 50px;*/
+  padding-top: 0px;
+  /* box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2); */
+}
+
+.user-experience:hover {
+  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.4);  
+}
+
+.user-experience-header {
+   font-family: sans-serif;
+  font-weight: normal;
+  color: darkgray;
+  font-size: 27px; 
+  letter-spacing: 1px;    
+}
+
+.user-experience-header-container {
+   padding-bottom: px; 
+   padding-top: px;
+   background-color: ;
+   height: px;
+   background: ;
+   padding-left: 30px; 
+   box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);    
+}
+
+.exp-cont {
+  padding-left: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: ;    
+}
+
+.exp-cont-2 {
+  border-bottom: 2px solid darkgray;
+  padding-bottom: 15px;
+  background-color: ;
+}
+
+.exp-date {
+  font-size: 17px ;
+  color: dimgray;
+  font-family: sans-serif;  
+}
+
+
+.company {
+ font-size: 22px ;
+ color: #313131;
+ font-family: sans-serif;
+ font-weight: ; 
+ letter-spacing: 1px;    
+      
+}
+
+.exp-position {
+ font-size: 22px ;
+  color: #313131;
+  font-family: sans-serif; 
+  font-weight: bold;
+ letter-spacing: 1px;    
+}
+
+.position-button {
+  border: none;
+  background-color: #0991ff;
+  border-radius: 5px;
+  padding: 2px; 
+  padding-top: 5px;    
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+  font-weight: bold;   
+  font-family: sans-serif;      
+}
+
+
+.position-button:hover {
+  opacity: 0.8;
+  background-color: #d92727;    
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.25);     
+}
+
+.roles-and-respon {
+  margin: 0px; 
+  padding-left: 15px; 
+  list-style-type: circle;
+  line-height: 2;
+}
+
+
+.roles-and-respon li {
+  font-size: 17px ;
+  color: #4b4b4b;
+  font-family: sans-serif;
+  letter-spacing: 1px;    
+}
+
+.exp-edit {
+  border: none;
+  background-color: #0991ff;
+  border-radius: 5px;
+  padding: 2px; 
+  padding-top: 5px;    
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+  font-weight: bold;   
+  font-family: sans-serif;   
+}
+
+.exp-edit:hover {
+  opacity: 0.8;
+  background-color: #d92727;    
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.25);   
+}
+
+.exp-delete {
+  border: none;
+  padding: 5px;    
+  color: #0991ff;
+  font-weight: bold;   
+  font-family: sans-serif;
+  background: none;      
+}
+
+.exp-delete:hover {
+  color: #d92727;
+    opacity: 0.8;  
+}
+
+.exp-update-button-container { 
+   display: block;  
+   padding-top: 7px;
+   padding-bottom: 7px;    
+}
+
+.exp-update-button {
+  border: none;
+  background-color: #0991ff;
+  border-radius: 2px;
+  padding: 2px; 
+  padding-top: 5px;    
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 25px;       
+  color: white;
+  font-family: sans-serif; 
+  font-size: 17px;    
+  height: 32px; 
+  letter-spacing: 1px;  
+  width: 120px;    
+}
+
+.exp-update-button:hover {
+  background-color: white;
+  color: #0991ff;    
+  box-shadow: 0 5px 15px 0 rgba(0,0,0,0.5);      
+}
+
+.exp-update-form-div {
+ display: none; 
+}       
+
+.exp-update-form-container {   
+  padding-left: 30px;
+  padding-right: 30px; 
+  background-color: pink;    
+}
+
+
+.exp-update-form {
+  display: block;
+  background-color: gray;    
+  padding-bottom: 15px;
+  border-bottom: 2px solid darkgray;    
+  padding-top: 10px;
+}
+
+.exp-duration-label {
+    font-family: calibri;   
+    color: dimgray;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.exp-duration-div {
+  
+}
+
+.exp-duration {
+ width: 25%;
+ min-width: 148px;    
+ padding:10px;
+ border: solid 1px darkgray;
+ border-radius: 2px;
+ background-color: transparent;
+ font-family: calibri;
+ font-size: 18px;
+ letter-spacing: ;    
+}
+
+.company-label {
+ font-family: calibri;   
+    color: dimgray;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 1px; 
+}
+
+.company-or-business {
+width: 95%;  
+padding-top: 10px;
+padding-bottom: 10px;     
+padding-left: 15px;
+border: solid 1px darkgray;
+background-color: transparent;
+font-family: calibri;
+font-size: 20px;
+letter-spacing: 0.5px;
+border-radius: 2px;    
+   
+}
+
+.position-label {
+  font-family: calibri;   
+    color: dimgray;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.position {
+ width: 95%;  
+padding-top: 10px;
+padding-bottom: 10px;     
+padding-left: 15px;
+border: solid 1px darkgray;
+background-color: transparent;
+font-family: calibri;
+font-size: 20px;
+letter-spacing: 0.5px;
+border-radius: 2px;    
+}
+
+.letter-button {
+  border: none;
+  background: none;
+  padding: 5px;   
+  color: #0991ff; 
+  font-weight: 300;    
+  font-family: sans-serif;   
+  font-size: 16px;
+  letter-spacing: 1px;    
+       
+}
+
+.letter-button:hover {
+  color: #d92727;
+}
+
+
+.roles-and-respon-label {
+  font-family: calibri;   
+    color: dimgray;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.b-label{
+  font-size: 16px;
+  font-style: italic;    
+  font-weight: lighter;
+  color: #d92727;
+  padding-left: 5px;    
+}
+
+.roles-text-area {
+width: 95%; 
+max-width: 95%;    
+padding-top: 10px;
+padding-bottom: 10px;     
+padding-left: 15px;
+border: solid 1px darkgray;
+background-color: transparent;
+font-family: calibri;
+font-size: 20px;
+letter-spacing: 0.5px;
+border-radius: 2px;
+height: 68px;   
+overflow: hidden;   
+} 
+
+.br-area {
+ line-height: 1.5;   
+}
+
+.exp-button-container {
+  
+}
+
+.exp-button-right {
+   
+}
+
+.exp-cancel-button {
+ border: none;
+ background: none;
+  padding: 5px; 
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #0991ff;
+  font-weight: ;   
+  font-family: sans-serif;
+  font-size: 16px;
+  letter-spacing: 1px;    
+}
+
+.exp-cancel-button:hover {
+  color: #d92727; 
+}
+
+.exp-finish-button {
+  border: none;
+  background-color: #0991ff;
+  border-radius: 5px;
+  padding: 4px;   
+  padding-left: 12px;
+  padding-right: 12px;
+  color: white;   
+  font-family: sans-serif;
+  font-size: 16px; 
+  letter-spacing: 1px;    
+}
+
+.exp-finish-button:hover {
+  background-color: white; 
+  color: #0991ff;    
+  box-shadow: 0 5px 15px 0 rgba(0,0,0,0.5); 
+}
+
+
+
+
+@media screen and (max-width: 600px)
+{
+    
+ .user-experience {
+  padding-left: 1%;
+  padding-right: 1%;
+}
+    
+}
+
