@@ -109,6 +109,9 @@ export class Education extends Component {
         // Form submission logic
         e.preventDefault();
 
+
+        console.log(localStorage.getItem('access_token'));
+
         this.setState({ isLoading: true });
 
         this.setState({ [e.target.name]: e.target.value });
@@ -122,27 +125,20 @@ export class Education extends Component {
 
         //console.log(data);
 
-      //  axios.post(`http://127.0.0.1:8000/api/addeducation`, data, {headers: headers})
-      //   .then((response) => {
-           
-
-      //      this.setState({ educations: response.data.educations, loading: true, show: false});
-         
-      //      console.log(response);
-
-      //    })
-      //    .catch( error => {
-      //      console.log(error.response);
-      //    });
 
           try 
           {
               // fetch data from a url endpoint
               const response = await  axios.post(`http://127.0.0.1:8000/api/addeducation`, data, {headers: headers});
-
-              //console.log(response.data.experiences);
+              //const response = await  axios.post(`https://lit-ridge-07527.herokuapp.com/api/addeducation`, data, {headers: headers});
+              
+              console.log(response);
 
               this.setState({ educations: response.data.educations, loading: false, show: false });
+
+              //window.location.href = "/user-dashboard-education";
+
+              this.props.history.push("/user-dashboard-education");
 
               // console.log(response.data.expe[0]);
 

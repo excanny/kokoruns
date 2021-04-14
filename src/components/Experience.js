@@ -117,11 +117,11 @@ export class Experience extends Component {
           'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
         }
 
-        const data = { start_month: this.state.start_month, start_year: this.state.start_year, end_month: this.state.end_month, end_year: this.state.end_year, company_name: this.state.company_name, exposition: this.state.exposition, roles:  JSON.stringify(this.state.roles)};  
+        const data = { start_month: this.state.start_month, start_year: this.state.start_year, end_month: this.state.end_month, end_year: this.state.end_year, company_name: this.state.company_name, position: this.state.exposition, roles:  JSON.stringify(this.state.roles)};  
 
         //console.log(data);
 
-       axios.post(`https://lit-ridge-07527.herokuapp.com/api/addexperience`, data, {headers: headers})
+       axios.post(`http://127.0.0.1:8000/api/addexperience`, data, {headers: headers})
         .then((response) => {
            
 

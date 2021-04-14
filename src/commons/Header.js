@@ -8,7 +8,7 @@ export class Header extends Component {
                 <div className="col-md-3">
                 <div className="pt-2 pl-2">
                     <a href="<?php echo site_url();?>user/dashboard">
-                    <img src="<?php echo base_url();?>/public/assets/Images/Header%20and%20Footer/Logo.png" width="55%" /></a>
+                    <img src="assets/Images/Header%20and%20Footer/Logo.png" width="55%" /></a>
                     
                 </div>
                 </div>

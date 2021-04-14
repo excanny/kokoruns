@@ -56,10 +56,11 @@ export class Register extends Component {
 
         //console.log(data);
 
-       axios.post(`https://lit-ridge-07527.herokuapp.com/api/register`, data, {headers: headers})
+        //axios.post(`https://lit-ridge-07527.herokuapp.com/api/register`, data, {headers: headers})
+        axios.post(`http://127.0.0.1:8000/api/register`, data, {headers: headers})
         .then((response) => {
            
-          //  if (response.data.success === true) 
+          //  if(response.data.success === true) 
           //  {
           //     this.setState({
           //       isVerifyComplete: 1,

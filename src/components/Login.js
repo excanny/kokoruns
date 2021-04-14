@@ -49,13 +49,9 @@ export class Login extends Component {
         //console.log(data);
     
     
-        axios.post(`https://lit-ridge-07527.herokuapp.com/api/login`, data, {headers: headers})
+        //axios.post(`https://lit-ridge-07527.herokuapp.com/api/login`, data, {headers: headers})
+        axios.post(`http://127.0.0.1:8000/api/login`, data, {headers: headers})
         .then( (response) => {
-          
-       
-    
-          var decoded = jwt(response.data.access_token);
-          console.log(decoded);
     
           
           localStorage.setItem('access_token', response.data.access_token);
@@ -64,8 +60,12 @@ export class Login extends Component {
     
         //   console.log(this.state.loggedIn);
     
-            this.props.history.push("/user-dashboard-experience");
+          //this.props.history.push("/user-dashboard-experience");
+          window.location.href = "/user-dashboard-experience";
+            
             //console.log(response.data.access_token);
+
+          console.log(response.data.access_token);
     
         })
         .catch( error => {

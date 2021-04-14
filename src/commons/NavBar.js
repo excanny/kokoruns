@@ -21,19 +21,19 @@ export class NavBar extends Component {
                         <i className="fa fa-bars text-white cursor" data-toggle="dropdown" style={{fontSize: '1.5rem'}} />
                         <div className="dropdown-menu">
                             <a className="dropdown-item" href="user/dashboard">Dashboard</a>
-                            <a className="dropdown-item" href="user/teams">Teams</a>
-                            <a className="dropdown-item" href="user/messages">Messages</a>
+                            <a className="dropdown-item" href="user-teams">Teams</a>
+                            <a className="dropdown-item" href="user-messages">Messages</a>
                             <div className="dropdown-divider" />
                             <div className="dropdown-header pl-3">Job Dash</div>
-                            <a className="dropdown-item" href="user/myjobs">Your Jobs</a>
+                            <a className="dropdown-item" href="user-jobs">Your Jobs</a>
                             <a className="dropdown-item" href="user/jobdash">Job Invites</a>
                             <div className="dropdown-divider" />
-                            <a className="dropdown-item" href="user/events">Events</a>
-                            <a className="dropdown-item" href="user/allaboutyou">All About You</a>
-                            <a className="dropdown-item" href="user/jobs">Jobs Board</a>
-                            <a className="dropdown-item" href="user/recommendations">Recommendations</a>
-                            <a className="dropdown-item" href="user/settings">Settings</a>
-                            <a className="dropdown-item" href="user/logout">Logout</a>
+                            <a className="dropdown-item" href="user-events">Events</a>
+                            <a className="dropdown-item" href="user-allaboutyou">All About You</a>
+                            <a className="dropdown-item" href="user-jobs">Jobs Board</a>
+                            <a className="dropdown-item" href="user-recommendations">Recommendations</a>
+                            <a className="dropdown-item" href="user-settings">Settings</a>
+                            <a className="dropdown-item" href="logout">Logout</a>
                         </div>
                         </div>
                     </div>
