@@ -1,0 +1,381 @@
+.your-job-posts-header {
+ background-color: white; 
+ border: 2px solid cadetblue;   
+ margin-left: 10%;
+ margin-right: 10%;    
+ margin-top: 25px;
+ margin-bottom: 30px;      
+ font-size: 25px;
+ color: cadetblue;
+ padding: 10px; 
+ padding-bottom: 9px;    
+ padding-left: 20px;
+ padding-right: 20px;    
+ letter-spacing: 1px;  
+ display: flex;    
+}
+
+.your-job-posts {
+    
+}
+
+.link { 
+ text-decoration: none;
+ color: white;    
+}
+
+.link:hover {
+ text-decoration: none;
+ color: #d92727;    
+}
+
+.empty-space {
+ background-color: ;
+ width: 63.5%;    
+ color: transparent
+}
+
+.create-job-posts {
+ background-color: #d92727;
+ padding: 7px;
+ padding-left: 12px;
+ padding-right: 12px;    
+ font-size: 18px;  !important
+ border-radius: 5px ; !important   
+}
+
+.create-job-posts:hover {
+ background-color: white; 
+ box-shadow: 0 3px 6px 0 rgba(0,0,0,0.5);    
+}
+
+.your-job-posts-container {
+  margin: 15px;
+  margin-left: 10%;
+  margin-right: 10%;    
+  display: flex;    
+}
+
+.left {
+ background-color: white;
+ width: 28%;
+ margin-right: 2%;  
+ padding: 15px; 
+ overflow-y: auto;
+ height: 450px;
+ border: 2px solid cadetblue;    
+}
+
+.job-posts-list { 
+}
+
+.search-bar {
+  display: flex;  
+}
+
+.search-bar input {
+ border: none;   
+ padding: 5px;
+ padding-left: 15px;    
+ width: 90%;  
+ border-top: 1px solid darkgray;
+ border-left: 1px solid darkgray;
+ border-bottom: 1px solid darkgray;    
+}
+
+.search-bar input::placeholder {
+  color: darkgray;    
+}
+
+.search-bar button {
+ padding: 5px;    
+ border: none;   
+ background-color: white; 
+ font-size: 18px;
+ border-top: 1px solid darkgray;
+ border-right: 1px solid darkgray;
+ border-bottom: 1px solid darkgray;        
+}
+
+.search {
+ width: 25px;    
+}
+
+
+.job-post {
+ background-color: white;
+ border-bottom: 1px solid darkgray;
+ margin-top: 10px;
+ margin-bottom: 10px;
+ padding: 10px;
+ line-height: 2.0;
+ letter-spacing: 0.5px; 
+ color: dimgray;
+ font-size: 20px;   
+}
+
+.job-post img {
+  width: 26px;
+  margin-right: 7px;    
+}
+
+.job-post b {
+ color: #0991ff;
+ font-size: 15px;
+ font-weight: 100;  
+ float: right;    
+}
+
+.job-post span {
+ font-size: 15px;        
+}
+
+.job-post:hover {
+   border-bottom: 1px solid #d92727;
+   color: #d92727;    
+}
+
+
+
+
+.right {
+ background-color: white;    
+ width: 70%;   
+ padding: 15px;   
+ overflow-y: auto;    
+ height: 450px; 
+ letter-spacing: ;
+ line-height: 2.0;  
+ border: 2px solid cadetblue;    
+}
+
+.blank-page {
+  background-color: ;
+  color: dimgray;
+  letter-spacing: 1px;
+  font-size: 25px;       
+  padding-top: 120px;
+  padding-bottom: 120px;  
+  width: 55%;
+  min-width: 320px;    
+}
+
+.job-posts-details {
+ background-color: ;
+ letter-spacing: 1px;
+ padding-bottom: 40px;    
+}
+
+.job-title {
+  font-size: 30px;    
+  color: #000000;    
+}
+
+.job-title img {
+  width: 50px;    
+  margin-right: 10px;    
+}
+
+.employment-type {
+  font-size: 20px;  
+}
+
+.salary {
+ font-size: 20px;   
+}
+
+.job-location {
+ font-size: 20px;   
+}
+
+.job-description {
+ font-size: 16px;
+ margin-top: 15px;
+ margin-bottom: 15px; 
+ line-height: 1.5;    
+}
+
+.languages {
+ font-size: 18px;  
+ color: dimgray;
+}
+
+.languages ul {    
+ font-size: 18px;    
+ text-decoration: underline;
+ text-decoration-color: dimgray;
+}
+
+.skills {
+ font-size: 18px;  
+ color: dimgray;  
+}
+
+.skills ul {
+ font-size: 18px;
+ text-decoration: underline;
+ text-decoration-color: dimgray;    
+}
+
+.buttons {
+ background-color: ;   
+}
+
+.buttons button {
+ margin-right: 15px;
+ border: none;
+ background-color: transparent;    
+}
+
+.icon {
+ width: 27px;   
+}
+
+.icon:hover {
+ opacity: 0.6;    
+}
+
+.job-posts-applicants-container {
+  background-color: ;  
+  font-size: 30px;
+  color: darkgray;    
+}
+
+.job-posts-applicants {
+  border-bottom: 1px solid darkgray; 
+  padding-bottom: 15px;    
+  margin-top: 5px;
+  margin-bottom: 10px; 
+  display: inline-block;
+  color: dimgray;
+}
+
+.dp {
+ display: inline-block;
+ margin-right: 10px;    
+}
+
+.dp img {
+ border-radius: 50%; 
+ width: 55px;    
+}
+
+.username {
+ font-size: 19px;
+ display: inline-block;
+ margin-right: 20px; 
+ margin-top: 10px;    
+}
+
+.professions {
+ font-size: 19px; 
+ display: inline-block;
+ margin-right: 30px;  
+ margin-top: 10px;    
+}
+
+
+.reommendations {
+ font-size: 19px; 
+ display: inline-block;
+ margin-right: 20px;   
+ margin-top: 10px;    
+}
+
+.view-profile {
+  font-size: 17px;    
+  display: inline-block;
+  margin-right: 12px;  
+  margin-top: 10px;    
+}
+
+.view-profile button {
+ border: none;
+ border-radius: 3px;
+ background-color: #0991ff;
+ color: white;    
+}
+
+.view-profile button:hover {
+ background-color: white;
+ color: #0991ff;
+ box-shadow: 0 3px 6px 0 rgba(0,0,0,0.4);    
+}
+
+.delete-application {
+ font-size: 17px;    
+ display: inline-block;  
+ margin-top: 10px;    
+}
+
+.delete-application button {
+ border: none;
+ border-radius: 3px;
+ background-color: #d92727;
+ color: white;  
+ padding-left: 20px;
+ padding-right: 20px;    
+}
+
+.delete-application button:hover {
+ background-color: white;
+ color: #d92727;
+ box-shadow: 0 3px 6px 0 rgba(0,0,0,0.4);   
+}
+
+.sub {
+    display: none;
+}
+
+
+
+
+#blank {
+ display: block;   
+}
+
+#carpentry {
+   display: none;    
+}
+
+#tailoring {
+  display: none;
+}
+
+#plumbing {
+  display: none;  
+}
+
+#house-keeping {
+ display: none;   
+}
+
+#catering {
+  display: none;  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

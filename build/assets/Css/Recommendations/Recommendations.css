@@ -1,0 +1,689 @@
+.recommendations-section {
+   background-color: ; 
+   padding-top: 25px;
+   padding-bottom: 25px; 
+   padding-left: 15px;
+   padding-right: 15px;    
+}
+
+.recommendations-title {
+  background-color: cadetblue;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;    
+  color: white;
+  font-size: 25px;
+  letter-spacing: 1px;
+  font-family: helvetica;
+  font-weight: 100;
+  margin-bottom: 12px;
+  border: 1px solid darkgray;     
+}
+
+.received-requests-container {
+  background-color: white;
+  border: 1px solid darkgray; 
+  margin-bottom: 40px;
+  padding-bottom: 40px    
+}
+
+.received-requests-title {
+   background-color: ;
+   padding: 5px; 
+   font-family: ;
+   font-size: 20px;
+   color: dimgray;
+   font-weight: bold;
+   letter-spacing: 1px;    
+   padding-left: 15px;
+   padding-right: 30px;    
+}
+
+.received-requests-title a {
+  float: right;  
+  text-decoration: none;
+  font-family: helvetica;
+  font-weight: normal;
+  font-size: 15px;    
+}
+
+.received-requests-title a:hover {
+  color: red;
+  text-decoration: none;    
+}
+
+.requests-headers-div {
+  display: none;    
+  background-color: ;
+  color: darkgray;
+  column-count: 4;   
+  width: 65%;
+  padding: 2px;
+  margin-left: 15px;
+  margin-right: 15px;  
+  border-bottom: solid 1px darkgray;    
+}
+
+.requests-headers {
+  color: dimgray;    
+}
+
+.received-request-div {
+   padding-left: 15px;
+   padding-right: 15px;     
+   display: grid;
+   width: 100%;
+}
+
+.recieved-request {
+  display: inline-block;
+  padding-bottom: 10px;    
+  margin-top: 10px;
+  margin-bottom: 10px;    
+  width: 100%; 
+  border-bottom: solid 1px darkgray;    
+}
+
+.from {
+  display: inline-block;
+  width: 210px;   
+  background-color: ; 
+  margin-top: 5px;
+  margin-bottom: 5px;    
+}
+
+.from img {
+  width: 40px;
+  border-radius: 50%; 
+  margin-right: 15px;    
+}
+
+.job-description {
+  display: inline-block;
+  width: 240px;
+  background-color: ;
+  margin-top: 5px;
+  margin-bottom: 5px;     
+}
+
+.date-sent {
+  display: inline-block;
+  width: 180px;
+  background-color: ;
+  margin-top: 5px;
+  margin-bottom: 5px;     
+}
+
+.status {
+  display: inline-block;
+   width: 210px; 
+  background-color: ;
+  margin-top: 5px;
+  margin-bottom: 5px;     
+}
+
+.view-request-button-div {
+ display: inline-block;
+ width: 210px;
+ background-color: ;
+ margin-top: 5px;
+ margin-bottom: 5px;    
+}
+
+.recommend-button-div {
+ display: inline-block;
+ width: 210px;
+ background-color: ;
+ margin-top: 5px;    
+ margin-bottom: 5px;     
+}
+
+.view-request-button {
+ width: 95%; 
+ border: none;
+ border-radius: 2px;
+ background-color: #0991ff;
+ color: white;
+ height: 30px;    
+}
+
+.view-request-button:hover {
+ background-color: #d92727;   
+}
+
+.recommend-button {
+ width: 95%; 
+ border: solid 2px #0991ff;
+ border-radius: 2px;
+ background-color: transparent;
+ color: #0991ff;
+ height: 30px;    
+}
+
+.recommend-button:hover {
+  border: solid 2px #d92727;
+  color: #d92727;    
+}
+
+
+.send-requests-container {
+   background-color: white;
+  border: 1px solid darkgray; 
+  margin-bottom: 40px;
+  padding-bottom: 40px;    
+}
+
+.send-requests-header {
+  background-color: ;
+   padding: 5px; 
+   font-family: ;
+   font-size: 20px;
+   color: dimgray;
+   font-weight: bold;
+   letter-spacing: 1px;    
+   padding-left: 15px;
+   padding-right: 30px;  
+}
+
+.send-requests-search-bar-div {
+  padding: 3px;
+  padding-left: 15px; 
+  display: flex; 
+  background-color: ;    
+}
+
+.send-requests-search-bar {
+  border-left: 2px solid darkgray;
+  border-top: 2px solid darkgray;
+  border-bottom: 2px solid darkgray;
+  border-right: none;
+  height: 40px;
+  width: 320px; 
+  padding-left: 10px;  
+}
+
+.send-requests-search-bar::placeholder {
+  color: #0991ff;    
+}
+
+.send-requests-search-button {
+   border-left: none;
+   border-top: 2px solid darkgray;
+   border-bottom: 2px solid darkgray;
+   border-right: 2px solid darkgray;    
+   background-color: white;    
+   width: 40px; 
+   height: 40px;    
+}
+
+.send-requests-search-icon {
+  width: 100%;   
+}
+
+.search-results-header {
+  background-color: ;
+   padding: 3px; 
+   font-family: ;
+   font-size: 20px;
+   color: dimgray;
+   letter-spacing: 1px;    
+   padding-left: 15px;
+   padding-right: 30px;
+  margin-top: 20px;    
+}
+
+.searched-result-div {
+   padding-left: 15px;
+   padding-right: 15px;     
+   display: grid;
+   width: 100%;  
+}
+
+.searched-result {
+  display: inline-block;
+  padding-bottom: 10px;    
+  margin-top: 10px;
+  margin-bottom: 10px;    
+  width: 100%; 
+  border-bottom: solid 1px darkgray;  
+}
+
+
+.your-requests-title {
+ background-color: ;
+   padding: 3px; 
+   margin-top: 30px;    
+   font-family: ;
+   font-size: 20px;
+   color: dimgray;
+   letter-spacing: 1px;    
+   padding-left: 15px;
+   padding-right: 30px;     
+}
+
+.your-requests-header-div {
+  background-color: ; 
+  column-count: 5;   
+  width: 97.5%;
+  padding: 3px;
+  margin-left: 15px;
+  margin-right: 15px;  
+  border-bottom: solid 1px darkgray; 
+  display: none;    
+}
+
+.your-requests-headers {
+   color: dimgray;  
+}
+
+.pending-requests a {
+  text-decoration: none;
+    
+}
+
+.pending-requests a:hover {
+ color: red;
+ text-decoration: none;    
+}
+
+
+.your-requests-div {
+  padding-left: 15px;
+   padding-right: 15px;     
+   display: grid;
+   width: 100%;  
+}
+
+.your-requests {
+  display: inline-block;
+  padding-bottom: 10px;    
+  margin-top: 10px;
+  margin-bottom: 10px;    
+  width: 100%; 
+  border-bottom: solid 1px darkgray;   
+}
+
+.your-requests-from {
+  display: inline-block;
+   width: 253px; 
+  background-color: ;
+  margin-top: 5px;
+  margin-bottom: 5px;  
+}
+
+.your-requests-from img {
+  width: 40px;
+  border-radius: 50%; 
+  margin-right: 15px;  
+}
+
+.your-requests-job-description {
+  display: inline-block;
+   width: 283px; 
+  background-color: ;
+  margin-top: 5px;
+  margin-bottom: 5px;  
+}
+
+.your-requests-date-sent {
+  display: inline-block;
+   width: 223px; 
+  background-color: ;
+  margin-top: 5px;
+  margin-bottom: 5px;  
+}
+
+.your-requests-status {
+  display: inline-block;
+   width: 253px; 
+  background-color: ;
+  margin-top: 5px;
+  margin-bottom: 5px;  
+}
+
+.your-requests-view-requests-button-div {
+ display: inline-block;
+ width: 253px;
+ background-color: ;
+ padding-left: 5px;
+ padding-right: 5px; 
+ margin-top: 5px;
+  margin-bottom: 5px;   
+}
+
+.cancel-request-button {
+ width: 95%; 
+ border: none;
+ border-radius: 2px;
+ background-color: #d92727;
+ color: white;
+ height: 30px;    
+}
+
+.cancel-request-button:hover {
+ background-color: darkred;
+}
+
+
+
+
+/*MODALS*/
+
+#send-request-modal-div {
+ display: none;   
+}
+
+.send-request-modal {
+  background-color: white;    
+  min-width: 300px;
+  width: 60%;
+     
+}
+
+.send-request-modal-title {
+  background-color: cadetblue;
+  padding: 10px;
+  padding-left: 20px;    
+  font-family: helvetica;
+  color: white;
+  font-size: 18px; 
+  letter-spacing: 1px;    
+}
+
+.sr-title-div {
+  background-color: ; 
+  padding-left: 20px;
+  padding-top: 10px;
+  font-family: helvetica;
+  font-size: 19px;
+  letter-spacing: 1px;    
+}
+
+.sr-select {
+  border: 1px solid darkgray;
+  padding: 7px;
+  padding-left: 10px;
+  color: darkgray;
+  font-size: 16px; 
+  width: 230px;  
+  border-radius:  2px;    
+}
+
+ .sr-name-div {
+  background-color: ;
+  padding-left: 20px;
+  padding-top: 10px;
+  font-family: helvetica;
+  font-size: 19px;
+  letter-spacing: 1px;      
+}
+
+.sr-name-input {
+  border: 1px solid darkgray;
+  padding: 5px;
+  padding-left: 10px;
+  color: darkgray;
+  font-size: 16px; 
+  min-width: 230px;
+  width: 70%; 
+  border-radius: 2px;    
+}
+
+.sr-name-input::placeholder {
+    color: darkgray;
+}
+
+.sr-position-div {
+  background-color: ;
+  padding-left: 20px;
+  padding-top: 10px;
+  font-family: helvetica;
+  font-size: 19px;
+  letter-spacing: 1px;    
+}
+
+.sr-position-job-title-input {
+  margin-bottom: 20px;
+  border: 1px solid darkgray;
+  padding: 5px;
+  padding-left: 10px;
+  color: darkgray;
+  font-size: 16px; 
+  min-width: 230px;
+  width: 70%; 
+  border-radius: 2px;    
+}
+
+.sr-position-job-title-input::placeholder {
+  color: darkgray;     
+}
+
+.sr-position-company-name {
+ border: 1px solid darkgray;
+  padding: 5px;
+  padding-left: 10px;
+  color: darkgray;
+  font-size: 16px; 
+  min-width: 230px;
+  width: 70%; 
+  border-radius: 2px;     
+}
+
+.sr-position-company-name::placeholder {
+  color: darkgray;    
+}
+
+.choose-message-div {
+  background-color: ;
+  padding-left: 20px;
+  padding-top: 10px;
+  font-family: helvetica;
+  font-size: 19px;
+  letter-spacing: 1px;       
+}
+
+.message-box-div {
+  padding: 5px;
+  color: darkgray;
+  font-size: 15px;     
+}
+
+.sr-send-request-button-div {
+  background-color: ;    
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-bottom: 20px;    
+}
+
+.sr-send-request-button {
+  background-color: green;
+  width: 150px;
+  color: white;
+  padding: 3px;
+  font-size: 15px;
+  font-family: helvetica;
+  border: none;
+  border-radius: 2px;
+  letter-spacing: 1px;       
+}
+
+.sr-send-request-button:hover {
+ background-color: white;
+ color: green;
+ box-shadow: 0 3px 6px 0 rgba(0,0,0,0.4);    
+}
+
+
+.view-request-container { 
+  display: flex;
+  width: 100%;   
+  background-color: white;
+}
+
+@media screen and (max-width: 900px) {
+    
+    .view-request-container {
+        display: block;
+    }
+    
+}
+
+.view-request-container {
+      
+}
+
+.left-half {
+  display: ;
+  width: 50%;  
+  min-width: ;
+  background-color: ;
+  /*height: 330px;*/ 
+}
+
+@media screen and (max-width:900px) {
+    
+    .left-half {
+        width: 100%;
+    }
+}
+
+.view-request-profile-div {
+  font-size: 18px;
+  letter-spacing: 1px;    
+ font-family: helvetica;
+ color: dimgray;  
+}
+
+.view-request-profile {
+ border-radius: 50%;
+ margin: 20px; 
+ margin-left: 30px;    
+ width: 100px;    
+}
+
+.view-request-about-div {
+  background-color: ;
+  font-family: helvetica;
+  font-size: 18px;
+  color: darkgray;
+  padding: 20px;    
+  padding-left: 30px; 
+  letter-spacing: 0.5px;    
+}
+
+.right-half {
+      
+  display: ;
+  width: 50%;    
+  min-width: ;
+  background-color: ; 
+  padding: 10px;
+  /*height: 330px;*/   
+}
+
+@media screen and (max-width:900px) {
+    
+    .right-half {
+       width: 100%;    
+    }
+    
+}
+
+.comp-name-and-logo {
+ font-size: 20px;
+ font-family: helvetica;
+ color: dimgray;    
+}
+
+.comp-logo {
+ width: 67px;
+}
+
+.value-points-title {
+  font-size: 22px;
+  font-family: helvetica;
+  font-weight: bold;
+  color: dimgray;    
+}
+
+.val-points-container {
+  border: solid 1px darkgray;
+  border-radius: 2px;
+  padding: 5px; 
+  padding-top: 10px;
+  padding-bottom: 10px;  
+  padding-left: 7px;    
+}
+
+.first-impression {
+  font-size: 20px;
+  font-family: helvetica;
+  font-weight: ;
+  color: darkgray;  
+}
+
+.integrity {
+  font-size: 20px;
+  font-family: helvetica;
+  font-weight: ;
+  color: darkgray;  
+}
+
+.punctuality {
+  font-size: 20px;
+  font-family: helvetica;
+  font-weight: ;
+  color: darkgray;  
+}
+
+.numbers {
+ border-radius: 50%;
+ border: solid 1px #0991ff;
+ background-color: white;
+ color: #0991ff;    
+ font-size: 15px;
+ font-family: helvetica;
+ margin-right: 1px    
+}
+
+.numbers:hover {
+  background-color: #0991ff;
+  color: white;    
+}
+
+.numbers-ten {
+ border-radius: 50%;
+ border: solid 1px #0991ff;
+ background-color: white;
+ color: #0991ff;    
+ font-size: 16px; 
+ padding-left: 3.5px;
+ padding-right: 3.5px; 
+ font-family: helvetica;    
+}
+
+.numbers-ten:hover {
+ background-color: #0991ff;
+  color: white; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

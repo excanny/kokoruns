@@ -1,0 +1,378 @@
+
+/* BODY */
+
+
+/** Education **/
+
+.user-education {
+  padding-left: 50px;
+  padding-right: px;
+  border-radius: 2px;    
+  width: 69.2%;
+  background-color: white;
+  padding-top; 0px;    
+  /*padding-top: 50px;*/
+  /* box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);*/
+} 
+
+.user-education: hover {
+  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.4);  
+}
+
+.user-education-header {
+   font-family: sans-serif;
+  font-weight: normal;
+  color: darkgray;
+  font-size: 27px; 
+  letter-spacing: 1px;   
+}
+
+.user-education-header-container {
+   padding-bottom: px; 
+   padding-top: px;
+   background-color: ;
+   height: px;
+   background: ;
+   padding-left: 30px; 
+   box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);   
+}
+
+.edu-cont {
+  padding-left: 20px;
+  padding-top: 32px;
+  padding-bottom: 30px;
+  padding-right: 10px;
+  background-color: ;
+}
+
+.edu-cont-2 {
+  border-bottom: 2px solid darkgray;
+  padding-bottom: 15px;
+  background-color: ;    
+}
+
+.edu-date {
+  font-size: 17px ;
+  color: dimgray;
+  font-family: sans-serif;
+}
+
+.school {
+  font-size: 22px ;
+ color: #313131;
+ font-family: sans-serif;
+ font-weight: ; 
+ letter-spacing: 1px;    
+}
+
+.degree {
+  font-size: 22px ;
+  color: #313131;
+  font-family: sans-serif; 
+  font-weight: bold; 
+  letter-spacing: 1px;    
+}
+
+.degree-button {
+  border: none;
+  background-color: #0991ff;
+  border-radius: 5px;
+  padding: 2px; 
+  padding-top: 5px;    
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+  font-weight: bold;   
+  font-family: sans-serif;    
+}
+
+.degree-button:hover {
+  opacity: 0.8;
+  background-color: #d92727;    
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.25);   
+}
+
+.skills-topics {
+  margin: 0px; 
+  padding-left: 15px; 
+  list-style-type: circle;
+  line-height: 2;    
+}
+
+.skills-topics li {
+  font-size: 17px ;
+  color: #4b4b4b;
+  font-family: sans-serif;
+  letter-spacing: 1px;   
+}
+
+
+.edu-edit {
+  border: none;
+  background-color: #0991ff;
+  border-radius: 5px;
+  padding: 2px; 
+  padding-top: 5px;    
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+  font-weight: bold;   
+  font-family: sans-serif;      
+}
+
+.edu-edit:hover {
+  opacity: 0.8;
+  background-color: #d92727;    
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.20), 0 5px 20px 0 rgba(0,0,0,0.25);   
+}
+
+.edu-delete {
+  border: none;
+  padding: 5px;    
+  color: #0991ff;
+  font-weight: bold;   
+  font-family: sans-serif;
+  background: none;    
+}
+
+.edu-delete:hover {
+  color: #d92727;
+    opacity: 0.8;  
+}
+
+.edu-update-button-container {
+   display: block;  
+   padding-top: 7px;
+   padding-bottom: 7px;
+}
+
+.edu-update-button {
+  border: none;
+  background-color: #0991ff;
+  border-radius: 2px;
+  padding: 2px; 
+  padding-top: 5px;    
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 25px;       
+  color: white;
+  font-family: sans-serif; 
+  font-size: 17px;    
+  height: 32px; 
+  letter-spacing: 1px;  
+  width: 120px;   
+}
+
+.edu-update-button:hover {
+ background-color: white;
+  color: #0991ff;    
+  box-shadow: 0 5px 15px 0 rgba(0,0,0,0.5); 
+}
+
+.edu-update-form-div {
+   display: none;
+}       
+
+.edu-update-form-container {
+  background-color: brown;
+  padding-left: 30px;
+  padding-right: 30px;  
+}
+
+.edu-update-form-container:hover {
+  box-shadow: 0 5px 8px 0 rgba(0,0,0,0.4);
+}
+
+.edu-update-form {
+  display: block;
+  background-color: gray;    
+  padding-bottom: 15px;
+  border-bottom: 2px solid darkgray;    
+  padding-top: 10px;
+}
+
+.edu-duration-label {
+  font-family: calibri;   
+    color: dimgray;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.skills-topics-text-area {
+   width: 95%; 
+   max-width: 95%;    
+   padding-top: 10px;
+   padding-bottom: 10px;     
+   padding-left: 15px;
+   border: solid 1px darkgray;
+   background-color: transparent;
+   font-family: calibri;
+   font-size: 20px;
+   letter-spacing: 0.5px;
+   border-radius: 2px;
+   height: 68px;   
+   overflow: hidden;       
+}
+
+.school-label {
+  font-family: calibri;   
+    color: dimgray;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 1px;     
+}
+
+.degree-label {
+  font-family: calibri;   
+    color: dimgray;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 1px;  
+}
+
+
+.edu-duration {
+ width: 25%;
+ min-width: 148px;    
+ padding:10px;
+ border: solid 1px darkgray;
+ border-radius: 2px;
+ background-color: transparent;
+ font-family: calibri;
+ font-size: 18px;
+ letter-spacing: ;    
+}
+
+
+.school-or-institution {
+ width: 95%;  
+padding-top: 10px;
+padding-bottom: 10px;     
+padding-left: 15px;
+border: solid 1px darkgray;
+background-color: transparent;
+font-family: calibri;
+font-size: 20px;
+letter-spacing: 0.5px;
+border-radius: 2px;    
+}
+
+.degree-certificate {
+ width: 95%;  
+padding-top: 10px;
+padding-bottom: 10px;     
+padding-left: 15px;
+border: solid 1px darkgray;
+background-color: transparent;
+font-family: calibri;
+font-size: 20px;
+letter-spacing: 0.5px;
+border-radius: 2px;    
+}
+
+.certificate-button {
+  border: none;
+  background: none;
+  padding: 5px;   
+  color: #0991ff; 
+  font-weight: 300;    
+  font-family: sans-serif;   
+  font-size: 16px;
+  letter-spacing: 1px;    
+    
+}
+
+.certificate-button:hover {
+ color: #d92727;   
+}
+
+.skills-and-topics-label {
+  font-family: calibri;   
+    color: dimgray;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 1px;    
+}
+
+.b-label{
+  font-size: 16px;
+  font-style: italic;    
+  font-weight: lighter;
+  color: #d92727;
+  padding-left: 5px;    
+}
+
+
+.br-area {
+    line-height: 1.5;
+}
+
+.edu-button-container {
+  
+}
+
+.edu-button-right {
+   
+}
+
+.ed-cancel-button {
+ border: none;
+ background: none;
+  padding: 5px; 
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #0991ff;
+  font-weight: ;   
+  font-family: sans-serif;
+  font-size: 16px;
+  letter-spacing: 1px;    
+}
+
+.ed-cancel-button:hover {
+   color: #d92727;
+}
+
+.ed-finish-button {
+ border: none;
+  background-color: #0991ff;
+  border-radius: 5px;
+  padding: 4px;   
+  padding-left: 12px;
+  padding-right: 12px;
+  color: white;   
+  font-family: sans-serif;
+  font-size: 16px;
+  letter-spacing: 1px;    
+}
+
+.ed-finish-button:hover {
+  background-color: white; 
+  color: #0991ff;    
+  box-shadow: 0 5px 15px 0 rgba(0,0,0,0.5); 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 600px)
+{
+  
+ .user-education {
+    padding-left: 1%;
+    padding-right: 1%;
+}   
+    
+    
+  
+}
