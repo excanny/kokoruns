@@ -88,7 +88,7 @@ export class Education extends Component {
 
               this.setState({ educations: response.data.educations, loading: false });
 
-            console.log(response);
+              // console.log(response.data.expe[0]);
 
           } 
           catch(error) 
@@ -136,9 +136,9 @@ export class Education extends Component {
 
               this.setState({ educations: response.data.educations, loading: false, show: false });
 
-              window.location.href = "/user-dashboard-education";
+              //window.location.href = "/user-dashboard-education";
 
-              //this.props.history.push("/user-dashboard-education");
+              this.props.history.push("/user-dashboard-education");
 
               // console.log(response.data.expe[0]);
 
@@ -161,118 +161,95 @@ export class Education extends Component {
 
             <>
            
-           <Header/>
-          
-          <div style={{background: '#f2f2f2'}}>
-             <section id="UserInfoContainer" className="user-info-container" >  
-
-                   <NavBar/>
-             </section>
+          <Header/>
 
 
-              <div id="user-education">
-                  <section className="user-education">
-                    <div className="user-education-header-container">
-                      <div className="edu-update-button-container">
-                        <button onclick="ShowEducationForm()" className="edu-update-button" onClick={this.showModal}> + Create Education </button>      
-                        <button onclick="ViewBio(); return false;" className="bio-button"> View Bio </button>
-                      </div>    
-                    </div>
-                  </section>
 
-            {this.state.loading || !this.state.educations ? 
+            <section id="UserInfoContainer" className="user-info-container">  
+
+
+            <NavBar/>
+
+           
+
+
+              <UserBio />
+              
+              </section>
+
+
+          <div id="user-experience" style={{paddingLeft: 59, paddingBottom: 50}}>
+                      {/*EXPERIENCE*/}
+                      <div style={{paddingTop: 15, paddingBottom: 15, width: '69.4%'}}>
+                          <section className="user-experience card mb-4">  
+                          <div className="exp-update-button-container">
+                              <button className="btn btn-danger rounded-0" onClick={this.showModal}>Create Education +</button>      
+                          </div> 
+                          </section>    
+                      </div> 
+
+          <div>
+              {this.state.loading || !this.state.educations ? 
               <div>Loading</div> :
                (
                <div>
                  
                { this.state.educations.map(education =>
+                  
+                 
+                          <div id="experience-post-container" style={{width: '69.4%'}}>
+                              <section className="user-experience card mb-5 py-5 px-3">
+                                  <div className="experience-post-container">
+                                      <div className="exp-cont">
+                                      <div className>     
+                                          <div className="row">
+                                          <div className="col">
+                                              <span className="exp-date ">{education.start}</span> - 
+                                              <span className="exp-date">{education.end}</span>
+                                          </div>
+                                          <div className="col text-right">
+                                              <div className="dropdown dropleft">
+                                              <i className="fa fa-ellipsis-v cursor" data-toggle="dropdown" />
+                                              <div className="dropdown-menu rounded-0 bg-light p-0">
+                                                  <a className="dropdown-item p-0 edit-experience-btn cursor" data-toggle="modal" data-exp_id="'.$experience['frecno'].'" data-exp_start_month="'.$month1.'" data-exp_start_year="'.$year1.'" data-exp_end_month="'.$month2.'" data-exp_end_year="'.$year2.'" data-company="'.$experience['fcompany_name'].'" data-position="'.$experience['fposition'].'" data-roles="'.$experience['frole'].'"><i className="fa fa-edit text-warning" /> &nbsp;Edit</a>
+                                                  <a className="dropdown-item p-0 exp-delete cursor" data-exp_id="'.$experience['frecno'].'"><i className="fa fa-trash text-danger" /> Delete</a>
+                                              </div>
+                                              </div>
+                                          </div>
+                                          </div>
 
-                    <div className="education-post-container mb-5">
-                      <div className="edu-cont">
-                        <div className="edu-cont-2">
-                          <span className="edu-date">June</span>&nbsp;
-                          <span className="edu-date">2013</span> - 
-                          <span className="edu-date">January</span>&nbsp;&nbsp;<span className="edu-date">2019</span><br /><br />
-                          <span className="degree">{education.class_of_degree} {education.course}</span>&nbsp;
-                          <button className="degree-button">View</button>
-                          <br /><br />            
-                          <span className="school">{education.school}</span><br /><br />
-                          <ul className="skills-topics">
-                            <li>Programming in HTML</li>
-                            <li>Programming in CSS</li>
-                            <li>Server-Side Scripting with PHP and Node.js</li>
-                            <li>Programming in HTML</li>
-                            <li>Programming in CSS</li>
-                            <li>Server-Side Scripting with PHP and Node.js</li>
-                          </ul>
-                          <br />        
-                         
-                        </div>        
-                      </div>     
-                    </div>
+                                          			
+                                       <div>
+                                          <span className="degree">{education.class_of_degree} {education.course}</span>&nbsp;
+                                          <br /> <br />        
+                                          <span className="school">{education.school}</span><br /><br />
+                                        </div>
 
+                                        
+                                          <ul className="roles-and-respon">
+                                         
+                                              {/* <li>'.$role.'</li> */}
+                                         
+                                          </ul>
+                                          <br />  
+                                      </div>
+                                      </div>
+                                  </div>
+                              </section>
 
-                      )
-                      }
-                      </div>
-
-                      )}
-
-                      <div className="skills-container">
-                        <div className="skills-cont-2">
-                          <h2 className="professional-label">Professional Skills</h2>    
-                          <div className="skill-padding"><div className="skill">Numerical Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Creative Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Design Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Legal knowledge&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Communication Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Team working Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Commercial Awareness&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Artistic Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Problem Solving Skills&nbsp;<button className="delete-skill-button">x</button></div></div>   
-                          <div id="add-skill-prof" className="skill-padding">
-                            <button onclick="AddProfSkill()" className="add-skill-button">Add skill +</button></div> 
-                          <div id="form-div-prof" className="form-div">
-                            <form className="add-skill-form">
-                              <input className="skills-input" type="text" id="skill-input-prof" />&nbsp;
-                              <button onclick="CancelAddProfSkill()" className="cancel-add-skill">Cancel</button>
-                              <button onclick="FinishAddProfSkill()" className="finish-add-skill">Done</button>
-                            </form>
-                          </div>   
-                        </div>
-                      </div>
-
-
-                      <div className="skills-container mt-5">
-                        <div className="skills-cont-2">
-                          <h2 className="other-label">Other Skills</h2>    
-                          <div className="skill-padding"><div className="skill">Numerical Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Creative Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Design Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Legal knowledge&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Communication Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Team working Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Commercial Awareness&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Artistic Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Problem Solving Skills&nbsp;<button className="delete-skill-button">x</button></div></div>   
-                          <div id="add-skill-other" className="skill-padding">
-                            <button onclick="AddOtherSkill()" className="add-skill-button">Add skill +</button></div> 
-                          <div id="form-div-other" className="form-div">
-                            <form className="add-skill-form">
-                              <input className="skills-input" type="text" id="skill-input-other" />&nbsp;
-                              <button onclick="CancelAddOtherSkill()" className="cancel-add-skill">Cancel</button>
-                              <button onclick="FinishAddOtherSkill()" className="finish-add-skill">Done</button>
-                            </form>
                           </div>
-                        </div>
-                      </div>
-                    </div>
+                     
+                )
+                }
+               </div>
 
+               )}
 
+          </div> 
+          
+          {/*loading start */}
 
-
-                </div>
-
+          </div>
 
             {/* Modal */}
 

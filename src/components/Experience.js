@@ -129,6 +129,8 @@ export class Experience extends Component {
          
            console.log(response);
 
+           window.location.href = "/user-dashboard-experience";
+
          })
          .catch( error => {
            console.log(error.response);
@@ -148,7 +150,7 @@ export class Experience extends Component {
 
             <Header/>
           
-           <div style={{background: '#f5f5dc'}}>
+           <div style={{background: '#f2f2f2'}}>
               <section id="UserInfoContainer" className="user-info-container" >  
 
                     <NavBar/>
@@ -156,6 +158,8 @@ export class Experience extends Component {
 
                     <div id="user-experience">
                       <section className="user-experience">
+
+
                         <div className="user-experience-header-container">
                           {/*h2 align="center" class="user-experience-header">Experience</h2*/}
                           <div align="left" className="exp-update-button-container">
@@ -165,23 +169,24 @@ export class Experience extends Component {
                         </div>
 
 
-            {/* {this.state.loading || !this.state.experiences ? 
-              <div>Loading</div> :
+          {this.state.loading || !this.state.experiences ? 
+
+              <div style={{background: '#f2f2f2'}}>Loading...</div> :
                
-               <div>{
-                this.state.experiences.map(experience => */}
+               <div className="mb-5" style={{background: '#f2f2f2'}}>{
+                this.state.experiences.map(experience => 
 
 
-                        <div className="experience-post-container">
+                        <div className="experience-post-container mb-4">
                           <div className="exp-cont">
                             <div className="exp-cont-2">     
                               <span className="exp-date">June</span>&nbsp;
                               <span className="exp-date">2013</span> - 
                               <span className="exp-date">January</span>&nbsp;
                               <span className="exp-date">2019</span><br /><br />
-                              <span className="exp-position">Senior Project Manager</span>&nbsp;
+                              <span className="exp-position">{experience.position}</span>&nbsp;
                               <button className="position-button">View</button><br /><br />       
-                              <span className="company">Google Alphabet Corp.</span><br /><br />
+                              <span className="company">{experience.company_name}</span><br /><br />
                               <ul className="roles-and-respon">
                                 <li>Programming in HTML</li>
                                 <li>Programming in CSS</li>
@@ -191,16 +196,17 @@ export class Experience extends Component {
                                 <li>Server-Side Scripting with PHP and Node.js</li>
                               </ul>
                               <br />  
-                              <div>
-                                <button className="exp-edit"><img className src />Edit</button>&nbsp;&nbsp;<button className="exp-delete">Delete</button></div>
+                              {/* <div>
+                                <button className="exp-edit"><img className src />Edit</button>&nbsp;&nbsp;<button className="exp-delete">Delete</button>
+                                </div> */}
                             </div>       
                           </div>     
                         </div>
 
 
-                      {/* )
+                      )
                       }
-                      </div>} */}
+                      </div>}
                       </section>    
                     </div>
                 

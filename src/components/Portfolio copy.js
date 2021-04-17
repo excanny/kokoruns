@@ -3,27 +3,19 @@ import Header from '../commons/Header';
 import NavBar from '../commons/NavBar';
 import UserBio from '../commons/UserBio';
 import Modal from 'react-bootstrap/Modal';
+import ImageUploader from 'react-images-upload';
 import axios from 'axios';
 
-export class Education extends Component {
+export class Portfolio extends Component {
 
     constructor() {
         super();
         this.state = {
-          show: false,
-          start_month: '',
-          end_month: '',
-          start_year: '',
-          end_year: '',
-          school: '',
-          class_of_degree: '',
-          course: '',
-          skills: [
-            { skill_name: "edfefef" }
-          ],
-          educations: [],
-          user: [],
+         
+          inputImageValue: '',
+         
           loading: true,
+         pictures: [] ,
 
         };
 
@@ -32,6 +24,9 @@ export class Education extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         //this.handleRoleChange = this.handleRoleChange.bind(this);
+        this.handleImageChange = this.handleImageChange.bind(this);
+       
+         this.onDrop = this.onDrop.bind(this);
   
       }
 
@@ -71,37 +66,53 @@ export class Education extends Component {
       }
 
 
-      async componentDidMount() {
+      // async componentDidMount() {
 
-        const headers = {
-          "Content-Type": "application/json",
-          'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
-        }
+      //   const headers = {
+      //     "Content-Type": "application/json",
+      //     'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
+      //   }
 
     
-          try 
-          {
-              // fetch data from a url endpoint
-              const response = await  axios.get(`https://sheltered-chamber-63274.herokuapp.com/api/educations`, {headers: headers});
+      //     try 
+      //     {
+      //         // fetch data from a url endpoint
+      //         const response = await  axios.get(`https://lit-ridge-07527.herokuapp.com/api/educations`, {headers: headers});
 
-              //console.log(response.data.educations);
+      //         //console.log(response.data.experiences);
 
-              this.setState({ educations: response.data.educations, loading: false });
+      //         this.setState({ educations: response.data.educations, loading: false });
 
-            console.log(response);
+      //         // console.log(response.data.expe[0]);
 
-          } 
-          catch(error) 
-          {
-            console.log("error", error);
-            // appropriately handle the error
-          }
+      //     } 
+      //     catch(error) 
+      //     {
+      //       console.log("error", error);
+      //       // appropriately handle the error
+      //     }
     
-      }
+      // }
 
 
       handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
+      }
+
+      handleImageChange(e) {
+     
+
+        let formData = new FormData();
+        formData.append('file', e.target.files[0].name );
+
+        // for (var pair of formData.entries()) {
+        //   console.log(pair[0]+ ', ' + pair[1]); 
+        // }
+
+
+
+
+
       }
 
 
@@ -121,22 +132,28 @@ export class Education extends Component {
           'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
         }
 
-        const data = { start_month: this.state.start_month, start_year: this.state.start_year, end_month: this.state.end_month, end_year: this.state.end_year, school: this.state.school, course: this.state.course, class_of_degree: this.state.class_of_degree, skills:  JSON.stringify(this.state.skills)};  
+        let formData = new FormData();
+        formData.append('file', e.target.inputImageValue.files[0]);
 
         //console.log(data);
+
+         //Display the key/value pairs
+      for (var pair of formData.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]); 
+      }
 
 
           try 
           {
               // fetch data from a url endpoint
-              //const response = await  axios.post(`http://127.0.0.1:8000/api/addeducation`, data, {headers: headers});
-              const response = await  axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/addeducation`, data, {headers: headers});
+              const response = await  axios.post(`http://127.0.0.1:8000/api/addportfolio`, formData, {headers: headers});
+              //const response = await  axios.post(`https://lit-ridge-07527.herokuapp.com/api/addeducation`, data, {headers: headers});
               
               console.log(response);
 
-              this.setState({ educations: response.data.educations, loading: false, show: false });
+              //this.setState({ educations: response.data.educations, loading: false, show: false });
 
-              window.location.href = "/user-dashboard-education";
+              //window.location.href = "/user-dashboard-education";
 
               //this.props.history.push("/user-dashboard-education");
 
@@ -154,6 +171,14 @@ export class Education extends Component {
 
 
 
+      onDrop(picture) {
+        this.setState({
+            pictures: this.state.pictures.concat(picture),
+        });
+    }
+
+
+
     render() {
 
 
@@ -161,118 +186,96 @@ export class Education extends Component {
 
             <>
            
-           <Header/>
-          
-          <div style={{background: '#f2f2f2'}}>
-             <section id="UserInfoContainer" className="user-info-container" >  
-
-                   <NavBar/>
-             </section>
+          <Header/>
 
 
-              <div id="user-education">
-                  <section className="user-education">
-                    <div className="user-education-header-container">
-                      <div className="edu-update-button-container">
-                        <button onclick="ShowEducationForm()" className="edu-update-button" onClick={this.showModal}> + Create Education </button>      
-                        <button onclick="ViewBio(); return false;" className="bio-button"> View Bio </button>
-                      </div>    
-                    </div>
-                  </section>
 
-            {this.state.loading || !this.state.educations ? 
-              <div>Loading</div> :
-               (
-               <div>
+            <section id="UserInfoContainer" className="user-info-container">  
+
+
+            <NavBar/>
+
+           
+
+
+              <UserBio />
+              
+              </section>
+
+
+          <div id="user-experience" style={{paddingLeft: 59, paddingBottom: 50}}>
+                    
+
+            <div class="portfolio-header-container">
+              
+              <div class="edu-update-button-container">
+                 <label for="file-input-images" class="mb-0 mt-0 mt-1 mb-1">
+                   <span class="edu-update-button btn-danger py-2 px-3 mt-2 cursor">Add Image</span>
+                 </label>
+                 <input type="file" name="inputImageValue" id="file-input-images" onChange={this.handleImageChange} value={this.state.inputImageValue} accept='image/*' hidden/>     
+               
+              </div>      
                  
-               { this.state.educations.map(education =>
-
-                    <div className="education-post-container mb-5">
-                      <div className="edu-cont">
-                        <div className="edu-cont-2">
-                          <span className="edu-date">June</span>&nbsp;
-                          <span className="edu-date">2013</span> - 
-                          <span className="edu-date">January</span>&nbsp;&nbsp;<span className="edu-date">2019</span><br /><br />
-                          <span className="degree">{education.class_of_degree} {education.course}</span>&nbsp;
-                          <button className="degree-button">View</button>
-                          <br /><br />            
-                          <span className="school">{education.school}</span><br /><br />
-                          <ul className="skills-topics">
-                            <li>Programming in HTML</li>
-                            <li>Programming in CSS</li>
-                            <li>Server-Side Scripting with PHP and Node.js</li>
-                            <li>Programming in HTML</li>
-                            <li>Programming in CSS</li>
-                            <li>Server-Side Scripting with PHP and Node.js</li>
-                          </ul>
-                          <br />        
-                         
-                        </div>        
-                      </div>     
-                    </div>
+           </div> 
 
 
-                      )
-                      }
-                      </div>
+           <ImageUploader
+                withIcon={true}
+                buttonText='Choose images'
+                onChange={this.onDrop}
+                imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                maxFileSize={5242880}
+            />
 
-                      )}
+          <div>
+              {this.state.loading || !this.state.experiences ? 
+              (<div>Loading</div>) :
+               (
+               <div>{
+                this.state.educations.map(education =>
+                  
+                  <div>
+                          <div id="experience-post-container" style={{width: '69.4%'}}>
+                              <section className="user-experience card mb-5">
+                                  <div className="experience-post-container">
+                                      <div className="exp-cont">
+                                      <div className>     
+                                          <div className="row">
+                                          <div className="col">
+                                              <span className="exp-date ">{education.start}</span> - 
+                                              <span className="exp-date">{education.end}</span>
+                                          </div>
+                                          <div className="col text-right">
+                                              <div className="dropdown dropleft">
+                                              <i className="fa fa-ellipsis-v cursor" data-toggle="dropdown" />
+                                              <div className="dropdown-menu rounded-0 bg-light p-0">
+                                                  <a className="dropdown-item p-0 edit-experience-btn cursor" data-toggle="modal" data-exp_id="'.$experience['frecno'].'" data-exp_start_month="'.$month1.'" data-exp_start_year="'.$year1.'" data-exp_end_month="'.$month2.'" data-exp_end_year="'.$year2.'" data-company="'.$experience['fcompany_name'].'" data-position="'.$experience['fposition'].'" data-roles="'.$experience['frole'].'"><i className="fa fa-edit text-warning" /> &nbsp;Edit</a>
+                                                  <a className="dropdown-item p-0 exp-delete cursor" data-exp_id="'.$experience['frecno'].'"><i className="fa fa-trash text-danger" /> Delete</a>
+                                              </div>
+                                              </div>
+                                          </div>
+                                          </div>
+                                          <p className="mt-3 mb-2"><span className="exp-position">{education.position}</span> </p>
+                                          <span className="company">{education.company_name}</span><br /><br />
+                                          <ul className="roles-and-respon">';
+                                         
+                                              <li>'.$role.'</li>
+                                         
+                                          </ul>
+                                          <br />  
+                                      </div>
+                                      </div>
+                                  </div>
+                              </section>
 
-                      <div className="skills-container">
-                        <div className="skills-cont-2">
-                          <h2 className="professional-label">Professional Skills</h2>    
-                          <div className="skill-padding"><div className="skill">Numerical Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Creative Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Design Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Legal knowledge&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Communication Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Team working Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Commercial Awareness&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Artistic Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Problem Solving Skills&nbsp;<button className="delete-skill-button">x</button></div></div>   
-                          <div id="add-skill-prof" className="skill-padding">
-                            <button onclick="AddProfSkill()" className="add-skill-button">Add skill +</button></div> 
-                          <div id="form-div-prof" className="form-div">
-                            <form className="add-skill-form">
-                              <input className="skills-input" type="text" id="skill-input-prof" />&nbsp;
-                              <button onclick="CancelAddProfSkill()" className="cancel-add-skill">Cancel</button>
-                              <button onclick="FinishAddProfSkill()" className="finish-add-skill">Done</button>
-                            </form>
-                          </div>   
-                        </div>
-                      </div>
-
-
-                      <div className="skills-container mt-5">
-                        <div className="skills-cont-2">
-                          <h2 className="other-label">Other Skills</h2>    
-                          <div className="skill-padding"><div className="skill">Numerical Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Creative Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Design Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Legal knowledge&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Communication Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Team working Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Commercial Awareness&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Artistic Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Problem Solving Skills&nbsp;<button className="delete-skill-button">x</button></div></div>   
-                          <div id="add-skill-other" className="skill-padding">
-                            <button onclick="AddOtherSkill()" className="add-skill-button">Add skill +</button></div> 
-                          <div id="form-div-other" className="form-div">
-                            <form className="add-skill-form">
-                              <input className="skills-input" type="text" id="skill-input-other" />&nbsp;
-                              <button onclick="CancelAddOtherSkill()" className="cancel-add-skill">Cancel</button>
-                              <button onclick="FinishAddOtherSkill()" className="finish-add-skill">Done</button>
-                            </form>
                           </div>
-                        </div>
-                      </div>
-                    </div>
+                      </div>   
+                )
+                }
+               </div>)}
+          </div>
 
-
-
-
-                </div>
-
+          </div>
 
             {/* Modal */}
 
@@ -393,4 +396,4 @@ export class Education extends Component {
     }
 }
 
-export default Education;
+export default Portfolio;

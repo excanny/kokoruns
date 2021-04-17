@@ -1,7 +1,75 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 export class NavBar extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+    
+          userdetails: [],
+          loading: true,
+
+        };
+        
+
+        // this.showModal = this.showModal.bind(this);
+        // this.hideModal = this.hideModal.bind(this);
+        // this.handleChange = this.handleChange.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
+        //this.handleRoleChange = this.handleRoleChange.bind(this);
+  
+      }
+
+
+ async componentDidMount()
+  {
+
+    if(localStorage.getItem('access_token'))
+    {
+      this.setState({ isLogged : true });
+    }
+
+    //console.log(localStorage.getItem('access_token'));
+
+
+    const headers = {
+
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
+
+    }
+
+    try
+    {
+      
+        // fetch data from a url endpoint
+        // const response = axios.get(`https://api-business.azurewebsites.net/api/BusinessInfos/get`, {headers: headers});
+       const response = await axios.get(`https://sheltered-chamber-63274.herokuapp.com/api/userdetails`, {headers: headers});
+
+        // this.setState({ bankAccountNumber : response.data.data.bankAccountNo });
+
+        // console.log(this.state.bankAccountNo);
+        
+        // console.log(response.data.data.bankAccountNo);
+
+        //this.setState({ firstname : response.data.data.firstName });
+
+        console.log(response.data.user_details);
+
+
+    } 
+    catch(error) 
+    {
+        // console.log("error", error);
+        // appropriately handle the error
+        console.log(error.response);
+    }
+  }
+
+
+
     render() {
         return (
            
@@ -19,7 +87,7 @@ export class NavBar extends Component {
                         {/* <i className="fa fa-bars text-white cursor" data-toggle="dropdown" style={{fontSize: '1.5rem'}} /> */}
                         <button className="menu-bar-button-right" data-toggle="dropdown" style={{border: 'none', outline: 'none'}}><img className="menu-bar" src="assets/Images/User%20Profile/Bars.png" /></button>
                         <div className="dropdown-menu">
-                            <a className="dropdown-item" href="user/dashboard">Dashboard</a>
+                            <a className="dropdown-item" href="user-dashboard">Dashboard</a>
                             <a className="dropdown-item" href="user-teams">Teams</a>
                             <a className="dropdown-item" href="user-messages">Messages</a>
                             <div className="dropdown-divider" />
