@@ -4,13 +4,12 @@ import {Link} from 'react-router-dom';
 export class Home extends Component {
     render() {
         return (
-            <div>
-                    <div>
+                <div>
                 <section className="landing-page-section-1">
                     <header className="header-class-landing-page">
-                    <div style={{float: 'left'}} className>
-                        <a href="<?php echo site_url(); ?>">
-                        <img className="landing-page-header-logo" src="assets/Images/Header%20and%20Footer/Logo.png" style={{}} /></a>
+                    <div style={{float: 'left'}}>
+                        <a href="index.html">
+                        <img className="landing-page-header-logo" src="assets/Images/Header%20and%20Footer/Logo.png" /></a>
                     </div>
                     <div className="landing-page-nav">
                         <a href>About</a><br style={{lineHeight: '1.3'}} />
@@ -24,13 +23,15 @@ export class Home extends Component {
                     </header>
                     <br /><br />
                     <div className="whoever-div">
-                    Whoever You Are, Whatev<b className="your-job">er Your Job...</b>   
+                    {/*Whoever You Are, Whatev<b class="your-job">er Your Job...</b*/}
+                    Whoever You Are, Whatever your Job... 
                     </div>  
                     <div className="lets-brand-div">
                     <b className="weve-got-you">We've Got You!</b> Let's Brand You.       
                     </div>  
                     <div align="center" className="register-as-container">
                     <div align="center" className="register-as-label">Register As</div>
+                    <div align="center" className="register-as-sections">
                     <div align="center" className="register-as-sections">
                         <Link style={{textDecoration: 'none'}} to={"/register"}><div align="center" className="register-children">User</div></Link>
                         &nbsp;&nbsp;&nbsp;
@@ -40,11 +41,11 @@ export class Home extends Component {
                         &nbsp;&nbsp;&nbsp; 
                         <Link style={{textDecoration: 'none'}} to={"/aregister"}><div align="center" className="register-children">Association</div></Link>     
                     </div>
-                    <br /><br /><br />
+                        &nbsp;&nbsp;&nbsp;     
+                    </div>
+                    <br /><br />
                     <div align="center" className="have-an-account">Already have an account?</div>
-                        <div align="center" className="landing-page-login-button">
-                            <Link to={"/login"}>Login</Link> 
-                        </div>
+                    <div align="center" className="landing-page-login-button"><Link to={"/login"}>Login</Link> </div>
                     </div>   
                 </section>   
                 <section className="landing-page-section-2">
@@ -176,9 +177,8 @@ export class Home extends Component {
                     <div className="illustration-container">
                     <div align="center" className="get-started-div">
                         <a style={{textDecoration: 'none'}} href><div className="get-started">Get Started</div></a> 
-                        {/* <div class="send-us-email">Send us an E-mail:customerservice@kokoruns.com </div>
-                
-                    <div class="call-us">Call Us: +234 891 273 9229</div>     */}
+                        <div className="send-us-email">Send&nbsp;us&nbsp;an&nbsp;E-mail: customerservice@kokoruns.com </div>
+                        <div className="call-us">Call&nbsp;Us: +234 891 273 9229</div>    
                     </div> 
                     <div className="illustration-2-div">
                         <img className="illustration-2" src="assets/Images/Index/Illustration%202.png" />   
@@ -186,8 +186,7 @@ export class Home extends Component {
                     </div>
                 </section>
                 </div>
-  
-            </div>
+
         )
     }
 }

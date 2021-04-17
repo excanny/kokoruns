@@ -81,9 +81,9 @@ export class Experience extends Component {
           try 
           {
               // fetch data from a url endpoint
-              const response = await  axios.get(`http://127.0.0.1:8000/api/experiences`, {headers: headers});
+              const response = await  axios.get(`https://sheltered-chamber-63274.herokuapp.com/api/experiences`, {headers: headers});
 
-              //console.log(response.data.experiences);
+              console.log(response);
 
               this.setState({ experiences: response.data.experiences, loading: false });
 
@@ -121,7 +121,7 @@ export class Experience extends Component {
 
         //console.log(data);
 
-       axios.post(`http://127.0.0.1:8000/api/addexperience`, data, {headers: headers})
+       axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/addexperience`, data, {headers: headers})
         .then((response) => {
            
 
@@ -182,14 +182,14 @@ export class Experience extends Component {
                   
                   <div>
                           <div id="experience-post-container" style={{width: '69.4%'}}>
-                              <section className="user-experience card mb-5">
+                              <section className="user-experience card mb-5 py-5 px-3">
                                   <div className="experience-post-container">
                                       <div className="exp-cont">
                                       <div className>     
                                           <div className="row">
                                           <div className="col">
-                                              <span className="exp-date ">{experience.start}</span> - 
-                                              <span className="exp-date">{experience.end}</span>
+                                              <span className="exp-date ">{experience.start}</span> - &nbsp;
+                                               <span className="exp-date">{experience.end}</span>
                                           </div>
                                           <div className="col text-right">
                                               <div className="dropdown dropleft">
@@ -205,7 +205,7 @@ export class Experience extends Component {
                                           <span className="company">{experience.company_name}</span><br /><br />
                                           <ul className="roles-and-respon">';
                                          
-                                              <li>'.$role.'</li>
+                                              {/* <li>'.$role.'</li> */}
                                          
                                           </ul>
                                           <br />  

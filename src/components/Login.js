@@ -49,8 +49,8 @@ export class Login extends Component {
         //console.log(data);
     
     
-        //axios.post(`https://lit-ridge-07527.herokuapp.com/api/login`, data, {headers: headers})
-        axios.post(`http://127.0.0.1:8000/api/login`, data, {headers: headers})
+        axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/login`, data, {headers: headers})
+        //axios.post(`http://127.0.0.1:8000/api/login`, data, {headers: headers})
         .then( (response) => {
     
           
@@ -61,7 +61,7 @@ export class Login extends Component {
         //   console.log(this.state.loggedIn);
     
           //this.props.history.push("/user-dashboard-experience");
-          window.location.href = "/user-dashboard-experience";
+          window.location.href = "/user-dashboard";
             
             //console.log(response.data.access_token);
 
@@ -93,8 +93,8 @@ export class Login extends Component {
                 <>
                 <header className="container-fluid bg-white">
                     <nav className="p-2">
-                    <a className="navbar-brand" href="<?php echo site_url(); ?>">
-                        <img src="https://kokoruns.com/public/assets/Images/Header%20and%20Footer/Logo.png" alt="Logo" style={{width: 200}} />
+                    <a className="navbar-brand" href="/">
+                        <img src="assets/Images/Header%20and%20Footer/Logo.png" alt="Logo" style={{width: 200}} />
                     </a>
                     {/* <a href="<?php //echo site_url(); ?>logout" class="float-right pt-4">
                                     <i class="fa fa-power-off" data-toggle="tooltip" title="Logout"></i>

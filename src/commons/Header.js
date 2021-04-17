@@ -1,13 +1,51 @@
 import React, { Component } from 'react'
 
 export class Header extends Component {
+
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+        
+          loading: true,
+          isLinkDisable2: false,
+          navigate: false,
+        
+        }
+
+        this.logout = this.logout.bind(this);
+      
+      }
+
+    logout()
+    {
+       
+        localStorage.removeItem("full_token");
+        localStorage.removeItem("access_token");
+        // this.props.history.push("/signin");
+        this.setState({ navigate : true });
+        //alert("hi");
+    }  
+
+
     render() {
+
+        const  navigate  = this.state.navigate;
+
+        if(navigate){
+            //return <Redirect to="/signin" />
+            window.location.href = "/";
+        }
+
+
         return (
-       <header className="bg-white" style={{borderBottom: '1px solid #ccc', height: '4rem'}}>
+
+            
+            <header className="bg-white header-class" style={{borderBottom: '1px solid #ccc', height: '4rem'}}>
             <div className="row">
                 <div className="col-md-3">
                 <div className="pt-2 pl-2">
-                    <a href="<?php echo site_url();?>user/dashboard">
+                    <a href="/">
                     <img src="assets/Images/Header%20and%20Footer/Logo.png" width="55%" /></a>
                     
                 </div>
@@ -83,7 +121,7 @@ export class Header extends Component {
                 </div>
                 <div className="col">
                 <div className="pt-3">
-                    <a href="<?php echo site_url();?>logout" className onclick="return confirm('Are you sure you want to logout?')"><i className="fa fa-power-off text-primary cursor" data-toggle="tooltip" title="Logout" /></a>
+                    <a onClick={this.logout} className="cursor"><i className="fa fa-power-off text-primary cursor" data-toggle="tooltip" title="Logout" /></a>
                 </div>
                 </div>
             </div>

@@ -82,9 +82,9 @@ export class Education extends Component {
           try 
           {
               // fetch data from a url endpoint
-              const response = await  axios.get(`https://lit-ridge-07527.herokuapp.com/api/educations`, {headers: headers});
+              const response = await  axios.get(`https://sheltered-chamber-63274.herokuapp.com/api/educations`, {headers: headers});
 
-              //console.log(response.data.experiences);
+              //console.log(response.data.educations);
 
               this.setState({ educations: response.data.educations, loading: false });
 
@@ -129,8 +129,8 @@ export class Education extends Component {
           try 
           {
               // fetch data from a url endpoint
-              const response = await  axios.post(`http://127.0.0.1:8000/api/addeducation`, data, {headers: headers});
-              //const response = await  axios.post(`https://lit-ridge-07527.herokuapp.com/api/addeducation`, data, {headers: headers});
+              //const response = await  axios.post(`http://127.0.0.1:8000/api/addeducation`, data, {headers: headers});
+              const response = await  axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/addeducation`, data, {headers: headers});
               
               console.log(response);
 
@@ -189,7 +189,7 @@ export class Education extends Component {
                       </div> 
 
           <div>
-              {this.state.loading || !this.state.experiences ? 
+              {this.state.loading || !this.state.educations ? 
               (<div>Loading</div>) :
                (
                <div>{
@@ -197,7 +197,7 @@ export class Education extends Component {
                   
                   <div>
                           <div id="experience-post-container" style={{width: '69.4%'}}>
-                              <section className="user-experience card mb-5">
+                              <section className="user-experience card mb-5 py-5 px-3">
                                   <div className="experience-post-container">
                                       <div className="exp-cont">
                                       <div className>     
@@ -216,11 +216,18 @@ export class Education extends Component {
                                               </div>
                                           </div>
                                           </div>
-                                          <p className="mt-3 mb-2"><span className="exp-position">{education.position}</span> </p>
-                                          <span className="company">{education.company_name}</span><br /><br />
-                                          <ul className="roles-and-respon">';
+
+                                          			
+                                       <div>
+                                          <span className="degree">{education.class_of_degree} {education.course}</span>&nbsp;
+                                          <br /> <br />        
+                                          <span className="school">{education.school}</span><br /><br />
+                                        </div>
+
+                                        
+                                          <ul className="roles-and-respon">
                                          
-                                              <li>'.$role.'</li>
+                                              {/* <li>'.$role.'</li> */}
                                          
                                           </ul>
                                           <br />  

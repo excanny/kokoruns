@@ -4,22 +4,20 @@
 .header-class-landing-page {
     margin: none;
     font-family: sans-serif;
-    background-color: transparent;
+    background-color: ;
     padding: 0;
     display: /*none*/flex;
     max-height: 73px;
     padding-left: 0.3%;
     padding-right: 3%;
-    position: ;
     z-index: 2;    
-    position: ; 
 }
 
 .landing-page-header-logo {
     width: 30%;
-    min-width:150px;
+    min-width:170px;
     background: transparent;
-    padding-top: 1.2rem;
+    padding-top: 19px;
 }
 
 
@@ -39,13 +37,25 @@
  font-weight: ;    
  letter-spacing: 1px; 
  text-decoration: none;
- float: right;    
+ float: right; 
 }
 
 .landing-page-nav a:hover {
- text-decoration: underline;    
+ text-decoration: underline;   
 }
 
+@media screen and (max-width: 900px) {
+
+  .landing-page-nav {
+    display: none;
+  }
+
+  .landing-page-header-logo {
+    padding-top: 5px;
+  }
+  
+
+}
 
 .sign-up {
   padding-top: 2.25%;    
@@ -55,9 +65,17 @@
 .landing-page-section-1 {
   background-image: url(Images/Landing%20page%20banner.png); 
   /* background-color: yellow; */    
-  padding: 20px;  
+  padding: 1.5%;
   padding-bottom: 40px;
   padding-top: 0px;    
+}
+
+@media screen and (max-width: 900px) {
+
+.landing-page-section-1 {
+  padding: 5%;
+}
+
 }
 
 .whoever-div {
@@ -65,9 +83,9 @@
    font-family: helvetica;
    color: #707070;
    letter-spacing: 1px;; 
-   background-color: ;
-   padding-bottom: 15px;  
+   padding-bottom: 15px;
 }
+
 
 .your-job { 
   font-weight: normal;
@@ -88,6 +106,20 @@
   font-weight: normal;    
 }
 
+@media screen and (max-width: 900px) {
+ 
+  .whoever-div {
+    font-size: 35px;
+  }
+
+  .lets-brand-div {
+    font-size: 30px;
+    padding-top: 20px;  
+  }
+
+  
+}
+
 .register-as-container {
    background-color: ;
    width: 50%;
@@ -95,9 +127,17 @@
    padding-top: 70px;    
 }
 
+@media screen and (max-width: 900px) {
+
+  .register-as-container {
+    width: 100%;
+  }
+
+}
+
 .register-as-label {
    background-color: ;
-   padding-bottom: 30px; 
+   padding-bottom: 20px; 
    font-size: 29px;
    font-family: helvetica;
    color: #707070;  
@@ -105,7 +145,15 @@
 }
 
 .register-as-sections {
-  background-color: ;
+  padding-bottom: 10px;
+}
+
+@media screen and (max-width: 900px) {
+
+.register-as-sections {
+  padding-left: 12px;
+}
+
 }
 
 .register-children {
@@ -118,7 +166,8 @@
   color: white;
   font-family: helvetica;
   font-size: 21px;    
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);     
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);  
+  margin-top: 10px;   
 }
 
 .register-children:hover {  
@@ -134,7 +183,7 @@
   font-family: helvetica;
   font-size: 20px;
   color: #575757; 
-  padding-top: 10px;
+  /*padding-top: 10px; */
   padding-bottom: 15px; 
   letter-spacing: 1px;    
 }
@@ -185,10 +234,11 @@
    letter-spacing: 1px;    
 }
 
+
 .landing-page-categories-div {
  background-color: ;
   width: 93%;    
-     
+  padding-bottom: 30px;   
 }
 
 .landing-page-categories {
@@ -212,20 +262,41 @@
   box-shadow: 0 6px 12px 0 rgba(0,0,0,0.5);    
 }
 
+@media screen and (max-width: 900px) {
+
+  .multi-talented-div {
+   font-size: 35px;
+  }
+
+  .find-kokoruns-div {
+    font-size: 30px;
+    padding-top: 20px;
+  }
+
+  .landing-page-categories {
+    font-size: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+}
+
 .illustration-div {
   background-color: ; 
   padding-right: 5%;    
 }
 
 .illustration-1 {
- width: 60%;   
+ width: 60%; 
+ min-width: 280px;  
 }
 
 .landing-page-section-3 {
    background-color: ;
     padding: 20px;  
     /* height: 550px; */
-    padding-top: 40px; 
+    padding-top: 40px;
+    background-color: ; 
 }
 
 .register-sponsored-events-div {
@@ -237,11 +308,19 @@
    padding-bottom: 15px;   
 }
 
+@media screen and (max-width: 900px) {
+
+  .register-sponsored-events-div {
+    font-size: 35px;
+  }
+
+}
+
 .landing-events-container {
    background-color: ;
    column-count: ;
    display: inline-block;
-    margin: 41px;
+   margin: 3%;
 }
 
 .landing-events-div {
@@ -250,6 +329,7 @@
   border-radius: 2px;
   display: inline-block;
 }
+
 
 .event-image-container {
   background-color: ;
@@ -269,6 +349,25 @@
  width: 350px;
  height: 330px;    
  object-fit: cover;    
+}
+
+@media screen and  (max-width: 900px) {
+  
+  .landing-events-container {
+    margin: 0%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+ }  
+
+ .landing-events-div {
+    width: 280px;
+ }
+
+ .event-image {
+   width: 280px;
+   height: 260px;
+ }
+  
 }
 
 .event-name-div {
@@ -373,6 +472,15 @@
  background-color: white;    
 }
 
+.illustration-2-div {
+  background-color:  ;
+   width: 55% 
+}
+
+.illustration-2 {
+ width: 100%;    
+}
+
 .send-us-email {
   font-size: 19px;
   font-family: helvetica;
@@ -390,14 +498,46 @@
   padding-top: 20px;    
 }
 
-.illustration-2-div {
-  background-color: ;
-   width: 55% 
+
+@media screen and (max-width: 900px) {
+
+.find-join-create {
+  font-size: 30px;
+  width: 100%;
+  padding-bottom: 20px;
 }
 
-.illustration-2 {
- width: 100%;    
+.illustration-container {
+  display: block;
 }
+
+.get-started-div {
+  width: 100%;
+  padding-top: 60px;
+}
+
+.get-started {
+  font-size: 20px;
+  width: 200px;
+}
+
+.send-us-email {
+  font-size: 17px;
+  padding-top: 10px;
+}
+
+.call-us {
+ font-size: 17px;
+}
+
+.illustration-2-div {
+  width: 100%;
+  padding-top: 30px;
+}
+
+
+}
+
 
 
 /* CURRENT LANDING PAGE CSS */

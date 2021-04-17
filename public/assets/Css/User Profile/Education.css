@@ -4,19 +4,38 @@
 
 /** Education **/
 
+#user-education {
+  padding-left: 15%;
+  padding-right: 15%;
+   display: none;
+}
+
+@media screen and (max-width: 900px) {
+   
+  #user-education {
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+  }
+
+}
+
 .user-education {
-  padding-left: 50px;
+  padding-left: px;
   padding-right: px;
   border-radius: 2px;    
-  width: 69.2%;
-  background-color: white;
-  padding-top; 0px;    
+  width: 100%;
+  background-color: ;
+  padding-top: 0px;    
   /*padding-top: 50px;*/
-  /* box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);*/
-} 
+}
 
-.user-education: hover {
-  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.4);  
+
+@media screen and (max-width: 900px) {
+
+  .user-education {
+    width: 100%;
+  }
+
 }
 
 .user-education-header {
@@ -28,27 +47,35 @@
 }
 
 .user-education-header-container {
-   padding-bottom: px; 
-   padding-top: px;
-   background-color: ;
-   height: px;
-   background: ;
-   padding-left: 30px; 
-   box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);   
+  border: 1px solid #d3d3d3;
+  border-radius: 3px; 
+  background-color: ;
+  background: white;
+  padding-left: 10px;
+  padding-right: 10px; 
+  /* box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2); */
+  margin-top: 20px;
+  margin-bottom: 20px;   
 }
 
 .edu-cont {
-  padding-left: 20px;
-  padding-top: 32px;
-  padding-bottom: 30px;
-  padding-right: 10px;
-  background-color: ;
+  padding: 30px;
+  padding-bottom: 20px;
+  border: 1px solid #d3d3d3;
+  background-color:white;
+  border-radius: 3px;   
+}
+
+@media screen and (max-width: 900px) {
+
+.edu-cont {
+  padding: 15px;
+}
+
 }
 
 .edu-cont-2 {
-  border-bottom: 2px solid darkgray;
-  padding-bottom: 15px;
-  background-color: ;    
+  padding-bottom: px;   
 }
 
 .edu-date {
@@ -141,32 +168,35 @@
 }
 
 .edu-update-button-container {
-   display: block;  
-   padding-top: 7px;
-   padding-bottom: 7px;
+  display: flex;  
+  padding-top: 7px;
+  padding-bottom: 7px;  
+  background-color: ; 
+  align-content: center;
+  justify-content: center; 
 }
 
 .edu-update-button {
   border: none;
-  background-color: #0991ff;
+  background-color: #d92727;
   border-radius: 2px;
   padding: 2px; 
   padding-top: 5px;    
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   padding-bottom: 25px;       
   color: white;
   font-family: sans-serif; 
-  font-size: 17px;    
+  font-size: 16px;    
   height: 32px; 
   letter-spacing: 1px;  
-  width: 120px;   
+  width: 80%   
 }
 
 .edu-update-button:hover {
- background-color: white;
-  color: #0991ff;    
-  box-shadow: 0 5px 15px 0 rgba(0,0,0,0.5); 
+  background-color: white;
+  color: #d92727;    
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.4); 
 }
 
 .edu-update-form-div {
@@ -353,26 +383,3 @@ border-radius: 2px;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-@media screen and (max-width: 600px)
-{
-  
- .user-education {
-    padding-left: 1%;
-    padding-right: 1%;
-}   
-    
-    
-  
-}

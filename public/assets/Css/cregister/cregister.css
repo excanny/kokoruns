@@ -1,0 +1,178 @@
+
+
+.cregister-container {
+  background-color: white;
+  display: flex; 
+  padding-left: 1.5%;
+}
+
+
+.create-company-account {
+  background-color:;  
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 27px;
+}
+
+.right-half {
+    background-image: url('http://localhost/webapps/kokoruns/public/assets/Images/Login%20and%20Sign%20up/illustration_register.jpg'); 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-color: cadetblue;
+    margin-left: 20px;
+    padding-left: 10px;
+    width: 100%;
+}
+
+.comp-no-and-reg {
+    display: flex;
+}
+
+.comp-no {
+   width: 50%;
+   padding-right: 2.5%;
+}
+
+.comp-reg {
+  width: 50%;
+  padding-left: 2.5%;
+}
+
+.comp-type-and-size {
+  display: flex;
+}
+
+.comp-type {
+    width: 50%;
+    padding-right: 2.5%;
+}
+
+.comp-size {
+    width: 50%;
+    padding-left: 2.5%;
+}
+
+.industry-type {
+   display: flex;
+   margin-bottom: 20px;
+}
+
+.type-1 {
+   width: 33.33%;
+   padding-right: 1%;
+}
+
+.type-2 {
+  width: 33.33%;
+  padding-right: 0.5%;
+  padding-left: 0.5%;
+}
+
+.type-3 {
+  width: 33.33%;
+  padding-left: 1%;
+}
+
+.comp-location {
+  display: flex;
+}
+
+.location-1 {
+    width: 33.33%;
+    padding-right: 1%;
+}
+
+.location-2 {
+ width: 33.33%;
+ padding-right: 0.5%;
+ padding-left: 0.5%;
+}
+
+.location-3 {
+  width: 33.33%;
+  padding-left: 1%;
+}
+
+
+
+
+
+@media screen and (max-width: 900px) {
+    .cregister-container {
+        padding-left: 0%;
+    }
+
+    .right-half {
+        display: none;
+    }
+
+    .comp-no-and-reg {
+       display: grid; 
+    }
+
+    .comp-no {
+       width: 100%;
+       padding-right: 0%;   
+    }
+
+    .comp-reg {
+      width: 100%;
+      padding-left: 0% ; 
+    }
+
+    .comp-type-and-size {
+        display: grid;
+      }
+      
+      .comp-type {
+          width: 100%;
+          padding-right: 0%;
+      }
+      
+      .comp-size {
+          width: 100%;
+          padding-left: 0%;
+      }
+
+      .industry-type {
+        display: grid;
+     }
+     
+     .type-1 {
+        width: 100%;
+        padding-right: 0%;
+     }
+     
+     .type-2 {
+       width: 100%;
+       padding-right: 0%;
+       padding-left: 0%;
+     }
+     
+     .type-3 {
+       width: 100%;
+       padding-left: 0%;
+     }
+
+     .comp-location {
+        display: grid;
+      }
+      
+      .location-1 {
+          width: 100%;
+          padding-right: 0%;
+      }
+      
+      .location-2 {
+       width: 100%;
+       padding-right: 0%;
+       padding-left: 0%;
+      }
+      
+      .location-3 {
+        width: 100%;
+        padding-left: 0%;
+      }
+}
+
