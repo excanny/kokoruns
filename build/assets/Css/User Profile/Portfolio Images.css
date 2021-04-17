@@ -4,20 +4,32 @@
  
 /** Portfolio **/
 
+#user-portfolio {
+  padding-left: 15%;
+  padding-right: 15%;
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+
+  #user-portfolio {
+   padding-left: 0.5%;
+   padding-right: 0.5%;
+  }
+  
+}
+
+
 .user-portfolio {
   padding-left: px;
   padding-right: px;
   border-radius: 2px;    
-  width: 69.2%;
-  background-color: white;
+  width: 100%;
+  background-color: ;
   padding-top: 0px;
-  /* box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2); */
+  
 }
 
-
-.user-portfolio:hover {
-  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.4);  
-}
 
 
 .portfolio-header {
@@ -29,22 +41,27 @@
 }
 
 .portfolio-header-container {
-   padding-bottom: px; 
-   padding-top: px;
-   background-color: ;
-   height: px;
-   background: ;
-   padding-left: 30px; 
-   box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
+  border: 1px solid #d3d3d3;
+  border-radius: 3px; 
+  background-color: ;
+  background: white;
+  padding-left: 10px;
+  padding-right: 10px; 
+  /* box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2); */
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 
 .porfolio-container-images {
- padding-top: 15px;   
- background-color: ;
- column-count: 2; 
- column-gap: 0px;
- padding-bottom: px;    
+  background-color: white;
+ border: 1px solid #d3d3d3;
+ border-radius: 3px;
+ padding: 5px; 
+ padding-top: 15px;
+ padding-bottom: 15px;
+ column-count: 2;
+ column-gap: 0px;      
 }
 
 
@@ -70,7 +87,7 @@
 }
 
 .image {
-  padding: px;    
+  margin-bottom: 5px; 
   width: 99%;
   height: 230px;
   object-fit: cover;
@@ -105,12 +122,14 @@
 }
 
 .porfolio-container-documents {  
- padding: px;
- padding-top: 15px;        
- background-color: ;
+ background-color: white;
+ border: 1px solid #d3d3d3;
+ border-radius: 3px;
+ padding: 5px; 
+ padding-top: 15px;
+ padding-bottom: 15px;
  column-count: 2;
- column-gap: 0px; 
- padding-bottom: px;      
+ column-gap: 0px;      
 }
 
    

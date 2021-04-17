@@ -1,19 +1,21 @@
 /* HEADER */
 
-  .header-search-bar::placeholder {
+  ::placeholder {
     color: white;
-    border: none;    
-  }
+    border: none;   
+    opacity: 1; /* Firefox */
+   }  
 
-  .header-search-bar:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ :-ms-input-placeholder { /* Internet Explorer 10-11 */
     color: white;
     border: none;  
     }
 
-  .header-search-bar::-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: white;
-    border: none;  
-    }
+ ::-ms-input-placeholder { /* Microsoft Edge */
+   color: white;
+    border: none; 
+   }
+   
 
    .header-class {
     margin: none;
@@ -27,7 +29,8 @@
     position: absolute;
     z-index: 2;    
     position: fixed; 
-    padding-bottom: 10px;   
+    padding-bottom: 10px;  
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);   
 }
 
 .header-class-logged-in {
@@ -46,7 +49,7 @@
    float: left;
    background-color: ;
     width: 20%;
-    min-width: 220px;
+    min-width: 150px;
 }
 
 .search-bar-div {
@@ -54,15 +57,13 @@
     align-content: center;
     justify-content: center;
     padding: 20px;
-    width: 100%;
+    width: 70%;
     display: flex;
 }
 
 .header-search-bar {
-  width: 100%; 
-  /* background-image: linear-gradient(to right, #fff, #0691f8 120%);  */
-  /* background-image: linear-gradient(to right, white blue 10%); */
-  background-image: linear-gradient(45deg, #0691f8, #0691f8, #b73650);
+  width: 80%; 
+  background-image: linear-gradient(90deg, #0691f8, #0691f8, #b73650); 
   padding: 5px;
   height: 40px;    
   padding-left: 30px;
@@ -72,12 +73,40 @@
   border: 0px;    
 }
 
+
+.header-search-bar::placeholder {
+   color: white;
+    border: none;    
+}
+
+.header-search-bar:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+    border: none;  
+    }
+
+.header-search-bar::-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+    border: none;  
+    }
+
 .header-search-bar-button {
   width: 40px;
   height: 40px;
-  background-color: #A63E5F;
+  background-color: #b73650;
   border: none;  
   padding-right: 10px;
+}
+
+@media screen and (max-width: 900px) {
+
+  .header-search-bar {
+    display: none;
+  }
+
+  .header-search-bar-button {
+    display: none;
+  }
+
 }
 
 .search-icon {

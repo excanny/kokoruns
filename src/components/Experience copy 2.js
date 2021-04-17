@@ -145,71 +145,88 @@ export class Experience extends Component {
         return (
 
             <>
+           
+          <Header/>
 
-            <Header/>
-          
-           <div style={{background: '#f5f5dc'}}>
-              <section id="UserInfoContainer" className="user-info-container" >  
 
-                    <NavBar/>
+
+            <section id="UserInfoContainer" className="user-info-container">  
+
+
+            <NavBar/>
+
+           
+
+
+              <UserBio />
+              
               </section>
 
-                    <div id="user-experience">
-                      <section className="user-experience">
-                        <div className="user-experience-header-container">
-                          {/*h2 align="center" class="user-experience-header">Experience</h2*/}
-                          <div align="left" className="exp-update-button-container">
-                            <button onclick="ShowExperienceForm()" className="exp-update-button" onClick={this.showModal}> + Create Experience </button> 
-                            <button onclick="ViewBio(); return false;" className="bio-button"> View Bio </button>
+
+          <div id="user-experience" style={{paddingLeft: 59, paddingBottom: 50}}>
+                      {/*EXPERIENCE*/}
+                      <div style={{paddingTop: 15, paddingBottom: 15, width: '69.4%'}}>
+                          <section className="user-experience card mb-4">  
+                          <div className="exp-update-button-container">
+                              <button className="btn btn-danger rounded-0" onClick={this.showModal}>Create Experience +</button>      
                           </div> 
-                        </div>
+                          </section>    
+                      </div> 
 
-
-            {/* {this.state.loading || !this.state.experiences ? 
-              <div>Loading</div> :
-               
+          <div>
+              {this.state.loading || !this.state.experiences ? 
+              (<div>Loading</div>) :
+               (
                <div>{
-                this.state.experiences.map(experience => */}
+                this.state.experiences.map(experience =>
+                  
+                  <div>
+                          <div id="experience-post-container" style={{width: '69.4%'}}>
+                              <section className="user-experience card mb-5 py-5 px-3">
+                                  <div className="experience-post-container">
+                                      <div className="exp-cont">
+                                      <div className>     
+                                          <div className="row">
+                                          <div className="col">
+                                              <span className="exp-date ">{experience.start}</span> - &nbsp;
+                                               <span className="exp-date">{experience.end}</span>
+                                          </div>
+                                          <div className="col text-right">
+                                              <div className="dropdown dropleft">
+                                              <i className="fa fa-ellipsis-v cursor" data-toggle="dropdown" />
+                                              <div className="dropdown-menu rounded-0 bg-light p-0">
+                                                  <a className="dropdown-item p-0 edit-experience-btn cursor" data-toggle="modal" data-exp_id="'.$experience['frecno'].'" data-exp_start_month="'.$month1.'" data-exp_start_year="'.$year1.'" data-exp_end_month="'.$month2.'" data-exp_end_year="'.$year2.'" data-company="'.$experience['fcompany_name'].'" data-position="'.$experience['fposition'].'" data-roles="'.$experience['frole'].'"><i className="fa fa-edit text-warning" /> &nbsp;Edit</a>
+                                                  <a className="dropdown-item p-0 exp-delete cursor" data-exp_id="'.$experience['frecno'].'"><i className="fa fa-trash text-danger" /> Delete</a>
+                                              </div>
+                                              </div>
+                                          </div>
+                                          </div>
+                                          <p className="mt-3 mb-2"><span className="exp-position">{experience.position}</span> </p>
+                                          <span className="company">{experience.company_name}</span><br /><br />
+                                          <ul className="roles-and-respon">';
+                                         
+                                              {/* <li>'.$role.'</li> */}
+                                         
+                                          </ul>
+                                          <br />  
+                                      </div>
+                                      </div>
+                                  </div>
+                              </section>
 
-
-                        <div className="experience-post-container">
-                          <div className="exp-cont">
-                            <div className="exp-cont-2">     
-                              <span className="exp-date">June</span>&nbsp;
-                              <span className="exp-date">2013</span> - 
-                              <span className="exp-date">January</span>&nbsp;
-                              <span className="exp-date">2019</span><br /><br />
-                              <span className="exp-position">Senior Project Manager</span>&nbsp;
-                              <button className="position-button">View</button><br /><br />       
-                              <span className="company">Google Alphabet Corp.</span><br /><br />
-                              <ul className="roles-and-respon">
-                                <li>Programming in HTML</li>
-                                <li>Programming in CSS</li>
-                                <li>Server-Side Scripting with PHP and Node.js</li>
-                                <li>Programming in HTML</li>
-                                <li>Programming in CSS</li>
-                                <li>Server-Side Scripting with PHP and Node.js</li>
-                              </ul>
-                              <br />  
-                              <div>
-                                <button className="exp-edit"><img className src />Edit</button>&nbsp;&nbsp;<button className="exp-delete">Delete</button></div>
-                            </div>       
-                          </div>     
-                        </div>
-
-
-                      {/* )
-                      }
-                      </div>} */}
-                      </section>    
-                    </div>
-                
+                          </div>
+                      </div>   
+                )
+                }
+               </div>)}
           </div>
-                   
+
+          </div>
+
+            {/* Modal */}
 
 
-
-          <Modal
+            <Modal
                
                size="lg"
                aria-labelledby="contained-modal-title-vcenter"
@@ -309,13 +326,15 @@ export class Experience extends Component {
                        </div> 
                        {/* Modal footer */}
                        <div className="modal-footer py-1">
-                           <button type="submit" className="btn btn-success btn-sm">Create</button>
+                           <button type="submit" className="btn btn-success btn-sm">Update</button>
                        </div>
                        </form>
 
                </Modal.Body>
                
                </Modal>
+
+              {/* Modal */}
 
           </>
         )

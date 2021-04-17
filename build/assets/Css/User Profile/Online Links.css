@@ -24,16 +24,18 @@
 
 
 .online-links-container {
+  margin-top: 20px;
   padding: 20px;
   padding-top: px;
   padding-bottom: px;
-  background-color: ;    
+  background-color: white;   
+  border: 1px solid #d3d3d3;
+  border-radius: 3px;
 }
 
 .link-cont-2 {
   background-color: ;
-  padding-bottom: 15px;  
-  border-bottom: 2px solid darkgray;    
+  padding-bottom: px;     
 }
 
 .professional-label {

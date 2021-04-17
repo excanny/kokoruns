@@ -8,10 +8,6 @@ import jwt from 'jwt-decode'; // import dependency
 
 export class Dashboard extends Component {
 
-
-
-  
-
   constructor(props) {
     super(props);
     
@@ -97,12 +93,13 @@ export class Dashboard extends Component {
           <Header/>
 
             
-<div style={{background: '#f5f5dc'}}>
-          <section id="UserInfoContainer" className="user-info-container" >  
+          <div style={{background: '#f2f2f2'}}>
+
+              <section id="UserInfoContainer" className="user-info-container" >  
 
                 <NavBar/>
 
-          </section>
+            </section>
 
         
           <div id="user-bio" align="center"> 

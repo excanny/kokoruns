@@ -4,50 +4,71 @@
  
 /** Education **/
 
-.user-experience {
-  padding-left: 30px;
-  padding-right: 10px;
-  border-radius: 2px;    
-  width: 69.2%;    
-  background-color: white;
-    /*padding-top: 50px;*/
-  padding-top: 0px;
-  /* box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2); */
+
+#user-experience {
+  padding-left: 15%;
+  padding-right: 15%;
+  background-color: ;
+  display: none;
 }
 
-.user-experience:hover {
-  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.4);  
+@media screen and (max-width: 900px) {
+
+  #user-experience {
+  padding-left: 0.5%;
+  padding-right: 0.5%;
+  }
+
 }
+
+.user-experience {
+  padding-left: px;
+  padding-right: px;
+  border-radius: 2px;    
+  width: 100%; 
+  /*padding-top: 50px;*/
+  padding-top: 0px;
+}
+
 
 .user-experience-header {
    font-family: sans-serif;
   font-weight: normal;
   color: darkgray;
   font-size: 27px; 
-  letter-spacing: 1px;    
+  letter-spacing: 1px; 
 }
 
 .user-experience-header-container {
-   padding-bottom: px; 
-   padding-top: px;
+   border: 1px solid #d3d3d3;
+   border-radius: 3px; 
    background-color: ;
-   height: px;
-   background: ;
-   padding-left: 30px; 
-   box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);    
+   background: white;
+   padding-left: 10px;
+   padding-right: 10px; 
+   /* box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2); */
+   margin-top: 20px;
+   margin-bottom: 20px;   
 }
 
 .exp-cont {
-  padding-left: 30px;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  background-color: ;    
+  padding: 30px;
+  padding-bottom: 20px;
+  border: 1px solid #d3d3d3; 
+  background-color:white;
+  border-radius: 3px;    
+}
+
+@media screen and (max-width: 900px) {
+  
+.exp-cont {
+  padding: 15px;
+}
+
 }
 
 .exp-cont-2 {
-  border-bottom: 2px solid darkgray;
-  padding-bottom: 15px;
-  background-color: ;
+  padding-bottom: px;
 }
 
 .exp-date {
@@ -143,33 +164,62 @@
 }
 
 .exp-update-button-container { 
-   display: block;  
+   display: flex;  
    padding-top: 7px;
-   padding-bottom: 7px;    
+   padding-bottom: 7px;  
+   background-color: ; 
+   align-content: center;
+   justify-content: center; 
 }
 
 .exp-update-button {
   border: none;
-  background-color: #0991ff;
+  background-color: #d92727;
   border-radius: 2px;
   padding: 2px; 
   padding-top: 5px;    
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   padding-bottom: 25px;       
   color: white;
   font-family: sans-serif; 
-  font-size: 17px;    
+  font-size: 16px;    
   height: 32px; 
   letter-spacing: 1px;  
-  width: 120px;    
+  width: 80%   
 }
 
 .exp-update-button:hover {
   background-color: white;
-  color: #0991ff;    
-  box-shadow: 0 5px 15px 0 rgba(0,0,0,0.5);      
+  color: #d92727;    
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.4);      
 }
+
+
+
+.bio-button {
+  border: none;
+  background-color: #0991ff;
+  color: white;
+  border-radius: 2px;
+  padding: 2px; 
+  padding-top: px;    
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: px;       
+  font-family: sans-serif;     
+  height: 32px;
+  margin-left: 5px;
+  width: 18%;
+  letter-spacing: 1px;
+}
+
+.bio-button:hover {
+ background-color: white;
+ color: #0991ff;
+ box-shadow: 0 5px 10px 0 rgba(0,0,0,0.4); 
+}
+
 
 .exp-update-form-div {
  display: none; 
@@ -178,7 +228,7 @@
 .exp-update-form-container {   
   padding-left: 30px;
   padding-right: 30px; 
-  background-color: pink;    
+  background-color:;    
 }
 
 
@@ -354,16 +404,4 @@ overflow: hidden;
   box-shadow: 0 5px 15px 0 rgba(0,0,0,0.5); 
 }
 
-
-
-
-@media screen and (max-width: 600px)
-{
-    
- .user-experience {
-  padding-left: 1%;
-  padding-right: 1%;
-}
-    
-}
 
