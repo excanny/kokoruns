@@ -68,8 +68,7 @@ export class Dashboard extends Component {
         // this.setState({ bankAccountNumber : response.data.data.bankAccountNo });
 
         // console.log(this.state.bankAccountNo);
-        
-        // console.log(response.data.data.bankAccountNo);
+  
 
         //this.setState({ firstname : response.data.data.firstName });
 
