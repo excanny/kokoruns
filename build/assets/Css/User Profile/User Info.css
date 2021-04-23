@@ -374,7 +374,7 @@ b {
 
 .start-date-div {
  padding-top: 10px;
- display: none;
+ /* display: none; */
 }
 
 .start-date-day {

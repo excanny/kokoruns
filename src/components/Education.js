@@ -212,12 +212,10 @@ export class Education extends Component {
                           <br /><br />            
                           <span className="school">{education.school}</span><br /><br />
                           <ul className="skills-topics">
-                            <li>Programming in HTML</li>
-                            <li>Programming in CSS</li>
-                            <li>Server-Side Scripting with PHP and Node.js</li>
-                            <li>Programming in HTML</li>
-                            <li>Programming in CSS</li>
-                            <li>Server-Side Scripting with PHP and Node.js</li>
+                             {
+                                  education.skills.split(",").map(entry =>
+                                    <li>{entry}</li>
+                                  )}
                           </ul>
                           <br />        
                          

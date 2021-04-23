@@ -169,10 +169,6 @@ export class Experience extends Component {
 
       const yearList = allYears.map((x) => {return(<option key={x}>{x}</option>)});
 
-          //const roles = {this:state.experiences};
-    //   var myarr = mystr.split(":");
-
-    let entryArray;
 
 
         return (
