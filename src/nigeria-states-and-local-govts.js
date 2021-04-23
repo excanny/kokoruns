@@ -1,5 +1,5 @@
 
- export const stateData = [      
+ export const states = [      
         {
         "state": "Abia",
         "lgas": [

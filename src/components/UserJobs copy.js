@@ -3,7 +3,7 @@ import Header2 from '../commons/Header2';
 import NavBar2 from '../commons/NavBar2';
 import UserBio from '../commons/UserBio';
 import Modal from 'react-bootstrap/Modal';
-import Select from 'react-select'
+import  { states } from "../nigeria-states-and-local-govts.js";
 import axios from 'axios';
 
 
@@ -19,14 +19,13 @@ export class UserJobs extends Component {
           //states: [],
           lgas: [],
           job_description: '',
-          languages: null,
+          languages: [],
           skills: [],
       	  countries : [],
 		  states : [],
-		  lgas : [],
-		  selectedState : '',
-		  selectedLGA : '',
-          user_jobs: [],
+		 lgas : [],
+		  selectedCountry : '--Choose Country--',
+			selectedState : '--Choose State--',
           loading: true,
 
         };
@@ -36,24 +35,21 @@ export class UserJobs extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleImageChange = this.handleImageChange.bind(this);
-        this.changeState = this.changeState.bind(this);
-		this.changeLGA = this.changeLGA.bind(this);
-        this.handleSelect = this.handleSelect.bind(this);
+        this.changeCountry = this.changeCountry.bind(this);
+		this.changeState = this.changeState.bind(this);
   
     }
 
 
-    changeState(event) {
-		this.setState({selectedState: event.target.value});
-		this.setState({lgas : this.state.states.find(state => state.name === event.target.value).lgas});
-        console.log(event.target.value);
+    changeCountry(event) {
+		this.setState({selectedCountry: event.target.value});
+		this.setState({states : this.state.countries.find(cntry => cntry.name === event.target.value).states});
 	}
 
-	changeLGA(event) {
-		this.setState({selectedLGA: event.target.value});
-		// const stats = this.state.states.find(cntry => cntry.name === this.state.selectedState).lgas;
-		// this.setState({lgas : stats.find(stats => stats.name === event.target.value).lgas});
-        console.log(event.target.value);
+	changeState(event) {
+		this.setState({selectedState: event.target.value});
+		const stats = this.state.countries.find(cntry => cntry.name === this.state.selectedCountry).states;
+		this.setState({lgas : stats.find(stats => stats.name === event.target.value).lgas});
 	}
 
 
@@ -74,15 +70,6 @@ export class UserJobs extends Component {
       handleImageChange(e) {
         this.setState({inputImageValue: e.target.value });
         this.setState({ file: e.target.files[0].name });
-      }
-
-
-      handleSelect(selectedOption){
-        //let value = Array.from(e.target.selectedOptions, option => option.value);
-        //this.setState({values: value});
-        //console.log(e.target.selectedOptions);
-        this.setState({ selectedOption });
-        console.log(`Option selected:`, selectedOption);
       }
 
   
@@ -153,23 +140,23 @@ export class UserJobs extends Component {
         }
 
     
-        try 
-        {
-            // fetch data from a url endpoint
-            const response = await  axios.get(`https://sheltered-chamber-63274.herokuapp.com/api/userjobs`, {headers: headers});
-            ///Users/godsonihemere/Desktop/KokorunsProject/KokorunsUI/src/nigeria-states-and-local-govts.js
-            console.log(response.data.user_jobs);
+        // try 
+        // {
+        //     // fetch data from a url endpoint
+        //     const response = await  axios.get(`/src/nigeria-states-and-local-govts.js`, {headers: headers});
+        //     ///Users/godsonihemere/Desktop/KokorunsProject/KokorunsUI/src/nigeria-states-and-local-govts.js
+        //     console.log(response);
 
-            this.setState({ user_jobs: response.data.user_jobs, loading: false });
+        //     //this.setState({ teams: response.data.teams, loading: false });
 
-            // console.log(response.data.expe[0]);
+        //     // console.log(response.data.expe[0]);
 
-        } 
-        catch(error) 
-        {
-        console.log("error", error);
-        // appropriately handle the error
-        }
+        // } 
+        // catch(error) 
+        // {
+        // console.log("error", error);
+        // // appropriately handle the error
+        // }
 
         
     
@@ -190,27 +177,27 @@ export class UserJobs extends Component {
         }
 
 
-        const data = { job_title:this.state.job_title, employment_type: this.state.employment_type, salary: this.state.salary, job_description: this.state.job_description, selectedState: this.state.selectedState, selectedLGA: this.state.selectedLGA, languages: this.state.languages, skills: this.state.skills };  
+        const data = { job_title:this.state.job_title, employment_type: this.state.employment_type, salary: this.state.salary, job_description: this.state.job_description, state: this.state.states, lga: this.state.lgas, languages: this.state.languages, skills: this.state.skills };  
 
-        //console.log(data);
+        console.log(data);
        
 
-       axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/createuserjob`, data, {headers: headers})
-        .then((response) => {
+    //    axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/createteam`, data, {headers: headers})
+    //     .then((response) => {
            
 
-           //this.setState({ experiences: response.data.experiences, loading: true, show: false});
+    //        //this.setState({ experiences: response.data.experiences, loading: true, show: false});
          
-           console.log(response);
+    //        console.log(response);
 
-           //window.location.href = "/user-dashboard-experience";
+    //        //window.location.href = "/user-dashboard-experience";
 
-           this.setState({ show: false });
+    //        this.setState({ show: false });
 
-         })
-         .catch( error => {
-           console.log(error.response);
-         });
+    //      })
+    //      .catch( error => {
+    //        console.log(error.response);
+    //      });
     
 
       }
@@ -219,18 +206,20 @@ export class UserJobs extends Component {
 
     render() {
 
-        const options = [
-            { value: 'English', label: 'English' },
-            { value: 'Yoruba', label: 'Yoruba' },
-            { value: 'Efik/Ibibio', label: 'Efik/Ibibio' }
-          ];
+        // const states = this.state.states;
 
+        // let statesList = states.map((state, i) => {
+        //     return (
+        //         <option key={i}>
+        //             {/* {state.state}
+        //              */}
+        //              rfrfrggrgrrgrg
+        //             </option>
+        //     )
+        // }, this);  
 
-          const options2 = [
-            { value: 'Scrubbing', label: 'Scrubbing' },
-            { value: 'Cleaning', label: 'Cleaning' },
-            { value: 'Painting', label: 'Painting' }
-          ]
+        //console.log(states[0].state);
+
 
       
 
@@ -251,26 +240,13 @@ export class UserJobs extends Component {
                     <div className="left">
                     <div className="job-posts-list">
                         <div className="search-bar"><input placeholder="Search Job Posts" /><button><img className="search" src="assets/Images/Your%20Job%20Posts/search.png" /></button></div>    
-                        
-                        {this.state.loading || !this.state.user_jobs ? 
-
-                        <div style={{background: '#f2f2f2'}}>Loading...</div> 
-                        
-                        :
-                        
-                        <div className="mb-5" style={{background: '#f2f2f2'}}>
-
-                         {this.state.user_jobs.map(job => 
-
-                            <div className="job-post job-post-list">
-                                <img src="assets/Images/Your%20Job%20Posts/Job%20Icon.png" />{job.job_title}<br /> 
-                                <span>{job.created_at}</span>    
-                                <b>45 Applicants</b>    
-                            </div>
-
-                        )}
-                       </div>
-                       }
+                        {/*?php foreach ($my_jobs as $job) { ?*/}
+                        <div className="job-post job-post-list" data-job_title="<?php echo $job['fjob_title']; ?>" data-employment_type="<?php echo $job['femployment_type']; ?>" data-salary="<?php echo $job['fsalary']; ?>" data-location="<?php echo $job['flocation']; ?>" data-job_description="<?php echo $job['fjob_description']; ?>" data-languages="<?php echo $job['flanguages']; ?>" data-skills="<?php echo $job['fskills']; ?>">
+                        <img src="assets/Images/Your%20Job%20Posts/Job%20Icon.png" />{/*?php echo $job['fjob_title']; ?*/}<br /> 
+                        <span>{/*?php echo date('d/m/Y', strtotime($job['created_at'])); ?*/}</span>    
+                        <b>45 Applicants</b>    
+                        </div>
+                        {/*?php } ?*/}
                     </div>    
                     </div>    
                     <div className="right">
@@ -387,15 +363,14 @@ export class UserJobs extends Component {
                             </div>
                             <div className="post-job-children">
                                 Employment Type <b>*</b><br />
-                                <select name="employment_type" value={this.state.employment_type} onChange={this.handleChange} required>
-                                <option value="">Select one</option>
-                                <option value="Full-Time">Full-Time</option>
-                                <option value="Part-Time / Occasional">Part-Time / Occasional</option>
-                                <option value="Daily Pay">Daily Pay</option>
-                                <option value="Weekend Only">Weekend Only</option>
-                                <option value="Temporary">Temporary</option>
-                                <option value="Volunteer">Volunteer</option> 
-                                <option value="Apprentice / Trainee">Apprentice / Trainee</option>  
+                                <select name="employment_type" value={this.state.employment_type} onChange={this.handleChange}>
+                                <option>Full-Time</option>
+                                <option>Part-Time / Occasional</option>
+                                <option>Daily Pay</option>
+                                <option>Weekend Only</option>
+                                <option>Temporary</option>
+                                <option>Volunteer</option> 
+                                <option>Apprentice / Trainee</option>  
                                 </select>      
                             </div>
                             <div className="post-job-children">
@@ -414,70 +389,113 @@ export class UserJobs extends Component {
                                 <div id="locationdiv" className="location-div">  
 
                                
-                                <select value={this.state.selectedState} onChange={this.changeState}>
-                                    <option>Select State</option>
-                                    {this.state.states.map((e, key) => {
+                                <select placeholder="Country" value={this.state.selectedCountry} onChange={this.changeCountry}>
+                                    <option>--Choose Country--</option>
+                                    {this.state.countries.map((e, key) => {
                                         return <option key={key}>{e.name}</option>;
                                     })}
                                 </select>
 
-                               <select value={this.state.selectedLGA} onChange={this.changeLGA} >
-                                        <option>Select LGA</option>
+                                <select placeholder="State" value={this.state.selectedState} onChange={this.changeState}>
+                                        <option>--Choose State--</option>
+                                            {this.state.states.map((e, key) => {
+                                                return <option key={key}>{e.name}</option>;
+                                            })}
+                                    </select>
+                                    <select value={this.state.selectedLga}>
+
+                                    <option>--Choose LGA--</option>
                                             {this.state.lgas.map((e, key) => {
                                                 return <option key={key}>{e.name}</option>;
                                             })}
                                     </select>
-                                
+                                        {/* <select
+                                            onChange="toggleLGA(this);"
+                                            name="state"
+                                            id="state"
+                                            class="form-control"
+                                            >
+                                            <option value="" selected="selected">- Select -</option>
+                                            <option value="Abia">Abia</option>
+                                            <option value="Adamawa">Adamawa</option>
+                                            <option value="AkwaIbom">AkwaIbom</option>
+                                            <option value="Anambra">Anambra</option>
+                                            <option value="Bauchi">Bauchi</option>
+                                            <option value="Bayelsa">Bayelsa</option>
+                                            <option value="Benue">Benue</option>
+                                            <option value="Borno">Borno</option>
+                                            <option value="Cross River">Cross River</option>
+                                            <option value="Delta">Delta</option>
+                                            <option value="Ebonyi">Ebonyi</option>
+                                            <option value="Edo">Edo</option>
+                                            <option value="Ekiti">Ekiti</option>
+                                            <option value="Enugu">Enugu</option>
+                                            <option value="FCT">FCT</option>
+                                            <option value="Gombe">Gombe</option>
+                                            <option value="Imo">Imo</option>
+                                            <option value="Jigawa">Jigawa</option>
+                                            <option value="Kaduna">Kaduna</option>
+                                            <option value="Kano">Kano</option>
+                                            <option value="Katsina">Katsina</option>
+                                            <option value="Kebbi">Kebbi</option>
+                                            <option value="Kogi">Kogi</option>
+                                            <option value="Kwara">Kwara</option>
+                                            <option value="Lagos">Lagos</option>
+                                            <option value="Nasarawa">Nasarawa</option>
+                                            <option value="Niger">Niger</option>
+                                            <option value="Ogun">Ogun</option>
+                                            <option value="Ondo">Ondo</option>
+                                            <option value="Osun">Osun</option>
+                                            <option value="Oyo">Oyo</option>
+                                            <option value="Plateau">Plateau</option>
+                                            <option value="Rivers">Rivers</option>
+                                            <option value="Sokoto">Sokoto</option>
+                                            <option value="Taraba">Taraba</option>
+                                            <option value="Yobe">Yobe</option>
+                                            <option value="Zamfara">Zamafara</option>
+                                    </select> */}
                                    
                                 
-                               
+                                <select id="lga" name="lgas" value={this.state.lgas} onChange={this.handleChange}>
+                                    <option>Select LGA</option>
+                                </select>
                                 </div>   
                             </div>  
                             <div>
 
                             </div>
-      
+                           {/* {stateData} */}
+                           {/* .map((data, key) => {
+          return ( */}
+            {/* <div key={key}>
+              {data.company +
+                " , " +
+                data.ticker +
+                " ," +
+                data.stockPrice +
+                ", " +
+                data.timeElapsed}
+            </div>
+          );
+        })} */} 
                             <div className="job-description">
                                 Description <br />  
-                                <textarea placeholder="Describe your job offer..." className="form-control" name="job_description" id cols={30} rows={5} required value={this.state.job_description} onChange={this.handleChange} required/> 
-                            </div>  
-
-                          
-
+                                <textarea placeholder="Describe your job offer..." className="form-control" name="job_description" id cols={30} rows={5} required value={this.state.job_description} onChange={this.handleChange} /> 
+                            </div>      
                             <div className="langx">
                                 Languages <b>Max 5</b><br />   
-                                {/* <select id="languages" name="languages[]" className="form-control" value={this.state.languages} onChange={this.handleChange} multiple>
+                                <select id="languages" name="languages[]" className="form-control" value={this.state.languages} onChange={this.handleChange} multiple>
                                 <option value="Yoruba">Yoruba</option>
                                 <option value="English">English</option>
-                                </select> */}
-                                  <Select
-                           
-                                    isMulti
-                                    name="languages"
-                                    options={options}
-                                    className="basic-multi-select"
-                                    classNamePrefix="select"
-                                    //value={this.state.languages}
-                                    onChange={this.handleSelect}
-                               />
+                                </select>
                              
                             </div> 
-                            <div className="skilld">
+                            <div className="skill">
                                 Skills <b>Max 5</b><br />    
-                                {/* <select id="skills" name="skills[]" className="form-control" value={this.state.skills} onChange={this.handleChange} multiple>
+                                <select id="skills" name="skills[]" className="form-control" value={this.state.skills} onChange={this.handleChange} multiple>
                                 <option value="a">A</option>
                                 <option value="b">B</option>
-                                </select>     */}
-
-                                <Select
-                                                        
-                                    isMulti
-                                    name="skills[]"
-                                    options={options2}
-                                    className="basic-multi-select"
-                                    classNamePrefix="select"
-                                    onChange={this.handleSelect}
-                                />
+                                </select>    
                               
                             </div>    
                             <div className="post-job-button">

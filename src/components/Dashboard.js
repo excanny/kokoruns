@@ -36,9 +36,11 @@ export class Dashboard extends Component {
         preferred_job_location_lga: '', 
         profession: '', 
         availability_start_date: '',
+        availability_start_date2: new Date(),
         employment_type: '', 
         state: '', 
         lga: '',
+        availability_start_date2_show: false,
         isLoading: false,
 
     }
@@ -49,6 +51,14 @@ export class Dashboard extends Component {
       this.showEditBioForm = this.showEditBioForm.bind(this);
       this.cancelEditBioForm = this.cancelEditBioForm.bind(this);
 
+  }
+
+
+  onChange = date => this.setState({ date });
+
+
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
   }
 
 
@@ -82,6 +92,22 @@ export class Dashboard extends Component {
     //console.log(e.target.value);
   }
 
+  setStartDate(e) {
+
+
+    if(e.target.value == "select_date")
+    {
+      this.setState({availability_start_date2_show : true });
+      this.setState({availability_start_date: e.target.value });
+      console.log(e.target.value);
+    }
+    else
+    {
+      this.setState({availability_start_date2_show : false });
+    }
+    //  console.log(e.target.value);
+  }
+
 
   async componentDidMount()
   {
@@ -92,7 +118,6 @@ export class Dashboard extends Component {
     }
 
     //console.log(localStorage.getItem('access_token'));
-
 
     const headers = {
 
@@ -128,17 +153,21 @@ export class Dashboard extends Component {
 
 
     let one = "https://sheltered-chamber-63274.herokuapp.com/api/userdetails"
-    let two = "https://api.storyblok.com/v1/cdn/stories/vue?version=published&token=wANpEQEsMYGOwLxwXQ76Ggtt";
-    let three = "https://api.storyblok.com/v1/cdn/stories/vue?version=published&token=wANpEQEsMYGOwLxwXQ76Ggtt"
+    // let two = "https://api.storyblok.com/v1/cdn/stories/vue?version=published&token=wANpEQEsMYGOwLxwXQ76Ggtt";
+    // let three = "https://api.storyblok.com/v1/cdn/stories/vue?version=published&token=wANpEQEsMYGOwLxwXQ76Ggtt"
      
     const requestOne = axios.get(one, {headers: headers});
-    const requestTwo = axios.get(two);
-    const requestThree = axios.get(three);
+    // const requestTwo = axios.get(two);
+    // const requestThree = axios.get(three);
      
-    axios.all([requestOne, requestTwo, requestThree]).then(axios.spread((...responses) => {
+    axios.all([
+      requestOne, 
+      //requestTwo, 
+      //requestThree
+    ]).then(axios.spread((...responses) => {
       const responseOne = responses[0]
-      const responseTwo = responses[1]
-      const responesThree = responses[2]
+      // const responseTwo = responses[1]
+      // const responesThree = responses[2]
       // use/access the results 
 
       this.setState({ gender : responseOne.data.user_details.gender, marital_status : responseOne.data.user_details.marital_status, disabled : responseOne.data.user_details.disabled, current_employer : responseOne.data.user_details.current_employer, other_professions1 :  responseOne.data.user_details.other_professions1,
@@ -157,11 +186,6 @@ export class Dashboard extends Component {
 
   }
 
-
-
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
 
 
   async handleSubmit(e) {
@@ -536,36 +560,30 @@ export class Dashboard extends Component {
                   </div>    
                 </div>  
 
-                {/* <div className="start-date-main-div">
-                  <div className="bio-form-label">Start Date<b>*</b></div>    
-                  <input type="radio" id="immediately" name="start_date" defaultValue="immediately" onclick="HideStartDate();" />
-                  <label htmlFor="immediately">Immediately</label><br />
-                  <input type="radio" id="not_yet" name="start_date" defaultValue="not_yet" onclick="HideStartDate();" />
-                  <label htmlFor="not_yet">Not Yet</label><br />    
-                  <input type="radio" id="select_date" name="start_date" defaultValue="select_date" onclick="ShowStartDate();" />
-                  <label htmlFor="select_date">Select Date</label>
-                  <div id="StartDateDiv" className="start-date-div"> <select className="start-date-day">
-                      <option>Day</option></select>
-                    <select className="start-date-month">
-                      <option>Month</option></select>
-                    <select className="start-date-year">
-                      <option>Year</option></select>    
-                  </div>  
-                </div> */}
+                  <div className="start-date-main-div" onChange={e => this.setStartDate(e)}>
+                    <div className="bio-form-label">Start Date<b>*</b></div>   
 
-                  <div className="start-date-main-div">
-                    <div className="bio-form-label">Start Date<b>*</b></div>    
-                    <input type="radio" id="immediately" name="availability_start_date" defaultValue="now" onclick="HideStartDate();" required />
+                    <input type="radio" id="immediately" name="availability_start_date" value="now"/>
                     <label htmlFor="immediately">Immediately</label>
                     <br />
-                    <input type="radio" id="not_yet" name="availability_start_date" defaultValue="not_yet" />
-                    <label htmlFor="not_yet">Not Yet</label><br />    
-                    <input type="radio" id="select_date" name="availability_start_date" />
+
+                    <input type="radio" id="not_yet" name="availability_start_date" value="not_yet" />
+                    <label htmlFor="not_yet">Not Yet</label>
+                    <br /> 
+
+                    <input type="radio" id="select_date" name="availability_start_date" value="select_date" />
                     <label htmlFor="select_date">Select Date</label>
-                    <div id="StartDateDiv" className="start-date-div"> 
-                      <input type="date" name="availability_start_date2" />
-                    </div>
                   </div>
+                  {this.state.availability_start_date2_show ? 
+                    <div id="StartDateDiv" className="start-date-div"> 
+                      <input type="date" name="availability_start_date2" value={this.state.availability_start_date2} onChange={this.onChange}/>
+                    </div>
+                    :
+                    null
+                  }
+
+                  {this.state.availability_start_date}
+                  
 
 
 
