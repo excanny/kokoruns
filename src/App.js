@@ -15,7 +15,6 @@ import Recommendations from './components/Recommendations';
 import JobBoard from './components/JobBoard';
 import UserEvents from './components/UserEvents';
 import CompanyRegister from './components/CompanyRegister';
-
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 

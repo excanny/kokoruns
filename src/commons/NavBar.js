@@ -56,7 +56,7 @@ export class NavBar extends Component {
 
         //this.setState({ firstname : response.data.data.firstName });
 
-        console.log(response.data.user_details);
+        //console.log(response.data.user_details);
 
 
     } 

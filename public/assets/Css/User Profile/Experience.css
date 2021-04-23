@@ -271,7 +271,7 @@
 }
 
 .company-or-business {
-width: 95%;  
+
 padding-top: 10px;
 padding-bottom: 10px;     
 padding-left: 15px;
@@ -293,7 +293,7 @@ border-radius: 2px;
 }
 
 .position {
- width: 95%;  
+ 
 padding-top: 10px;
 padding-bottom: 10px;     
 padding-left: 15px;
@@ -340,7 +340,7 @@ border-radius: 2px;
 
 .roles-text-area {
 width: 95%; 
-max-width: 95%;    
+max-  
 padding-top: 10px;
 padding-bottom: 10px;     
 padding-left: 15px;

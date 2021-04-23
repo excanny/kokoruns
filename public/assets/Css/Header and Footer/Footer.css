@@ -26,8 +26,6 @@ body {
     font-size: 20px;
     padding-right: 6%;
     padding-left: 6%;
-    display: ;
-    font-weight: ;
     padding-bottom: 10px;
 }
 
@@ -36,17 +34,15 @@ body {
 }
 
 .content-holder {
-   display: ;
+   
    padding-top: 20px;    
-   background-color: ;
    margin-left: 4%;
    margin-right: 4%;
    padding-bottom: 3px; 
-   background-color: ;     
+      
 }
 
 .kokoruns-footer-logo-div {
-   background-color: ; 
    padding-top: 10px;
 }
 
@@ -56,56 +52,10 @@ body {
 
 /*FOOTER FLATICONS*/
 
- .fa {
-        padding: px;
-        font-size: 18px !important;
-        width: 20px;
-        text-align: center;
-        text-decoration: none;
-        margin: 5px 2px;
-        font-weight: bold;
-        padding-left: 12px;
-        padding-right: 12px;
-        padding-top: 5px;
-         }
-        
-        .fa:hover {
-         color: #d92727;
-         }
-
-        .fa-facebook {
-          background: transparent;
-          color: white;
-          }
-
-        .fa-twitter {
-         background: transparent;
-         color: white;
-         }
-
-         .fa-google {
-          background: transparent;
-          color: white;
-          }
-        
-        .fa-instagram {
-         background: transparent;
-         color: white;
-         }
-
-        .fa-bars {
-         padding: 0px !important;
-         font-size: 17px !important;
-        }
-
-
 
 @media screen and (max-width: 500px)   
 {
- .content-holder {
- display: ;   
-}   
-    
+
     
 }
 
