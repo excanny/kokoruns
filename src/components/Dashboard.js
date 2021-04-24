@@ -362,6 +362,8 @@ export class Dashboard extends Component {
 
           // console.log(response.data.expe[0]);
 
+         this.cancelEditBioForm();
+
       } 
       catch(error) 
       {
