@@ -3,6 +3,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
 import RegisterSuccess from './components/RegisterSuccess';
+import ProfileSetUp from './components/ProfileSetUp';
 import Dashboard from './components/Dashboard';
 import Experience from './components/Experience';
 import Education from './components/Education';
@@ -30,6 +31,7 @@ export class App extends Component {
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} /> 
               <Route path="/registersuccess" component={RegisterSuccess} />
+              <Route path="/profile-setup" component={ProfileSetUp} />
               <Route path="/user-dashboard" component={Dashboard} />
               <Route path="/user-dashboard-experience" component={Experience} />
               <Route path="/user-dashboard-education" component={Education} />

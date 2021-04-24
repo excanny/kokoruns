@@ -55,17 +55,23 @@ export class Login extends Component {
     
           
           localStorage.setItem('access_token', response.data.access_token);
-    
-        //   this.setState({ 'loggedIn': true});
-    
-        //   console.log(this.state.loggedIn);
+  
     
           //this.props.history.push("/user-dashboard-experience");
-          window.location.href = "/user-dashboard";
-            
-            //console.log(response.data.access_token);
+          
 
-          console.log(response.data.access_token);
+            if(response.data.user.active === 0)
+            {
+              this.props.history.push("/profile-setup");
+              //window.location.href = "/profile-setup";
+            }
+            else
+            {
+              this.props.history.push("/user-dashboard");
+              //window.location.href = "/user-dashboard";
+            }
+
+            console.log(response.data.user.active);
     
         })
         .catch( error => {
@@ -89,6 +95,11 @@ export class Login extends Component {
 
 
     render() {
+
+      const { stateobj } = this.props.location;
+
+      
+
         return (
                 <>
                 <header className="container-fluid bg-white">
@@ -106,7 +117,7 @@ export class Login extends Component {
                     <div className="col">
                         <div className="pt-4 pl-4 pr-4">
                         <h2 className="mb-3 text-center">Login Into Your Account</h2>
-                       
+                        {stateobj}
                         <form onSubmit={this.handleSubmit} noValidate>
                             <div className="form-group">
                             <input type="text" className="form-control rounded-0" value={this.state.user_email_or_phone_number} onChange={this.handleChange} id="user_email_or_phone_number" name="user_email_or_phone_number" placeholder="Enter Email or Phone Number" autoComplete="off" required />

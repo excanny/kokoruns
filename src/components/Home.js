@@ -35,11 +35,11 @@ export class Home extends Component {
                     <div align="center" className="register-as-sections">
                         <Link style={{textDecoration: 'none'}} to={"/register"}><div align="center" className="register-children">User</div></Link>
                         &nbsp;&nbsp;&nbsp;
-                        <Link style={{textDecoration: 'none'}} to={"/cregister"}><div align="center" className="register-children">Company</div></Link>
+                        {/* <Link style={{textDecoration: 'none'}} to={"/cregister"}><div align="center" className="register-children">Company</div></Link>
                         &nbsp;&nbsp;&nbsp;
                         <Link style={{textDecoration: 'none'}} to={"/sregister"}><div align="center" className="register-children">School</div></Link>
                         &nbsp;&nbsp;&nbsp; 
-                        <Link style={{textDecoration: 'none'}} to={"/aregister"}><div align="center" className="register-children">Association</div></Link>     
+                        <Link style={{textDecoration: 'none'}} to={"/aregister"}><div align="center" className="register-children">Association</div></Link>      */}
                     </div>
                         &nbsp;&nbsp;&nbsp;     
                     </div>

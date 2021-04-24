@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../commons/Header';
 import NavBar from '../commons/NavBar';
+import Footer from '../commons/Footer';
 import UserBio from '../commons/UserBio';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
@@ -72,6 +73,11 @@ export class Education extends Component {
 
       onHide = () => {
         this.setState({ show: false });
+      }
+
+      viewBio = () => {
+        //this.props.history("/user-dashboard");
+        this.props.history.push("/user-dashboard");
       }
 
 
@@ -188,8 +194,8 @@ export class Education extends Component {
                   <section className="user-education">
                     <div className="user-education-header-container">
                       <div className="edu-update-button-container">
-                        <button onclick="ShowEducationForm()" className="edu-update-button" onClick={this.showModal}> + Create Education </button>      
-                        <button onclick="ViewBio(); return false;" className="bio-button"> View Bio </button>
+                        <button className="edu-update-button" onClick={this.showModal}> + Create Education </button>      
+                        <button onClick={this.viewBio} className="bio-button" > View Bio </button>
                       </div>    
                     </div>
                   </section>
@@ -418,6 +424,8 @@ export class Education extends Component {
                </Modal>
 
               {/* Modal */}
+
+              <Footer/>
 
           </>
         )

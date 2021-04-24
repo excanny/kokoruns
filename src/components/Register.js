@@ -73,7 +73,16 @@ export class Register extends Component {
           //     this.props.history.push('/signup'); 
           //  }  
 
-           this.props.history.push("/registersuccess");
+          //  this.props.history.push("/registersuccess");
+
+          //this.props.history.push("/login");
+
+          this.props.history.push({
+            pathname: '/login',
+              state: 'Registration successful' // your data array of objects
+          });
+
+          
          
            console.log(response);
 

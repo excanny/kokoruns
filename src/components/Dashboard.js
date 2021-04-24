@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../commons/Header';
 import NavBar from '../commons/NavBar';
+import Footer from '../commons/Footer';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import jwt from 'jwt-decode'; // import dependency
@@ -14,7 +15,10 @@ export class Dashboard extends Component {
     this.state = {
       
         showBioForm: false,
+        first_name: '',
+        last_name: '',
         gender: '',
+        profession:'',
         marital_status: '',
         disabled: '', 
         educational_qualification: '', 
@@ -28,18 +32,20 @@ export class Dashboard extends Component {
         languages4: '',
         languages5: '',
         current_employer: '', 
-        preferred_job1: '', 
-        preferred_job2: '',
-        preferred_job3: '',
-        preferred_job4: '',
+        preferred_job: '', 
         preferred_job_location_state: '', 
         preferred_job_location_lga: '', 
         profession: '', 
-        availability_start_date: '',
-        availability_start_date2: new Date(),
+        availability_start_date: null,
         employment_type: '', 
-        state: '', 
-        lga: '',
+        states : [],
+        lgas : [],
+        selectedState : '',
+        selectedLGA : '',
+        states2 : [],
+        lgas2 : [],
+        selectedState2 : '',
+        selectedLGA2 : '',
         availability_start_date2_show: false,
         isLoading: false,
 
@@ -50,15 +56,50 @@ export class Dashboard extends Component {
       this.handleSubmit = this.handleSubmit.bind(this);
       this.showEditBioForm = this.showEditBioForm.bind(this);
       this.cancelEditBioForm = this.cancelEditBioForm.bind(this);
+      this.changeState = this.changeState.bind(this);
+      this.changeLGA = this.changeLGA.bind(this);
+      this.changeState2 = this.changeState2.bind(this);
+      this.changeLGA2 = this.changeLGA2.bind(this);
+      this.onDateChange = this.onDateChange.bind(this);
 
   }
 
 
-  onChange = date => this.setState({ date });
+  onDateChange (e) {
+    
+    this.setState({availability_start_date: e.target.value});
+    console.log(e.target.value);
+  }
 
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+  }
+
+  changeState(e) {
+    this.setState({selectedState: e.target.value});
+    this.setState({lgas : this.state.states.find(state => state.name === e.target.value).lgas});
+        console.log(e.target.value);
+  }
+
+  changeLGA(e) {
+    this.setState({selectedLGA: e.target.value});
+    // const stats = this.state.states.find(cntry => cntry.name === this.state.selectedState).lgas;
+    // this.setState({lgas : stats.find(stats => stats.name === event.target.value).lgas});
+        console.log(e.target.value);
+  }
+
+  changeState2(e) {
+    this.setState({selectedState2: e.target.value});
+    this.setState({lgas2 : this.state.states2.find(state => state.name === e.target.value).lgas2});
+        console.log(this.state.lgas2);
+  }
+
+  changeLGA2(e) {
+    this.setState({selectedLGA2: e.target.value});
+    // const stats = this.state.states.find(cntry => cntry.name === this.state.selectedState).lgas;
+    // this.setState({lgas : stats.find(stats => stats.name === event.target.value).lgas});
+        console.log(e.target.value);
   }
 
 
@@ -101,16 +142,127 @@ export class Dashboard extends Component {
       this.setState({availability_start_date: e.target.value });
       console.log(e.target.value);
     }
-    else
+    else if(e.target.value == "not yet")
     {
+      
       this.setState({availability_start_date2_show : false });
+      this.setState({availability_start_date:  null});
+    }
+
+    else if(e.target.value == "now")
+    {
+      var todayDate = new Date().toISOString().slice(0, 10);
+      this.setState({availability_start_date2_show : false });
+      this.setState({availability_start_date:  todayDate});
     }
     //  console.log(e.target.value);
   }
 
 
+  jsUcfirst(string) 
+  {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+
   async componentDidMount()
   {
+
+    this.setState({
+      
+      states: [ {name: 'Abia', code: '1', 
+      lgas: [
+              {name: "Aba North", code: '1'},
+              {name: "Aba South", code: '2'},
+              
+        ]}, {name: 'Adamawa', code: '2', 
+                lgas: [
+                        {name: 'Demsa', code: '1'},
+                        {name: 'Fufure', code: '2'},
+        ]}, {name: 'AkwaIbom', code: '3', 
+        lgas: [
+                        {name: 'Abak', code: '1'},
+                        {name: 'Eastern Obolo', code: '2'},
+    ]}, {name: 'Anambra', code: '4', 
+        lgas: [
+                        {name: 'Aguata', code: '1'},
+                        {name: 'Anambra East', code: '2'},
+                        {name: 'Anambra West', code: '3'},
+    ]}, {name: 'Bauchi', code: '5', 
+        lgas: [
+                        {name: 'Alkaleri', code: '1'},
+                        {name: 'Bauchi', code: '2'},
+                        
+    ]}, {name: 'Bayelsa', code: '6', 
+            lgas: [
+                        {name: 'Brass', code: '1'},
+                        {name: 'Ekeremor', code: '2'},
+                        {name: 'Kolokuma Opokuma', code: '3'},
+                        {name: 'Nembe', code: '4'},
+                        {name: 'Ogbia', code: '5'},
+                        {name: 'Sagbama', code: '6'},
+                        {name: 'Southern Ijaw', code: '7'},
+                        {name: 'Yenagoa', code: '8'}
+    ]}, {name: 'Benue', code: '7', 
+            lgas: [
+                        {name: 'Agatu', code: '1'},
+                        {name: 'Apa', code: '2'},
+                        
+    ]}, {name: 'Borno', code: '8', 
+            lgas: [
+                        {name: 'Abadam', code: '1'},
+                        {name: 'Askira-Uba', code: '2'},
+    ]} ],
+
+  });
+
+  this.setState({
+      
+    states2: [ {name: 'Abia', code: '1', 
+    lgas2: [
+            {name: "Aba North", code: '1'},
+            {name: "Aba South", code: '2'},
+            
+      ]}, {name: 'Adamawa', code: '2', 
+              lgas2: [
+                      {name: 'Demsa', code: '1'},
+                      {name: 'Fufure', code: '2'},
+      ]}, {name: 'AkwaIbom', code: '3', 
+      lgas2: [
+                      {name: 'Abak', code: '1'},
+                      {name: 'Eastern Obolo', code: '2'},
+  ]}, {name: 'Anambra', code: '4', 
+      lgas2: [
+                      {name: 'Aguata', code: '1'},
+                      {name: 'Anambra East', code: '2'},
+                      {name: 'Anambra West', code: '3'},
+  ]}, {name: 'Bauchi', code: '5', 
+      lgas2: [
+                      {name: 'Alkaleri', code: '1'},
+                      {name: 'Bauchi', code: '2'},
+                      
+  ]}, {name: 'Bayelsa', code: '6', 
+          lgas2: [
+                      {name: 'Brass', code: '1'},
+                      {name: 'Ekeremor', code: '2'},
+                      {name: 'Kolokuma Opokuma', code: '3'},
+                      {name: 'Nembe', code: '4'},
+                      {name: 'Ogbia', code: '5'},
+                      {name: 'Sagbama', code: '6'},
+                      {name: 'Southern Ijaw', code: '7'},
+                      {name: 'Yenagoa', code: '8'}
+  ]}, {name: 'Benue', code: '7', 
+          lgas2: [
+                      {name: 'Agatu', code: '1'},
+                      {name: 'Apa', code: '2'},
+                      
+  ]}, {name: 'Borno', code: '8', 
+          lgas2: [
+                      {name: 'Abadam', code: '1'},
+                      {name: 'Askira-Uba', code: '2'},
+  ]} ],
+
+});
 
     if(localStorage.getItem('access_token'))
     {
@@ -125,31 +277,6 @@ export class Dashboard extends Component {
       'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
 
     }
-
-    // try
-    // {
-      
-    //     // fetch data from a url endpoint
-    //     // const response = axios.get(`https://api-business.azurewebsites.net/api/BusinessInfos/get`, {headers: headers});
-    //    const response = await axios.get(`https://sheltered-chamber-63274.herokuapp.com/api/userdetails`, {headers: headers});
-
-    //     //this.setState({ current_employer : response.data.data.bankAccountNo });
-
-    //     // console.log(this.state.bankAccountNo);
-  
-
-    //     //this.setState({ firstname : response.data.data.firstName });
-
-    //     console.log(response.data);
-
-
-    // } 
-    // catch(error) 
-    // {
-    //     // console.log("error", error);
-    //     // appropriately handle the error
-    //     console.log(error);
-    // }
 
 
     let one = "https://sheltered-chamber-63274.herokuapp.com/api/userdetails"
@@ -170,13 +297,14 @@ export class Dashboard extends Component {
       // const responesThree = responses[2]
       // use/access the results 
 
-      this.setState({ gender : responseOne.data.user_details.gender, marital_status : responseOne.data.user_details.marital_status, disabled : responseOne.data.user_details.disabled, current_employer : responseOne.data.user_details.current_employer, other_professions1 :  responseOne.data.user_details.other_professions1,
-        other_professions2 :  responseOne.data.user_details.other_professions2, other_professions3 :  responseOne.data.user_details.other_professions3,
-        other_professions4 :  responseOne.data.user_details.other_professions4, educational_qualification :  responseOne.data.user_details.educational_qualification, languages1 : responseOne.data.user_details.languages1,
+      this.setState({ first_name : responseOne.data.user_details.first_name, last_name : responseOne.data.user_details.last_name, gender : responseOne.data.user_details.gender, profession: responseOne.data.user_details.profession, marital_status : responseOne.data.user_details.marital_status, disabled : responseOne.data.user_details.disabled, current_employer : responseOne.data.user_details.current_employer, other_professions1 :  responseOne.data.user_details.other_professions1,
+        other_professions2 :  responseOne.data.user_details.other_professions2, other_professions3 :  responseOne.data.user_details.other_professions3, employment_type: responseOne.data.user_details.employment_type, preferred_job: responseOne.data.user_details.preferred_job,
+        other_professions4 :  responseOne.data.user_details.other_professions4, educational_qualification :  responseOne.data.user_details.educational_qualification, languages1 : responseOne.data.user_details.languages1, selectedState: responseOne.data.user_details.state, selectedLGA: responseOne.data.user_details.lga,
+        selectedState2: responseOne.data.user_details.preferred_job_location_state, selectedLGA2: responseOne.data.user_details.preferred_job_location_lga,
         languages2 : responseOne.data.user_details.languages2, languages3 : responseOne.data.user_details.languages3, languages4 : responseOne.data.user_details.languages4, languages5 : responseOne.data.user_details.languages5,
          });
 
-      console.log(this.state.marital_status);
+      console.log(this.state);
 
     })).catch(errors => {
       // react on errors.
@@ -210,38 +338,37 @@ export class Dashboard extends Component {
       other_professions3: this.state.other_professions3, other_professions4: this.state.other_professions4,
       languages1: this.state.languages1, languages2: this.state.languages2, languages3: this.state.languages3,
       languages4: this.state.languages4, languages5: this.state.languages5, current_employer: this.state.current_employer,
-      preferred_job1: this.state.preferred_job1, preferred_job2: this.state.preferred_job2, preferred_job3: this.state.preferred_job3,
-      preferred_job4: this.state.preferred_job4, preferred_job_location_state: this.state.preferred_job_location_state, preferred_job_location_lga: this.state.preferred_job_location_lga,
-      availability_start_date: this.state.availability_start_date, employment_type: this.state.employment_type, state: this.state.state, state: this.state.lga
+      preferred_job: this.state.preferred_job, preferred_job_location_state: this.state.selectedState2, preferred_job_location_lga: this.state.selectedLGA2,
+      availability_start_date: this.state.availability_start_date, employment_type: this.state.employment_type, state: this.state.selectedState, lga: this.state.selectedLGA
     
     };  
 
-    console.log(data);
+    //console.log(data);
 
 
-      // try 
-      // {
-      //     // fetch data from a url endpoint
-      //     //const response = await  axios.post(`http://127.0.0.1:8000/api/addeducation`, data, {headers: headers});
-      //     const response = await  axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/addeducation`, data, {headers: headers});
+      try 
+      {
+          // fetch data from a url endpoint
+          //const response = await  axios.post(`http://127.0.0.1:8000/api/addeducation`, data, {headers: headers});
+          const response = await  axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/updatebio`, data, {headers: headers});
           
-      //     console.log(response);
+          console.log(response);
 
-      //     this.setState({ educations: response.data.educations, loading: false, show: false });
+          this.setState({ educations: response.data.educations, loading: false, show: false });
 
-      //     window.location.href = "/user-dashboard-education";
+          //window.location.href = "/user-dashboard-education";
 
-      //     //this.props.history.push("/user-dashboard-education");
+          //this.props.history.push("/user-dashboard-education");
 
-      //     // console.log(response.data.expe[0]);
+          // console.log(response.data.expe[0]);
 
-      // } 
-      // catch(error) 
-      // {
-      //   // console.log("error", error);
-      //   // appropriately handle the error
-      //   console.log(error.response);
-      // }
+      } 
+      catch(error) 
+      {
+        // console.log("error", error);
+        // appropriately handle the error
+        console.log(error.response);
+      }
 
   }
 
@@ -254,7 +381,7 @@ export class Dashboard extends Component {
           <Header/>
 
             
-          <div style={{background: '#f2f2f2'}}>
+          <div style={{background: '#f2f2f2'}} className="mb-5">
 
               <section id="UserInfoContainer" className="user-info-container" >  
 
@@ -271,35 +398,35 @@ export class Dashboard extends Component {
                 <div align="left" className="bio-dp-div">  
                   <img className="bio-dp" src="assets/Images/User%20Profile/User%20DP.png" /> 
                 </div>   
-                <div align="left" className="bio-user-name">Demilade Oyeyele<img src className="verification" /> </div> 
-                <div align="left" className="bio-user-profession">Accountant</div>       
+                <div align="left" className="bio-user-name">{ this.state.first_name !== null && this.jsUcfirst(this.state.first_name)} { this.state.last_name !== null && this.jsUcfirst(this.state.last_name)}<img src className="verification" /> </div> 
+                <div align="left" className="bio-user-profession">{ this.state.profession !== null && this.jsUcfirst(this.state.profession)}</div>       
               </div> 
               {/*USER DP SCRIPT*/}   
               {/*USER DP SCRIPT*/}    
               <label title="Number of people Recommended by" className="bio-info-label">Recommendations    
               </label>&nbsp;
               <a href="#">47</a><br style={{lineHeight: 2.0}} />
-              <label title="Gender" className="bio-info-label">Female   
+              <label title="Gender" className="bio-info-label">Gender: <span className="text-dark">{ this.state.gender !== null && this.jsUcfirst(this.state.gender)} </span> 
               </label>
               <br style={{lineHeight: 2.0}} />
-              <label title="Marital Status" className="bio-info-label">Married    
+              <label title="Marital Status" className="bio-info-label">Marital Status: <span className="text-dark">{ this.state.marital_status !== null && this.jsUcfirst(this.state.marital_status)}  </span>  
               </label>
               <br style={{lineHeight: 2.0}} />    
-              <label title="Academic Level" className="bio-info-label">Bachelor's Degree    
+              <label title="Academic Level" className="bio-info-label">Educational Qualification: <span className="text-dark">{ this.state.educational_qualification !== null && this.jsUcfirst(this.state.educational_qualification)}</span>   
               </label>
               <br style={{lineHeight: 2.0}} /> 
-              <label title="Location (State, L.G.A)" className="bio-info-label">Lagos, Kosofe.   
+              <label title="Location (State, L.G.A)" className="bio-info-label">Location: <span className="text-dark">{ this.state.selectedState !== null && this.jsUcfirst(this.state.selectedState)}  { this.state.selectedLGA !== null && this.jsUcfirst(this.state.selectedLGA)}  </span>
               </label>
               <br style={{lineHeight: 2.0}} />
               <label className="bio-info-label">I work for:   
               </label> 
-              <a href="#">ABC Nigeria Limited</a><br style={{lineHeight: 2.0}} /> 
+              <a href="#">{ this.state.current_employer !== null && this.jsUcfirst(this.state.current_employer)}</a><br style={{lineHeight: 2.0}} /> 
               <label className="bio-info-label">My Other Professions: 
               </label>
-              Graphics Artist, Helicopter Pilot, Teacher<br style={{lineHeight: 2.0}} />
+              { this.state.other_professions1 !== null && this.jsUcfirst(this.state.other_professions1)} { this.state.other_professions2 !== null && this.jsUcfirst(this.state.other_professions2)} { this.state.other_professions3 !== null && this.jsUcfirst(this.state.other_professions3)} { this.state.other_professions4 !== null && this.jsUcfirst(this.state.other_professions4)}<br style={{lineHeight: 2.0}} />
               <label className="bio-info-label"> I Speak:
               </label>
-              English, Yoruba, Hausa, Igbo, Pidgin English<br style={{lineHeight: 2.0}} />    
+              { this.state.languages1 !== null && this.jsUcfirst(this.state.languages1)}, { this.state.languages2 !== null && this.jsUcfirst(this.state.languages2)}, { this.state.languages3 !== null && this.jsUcfirst(this.state.languages3)}, { this.state.languages4 !== null && this.jsUcfirst(this.state.languages4)}, { this.state.languages5 !== null && this.jsUcfirst(this.state.languages5)}<br style={{lineHeight: 2.0}} />    
               <label className="bio-info-label">Looking for a:    
               </label>
               <ul>
@@ -432,53 +559,25 @@ export class Dashboard extends Component {
                   <div className="bio-form-label">Current Employer (Company / Brand)<b>*</b></div> 
                   <input className="bio-form-input" name="current_employer" value={this.state.current_employer} onChange={this.handleChange}/>    
                 </div>
+
+                <div className="bio-form-label">Your Location<b>*</b> {this.state.selectedState} {this.state.selectedLGA}</div> 
                 <div className="bio-form-div">
-                  <div className="bio-form-label">Your State<b>*</b></div> 
-                  <select className="bio-form-select" value={this.state.state} onChange={this.handleChange} name="state" required>
-                              <option value="">Select one</option>
-                              <option value="Abia">Abia</option>
-                              <option value="Adamawa">Adamawa</option>
-                              <option value="AkwaIbom">AkwaIbom</option>
-                              <option value="Anambra">Anambra</option>
-                              <option value="Bauchi">Bauchi</option>
-                              <option value="Bayelsa">Bayelsa</option>
-                              <option value="Benue">Benue</option>
-                              <option value="Borno">Borno</option>
-                              <option value="Cross River">Cross River</option>
-                              <option value="Delta">Delta</option>
-                              <option value="Ebonyi">Ebonyi</option>
-                              <option value="Edo">Edo</option>
-                              <option value="Ekiti">Ekiti</option>
-                              <option value="Enugu">Enugu</option>
-                              <option value="FCT">FCT</option>
-                              <option value="Gombe">Gombe</option>
-                              <option value="Imo">Imo</option>
-                              <option value="Jigawa">Jigawa</option>
-                              <option value="Kaduna">Kaduna</option>
-                              <option value="Kano">Kano</option>
-                              <option value="Katsina">Katsina</option>
-                              <option value="Kebbi">Kebbi</option>
-                              <option value="Kogi">Kogi</option>
-                              <option value="Kwara">Kwara</option>
-                              <option value="Lagos">Lagos</option>
-                              <option value="Nasarawa">Nasarawa</option>
-                              <option value="Niger">Niger</option>
-                              <option value="Ogun">Ogun</option>
-                              <option value="Ondo">Ondo</option>
-                              <option value="Osun">Osun</option>
-                              <option value="Oyo">Oyo</option>
-                              <option value="Plateau">Plateau</option>
-                              <option value="Rivers">Rivers</option>
-                              <option value="Sokoto">Sokoto</option>
-                              <option value="Taraba">Taraba</option>
-                              <option value="Yobe">Yobe</option>
-                              <option value="Zamfara">Zamfara</option>  
-                      </select> 
+                 
+                    <select value={this.state.selectedState} onChange={this.changeState} className="bio-form-select">
+                        <option>Select State</option>
+                        {this.state.states.map((e, key) => {
+                            return <option key={key}>{e.name}</option>;
+                        })}
+                    </select>
                 </div>    
                 <div className="bio-form-div">
-                  <div className="bio-form-label">Your LGA<b>*</b></div> 
-                  <select className="bio-form-select"> 
-                  </select>   
+                  
+                  <select value={this.state.selectedLGA} onChange={this.changeLGA} className="bio-form-select">
+                        <option>Select LGA</option>
+                            {this.state.lgas.map((e, key) => {
+                                return <option key={key}>{e.name}</option>;
+                            })}
+                    </select> 
                 </div> 
                 <div className="job-preferences-div">
                   <div className="job-preferences-label">Your Job Preferences</div>
@@ -495,68 +594,28 @@ export class Dashboard extends Component {
        
                   </div>
                   <div className="bio-form-div">
-                    <div className="bio-form-label">Job Option 1<b>*</b></div> 
-                    <input type="text" class="bio-form-select" name="preferred_job1"  value={this.state.preferred_job1} onChange={this.handleChange} autocomplete="off"/>  
+                    <div className="bio-form-label">Job Option<b>*</b></div> 
+                    <input type="text" class="bio-form-select" name="preferred_job"  value={this.state.preferred_job} onChange={this.handleChange} autocomplete="off"/>  
                   </div>
+                  
                   <div className="bio-form-div">
-                    <div className="bio-form-label">Job Option 2</div> 
-                    <input type="text" class="bio-form-select" name="preferred_job2"  value={this.state.preferred_job2} onChange={this.handleChange} autocomplete="off"/>  
-                  </div>
-                  <div className="bio-form-div">
-                    <div className="bio-form-label">Job Option 3</div> 
-                    <input type="text" class="bio-form-select" name="preferred_job3"  value={this.state.preferred_job3} onChange={this.handleChange} autocomplete="off"/>    
-                  </div>
-                  <div className="bio-form-div">
-                    <div className="bio-form-label">Job Option 4</div> 
-                    <input type="text" class="bio-form-select" name="preferred_job4"  value={this.state.preferred_job4} onChange={this.handleChange} autocomplete="off"/>      
-                  </div>
-                  <div className="bio-form-div">
-                    <div className="bio-form-label">Preferred State<b>*</b></div> 
-                    <select className="bio-form-select" value={this.state.state2} onChange={this.handleChange} name="preferred_job_location_state" required>
-                              <option value="">Select one</option>
-                              <option value="Abia">Abia</option>
-                              <option value="Adamawa">Adamawa</option>
-                              <option value="AkwaIbom">AkwaIbom</option>
-                              <option value="Anambra">Anambra</option>
-                              <option value="Bauchi">Bauchi</option>
-                              <option value="Bayelsa">Bayelsa</option>
-                              <option value="Benue">Benue</option>
-                              <option value="Borno">Borno</option>
-                              <option value="Cross River">Cross River</option>
-                              <option value="Delta">Delta</option>
-                              <option value="Ebonyi">Ebonyi</option>
-                              <option value="Edo">Edo</option>
-                              <option value="Ekiti">Ekiti</option>
-                              <option value="Enugu">Enugu</option>
-                              <option value="FCT">FCT</option>
-                              <option value="Gombe">Gombe</option>
-                              <option value="Imo">Imo</option>
-                              <option value="Jigawa">Jigawa</option>
-                              <option value="Kaduna">Kaduna</option>
-                              <option value="Kano">Kano</option>
-                              <option value="Katsina">Katsina</option>
-                              <option value="Kebbi">Kebbi</option>
-                              <option value="Kogi">Kogi</option>
-                              <option value="Kwara">Kwara</option>
-                              <option value="Lagos">Lagos</option>
-                              <option value="Nasarawa">Nasarawa</option>
-                              <option value="Niger">Niger</option>
-                              <option value="Ogun">Ogun</option>
-                              <option value="Ondo">Ondo</option>
-                              <option value="Osun">Osun</option>
-                              <option value="Oyo">Oyo</option>
-                              <option value="Plateau">Plateau</option>
-                              <option value="Rivers">Rivers</option>
-                              <option value="Sokoto">Sokoto</option>
-                              <option value="Taraba">Taraba</option>
-                              <option value="Yobe">Yobe</option>
-                              <option value="Zamfara">Zamfara</option>  
-                      </select> 
+                    <div className="bio-form-label">Preferred Location {this.state.selectedState2} {this.state.selectedLGA2}<b>*</b></div> 
+                    <select value={this.state.selectedState2} onChange={this.changeState2} className="bio-form-select">
+                        <option>Select State</option>
+                        {this.state.states2.map((e, key) => {
+                            return <option key={key}>{e.name}</option>;
+                        })}
+                    </select>
                   </div>   
                   <div className="bio-form-div">
-                    <div className="bio-form-label">Preferred LGA<b>*</b></div> 
-                    <select className="bio-form-select">  
-                    </select>  
+                    {/* <select className="bio-form-select">  
+                    </select>   */}
+                    <select value={this.state.selectedLGA2} onChange={this.changeLGA2} className="bio-form-select">
+                        <option>Select LGA</option>
+                            {this.state.lgas2.map((e, key) => {
+                                return <option key={key}>{e.name}</option>;
+                            })}
+                    </select> 
                   </div>    
                 </div>  
 
@@ -576,7 +635,7 @@ export class Dashboard extends Component {
                   </div>
                   {this.state.availability_start_date2_show ? 
                     <div id="StartDateDiv" className="start-date-div"> 
-                      <input type="date" name="availability_start_date2" value={this.state.availability_start_date2} onChange={this.onChange}/>
+                      <input type="date" name="availability_start_date2" value={this.state.availability_start_date} onChange={this.onDateChange}/>
                     </div>
                     :
                     null
@@ -603,6 +662,8 @@ export class Dashboard extends Component {
 
 
           </div>
+
+          <Footer/>
 
           </>
 

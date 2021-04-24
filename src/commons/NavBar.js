@@ -7,7 +7,9 @@ export class NavBar extends Component {
     constructor() {
         super();
         this.state = {
-    
+            first_name: '',
+            last_name: '',
+            profession: '',
           userdetails: [],
           loading: true,
 
@@ -21,6 +23,12 @@ export class NavBar extends Component {
         //this.handleRoleChange = this.handleRoleChange.bind(this);
   
       }
+
+
+    jsUcfirst(string) 
+    {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
 
 
  async componentDidMount()
@@ -54,9 +62,9 @@ export class NavBar extends Component {
         
         // console.log(response.data.data.bankAccountNo);
 
-        //this.setState({ firstname : response.data.data.firstName });
+        this.setState({ first_name : response.data.user_details.first_name, last_name: response.data.user_details.last_name, profession: response.data.user_details.profession});
 
-        //console.log(response.data.user_details);
+        console.log(response.data.user_details);
 
 
     } 
@@ -106,8 +114,8 @@ export class NavBar extends Component {
                 </div> 
             </div>    
             {/*a style="text-decoration: none" href=""><div align="center" class="user-link">kokoruns.com/alfredgreg</div></a*/}
-            <div align="center" className="user-name">Demilade Oyeyele<img src className="verification" /> </div> 
-            <div align="center" className="user-profession">Accountant</div>
+            <div align="center" className="user-name">{ this.state.first_name !== null && this.jsUcfirst(this.state.first_name)} { this.state.last_name !== null &&this.jsUcfirst(this.state.last_name)}<img src className="verification" /> </div> 
+            <div align="center" className="user-profession">{ this.state.profession !== null && this.jsUcfirst(this.state.profession)}</div>
             {/*-------VIEW AND HIDE BIO BUTTONS-------*/}       
             {/*div id="view-bio-div" onclick="ViewBio()" align="center" class="view-bio-div">
             <button align="center" class="view-bio-button">View Bio</button></div*/}

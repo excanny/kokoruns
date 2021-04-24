@@ -21,7 +21,6 @@ export class UserJobs extends Component {
           job_description: '',
           languages: null,
           skills: [],
-      	  countries : [],
 		  states : [],
 		  lgas : [],
 		  selectedState : '',

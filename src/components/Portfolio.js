@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../commons/Header';
 import NavBar from '../commons/NavBar';
+import Footer from '../commons/Footer';
 import UserBio from '../commons/UserBio';
 import Modal from 'react-bootstrap/Modal';
 import ImageUploader from 'react-images-upload';
@@ -13,36 +14,29 @@ export class Portfolio extends Component {
         this.state = {
 
           show: false,
-          inputImageValue: '',
-          filename: '',
+          show2: false,
+          filename: null,
+          docname: null,
           loading: true,
-          pictures: [] ,
+          loading2: true,
+          portfolios: [] ,
+          documents: [] ,
 
         };
 
         this.showModal = this.showModal.bind(this);
         this.hideModal = this.hideModal.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.showModal2 = this.showModal2.bind(this);
+        this.hideModal2 = this.hideModal2.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        //this.handleRoleChange = this.handleRoleChange.bind(this);
-        this.handleImageChange = this.handleImageChange.bind(this);
-    
+        this.handleSubmit2 = this.handleSubmit2.bind(this);
+        this.onImageChange = this.onImageChange.bind(this);
+        this.onDocChange = this.onDocChange.bind(this);
   
       }
 
 
-      handleAddSkill = () => {
-        this.setState({
-          roles: this.state.roles.concat([{ role_name: "" }])
-        });
-      };
-    
-      handleRemoveSkill = idx => () => {
-        this.setState({
-            roles: this.state.roles.filter((s, sidx) => idx !== sidx)
-        });
-      };
-
+ 
       showModal = () => {
         this.setState({ show: true });
       };
@@ -55,54 +49,101 @@ export class Portfolio extends Component {
         this.setState({ show: false });
       }
 
-
-      // async componentDidMount() {
-
-      //   const headers = {
-      //     "Content-Type": "application/json",
-      //     'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
-      //   }
-
+      showModal2 = () => {
+        this.setState({ show2: true });
+      };
     
-      //     try 
-      //     {
-      //         // fetch data from a url endpoint
-      //         const response = await  axios.get(`https://lit-ridge-07527.herokuapp.com/api/educations`, {headers: headers});
+      hideModal2 = () => {
+        this.setState({ show2: false });
+      };
 
-      //         //console.log(response.data.experiences);
-
-      //         this.setState({ educations: response.data.educations, loading: false });
-
-      //         // console.log(response.data.expe[0]);
-
-      //     } 
-      //     catch(error) 
-      //     {
-      //       console.log("error", error);
-      //       // appropriately handle the error
-      //     }
-    
-      // }
-
-
-      handleChange(e) {
-        this.setState({ [e.target.name]: e.target.value });
+      onHide2 = () => {
+        this.setState({ show2: false });
       }
 
-      handleImageChange(e) {
-     
 
-        let formData = new FormData();
-        formData.append('file', e.target.files[0].name );
+      viewBio = () => {
+        //this.props.history("/user-dashboard");
+        this.props.history.push("/user-dashboard");
+      }
 
-        this.setState({ filename : e.target.files[0].name });
 
-        for (var pair of formData.entries()) {
-          console.log(pair[0]+ ', ' + pair[1]); 
+      async componentDidMount() {
+
+        const headers = {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
         }
 
+    
+          // try 
+          // {
+          //     // fetch data from a url endpoint
+          //     const response = await  axios.get(`https://sheltered-chamber-63274.herokuapp.com/api/portfolios`, {headers: headers});
 
+          //     console.log(response.data.portfolios);
+
+          //    this.setState({ portfolios: response.data.portfolios, loading: false });
+
+          //     // console.log(response.data.expe[0]);
+
+          // } 
+          // catch(error) 
+          // {
+          //   console.log("error", error);
+          //   // appropriately handle the error
+          // }
+
+          let one = "https://sheltered-chamber-63274.herokuapp.com/api/portfolios"
+          let two = "https://sheltered-chamber-63274.herokuapp.com/api/documents";
+          // let three = "https://api.storyblok.com/v1/cdn/stories/vue?version=published&token=wANpEQEsMYGOwLxwXQ76Ggtt"
+          
+          const requestOne = axios.get(one, {headers: headers});
+          const requestTwo = axios.get(two, {headers: headers});
+          // const requestThree = axios.get(three, {headers: headers});
+          
+          axios.all([
+            requestOne, 
+            requestTwo, 
+            //requestThree
+          ]).then(axios.spread((...responses) => {
+            const responseOne = responses[0]
+            const responseTwo = responses[1]
+            // const responesThree = responses[2]
+            // use/access the results 
+
+            this.setState({ portfolios: responseOne.data.portfolios, documents: responseTwo.data.documents, loading: false });
+
+            //console.log(responseTwo);
+
+
+          })).catch(errors => {
+            // react on errors.
+            console.log(errors);
+          });
+    
       }
+
+
+      onImageChange = event => {
+        if (event.target.files && event.target.files[0]) {
+          let img = event.target.files[0];
+          this.setState({
+            image: URL.createObjectURL(img)
+          });
+        }
+      };
+
+
+
+      onDocChange = event => {
+        if (event.target.files && event.target.files[0]) {
+          let img = event.target.files[0];
+          this.setState({
+            doc: URL.createObjectURL(img)
+          });
+        }
+      };
 
 
       async handleSubmit(e) {
@@ -112,9 +153,9 @@ export class Portfolio extends Component {
 
         console.log(localStorage.getItem('access_token'));
 
-        this.setState({ isLoading: true });
+        this.setState({ isLoading: true, show: false });
 
-        this.setState({ [e.target.name]: e.target.value });
+       
 
         const headers = {
           "Content-Type": "application/json",
@@ -122,51 +163,98 @@ export class Portfolio extends Component {
         }
 
         let formData = new FormData();
-        formData.append('file', e.target.filename.files[0]);
+        formData.append('portfolio', e.target.myImage.files[0]);
 
         //console.log(data);
 
          //Display the key/value pairs
-          // for (var pair of formData.entries()) {
-          //   console.log(pair[0]+ ', ' + pair[1]); 
-          // }
+          for (var pair of formData.entries()) {
+            console.log(pair[0]+ ', ' + pair[1]); 
+          }
 
-          alert("efef");
+         
 
 
-          // try 
-          // {
-          //     // fetch data from a url endpoint
-          //     const response = await  axios.post(`http://127.0.0.1:8000/api/addportfolio`, formData, {headers: headers});
-          //     //const response = await  axios.post(`https://lit-ridge-07527.herokuapp.com/api/addeducation`, data, {headers: headers});
+          try 
+          {
+              // fetch data from a url endpoint
+              const response = await  axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/addportfolio`, formData, {headers: headers});
+              //const response = await  axios.post(`https://lit-ridge-07527.herokuapp.com/api/addeducation`, data, {headers: headers});
               
-          //     console.log(response);
+              console.log(response);
 
-          //     //this.setState({ educations: response.data.educations, loading: false, show: false });
+              //this.setState({ educations: response.data.educations, loading: false, show: false });
 
-          //     //window.location.href = "/user-dashboard-education";
+              window.location.href = "/user-dashboard-portfolio";
 
-          //     //this.props.history.push("/user-dashboard-education");
+              //this.props.history.push("/user-dashboard-portfolio");
 
-          //     // console.log(response.data.expe[0]);
+              // console.log(response.data.expe[0]);
 
-          // } 
-          // catch(error) 
-          // {
-          //   // console.log("error", error);
-          //   // appropriately handle the error
-          //   console.log(error.response);
-          // }
+          } 
+          catch(error) 
+          {
+            // console.log("error", error);
+            // appropriately handle the error
+            console.log(error.response);
+          }
 
+      
+    }
+
+
+
+    async handleSubmit2(e) {
+      // Form submission logic
+      e.preventDefault();
+
+      this.setState({ isLoading: true, show2: false });
+     
+
+      const headers = {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
       }
 
+      let formData = new FormData();
+      formData.append('document', e.target.myImage2.files[0]);
+
+      //console.log(data);
+
+       //Display the key/value pairs
+        // for (var pair of formData.entries()) {
+        //   console.log(pair[0]+ ', ' + pair[1]); 
+        // }
+
+       
 
 
-      onDrop(picture) {
-        this.setState({
-            pictures: this.state.pictures.concat(picture),
-        });
-    }
+        try 
+        {
+            // fetch data from a url endpoint
+            const response = await  axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/adddocument`, formData, {headers: headers});
+            //const response = await  axios.post(`https://lit-ridge-07527.herokuapp.com/api/addeducation`, data, {headers: headers});
+            
+            console.log(response);
+
+            //this.setState({ educations: response.data.educations, loading: false, show: false });
+
+            window.location.href = "/user-dashboard-portfolio";
+
+            //this.props.history.push("/user-dashboard-portfolio");
+
+            // console.log(response.data.expe[0]);
+
+        } 
+        catch(error) 
+        {
+          // console.log("error", error);
+          // appropriately handle the error
+          console.log(error.response);
+        }
+
+    
+  }
 
 
 
@@ -192,40 +280,51 @@ export class Portfolio extends Component {
                       <div className="portfolio-header-container">
                         <div className="edu-update-button-container">
                           <button onclick="ShowEducationForm()" className="edu-update-button" onClick={this.showModal}>+ Add Image</button> 
-                          <button onclick="ViewBio(); return false;" className="bio-button"> View Bio </button>
+                          <button onClick={this.viewBio} className="bio-button"> View Bio </button>
                         </div>      
                       </div> 
                       <div className="porfolio-container-images" align="center">
-                        {/*button onclick="" class="delete-image-button">
-                          <img class="image-button" src="Images/User%20Profile/add%20image.png">
-                          </button*/}
-                        <a className="image-padding" href="assets/Images/User%20Profile/sample%20image.jpg" target="_blank"><img className="image" src="assets/Images/User%20Profile/sample%20image.jpg" /></a>
-                        <a className="image-padding" href="assets/Images/User%20Profile/sample%20image.jpg" target="_blank"><img className="image" src="assets/Images/User%20Profile/sample%20image.jpg" /></a>
-                        <a className="image-padding" href="assets/Images/User%20Profile/sample%20image.jpg" target="_blank"><img className="image" src="assets/Images/User%20Profile/sample%20image.jpg" /></a>
-                        <a className="image-padding" href="assets/Images/User%20Profile/sample%20image.jpg" target="_blank"><img className="image" src="assets/Images/User%20Profile/sample%20image.jpg" /></a>
-                        <a className="image-padding" href="assets/Images/User%20Profile/sample%20image.jpg" target="_blank"><img className="image" src="assets/Images/User%20Profile/sample%20image.jpg" /></a>  
-                        <a className="image-padding" href="assets/Images/User%20Profile/sample%20image.jpg" target="_blank"><img className="image" src="assets/Images/User%20Profile/sample%20image.jpg" /></a>
-                        <a className="image-padding" href="assets/Images/User%20Profile/sample%20image.jpg" target="_blank"><img className="image" src="assets/Images/User%20Profile/sample%20image.jpg" /></a>
-                        <a className="image-padding" href="assets/Images/User%20Profile/sample%20image.jpg" target="_blank"><img className="image" src="assets/Images/User%20Profile/sample%20image.jpg" /></a>
+
+
+                      {this.state.loading || !this.state.portfolios ? 
+                          <div>Loading</div> :
+                          (
+                          <div>
+                 
+                        { this.state.portfolios.map(portfolio =>
+                       
+                        <a className="image-padding" target="_blank"><img className="image img-thumbnail" src={`https://sheltered-chamber-63274.herokuapp.com/uploads/userportfolios/images/${portfolio.image}`} width="100%"/></a>
+                        )
+                      }
+                      </div>
+
+                      )}   
                       </div>
                       <div className="portfolio-header-container">
                         <div className="edu-update-button-container">
-                          <button onclick="ShowEducationForm()" className="edu-update-button">+ Add Document</button>
-                          <button onclick="ViewBio(); return false;" className="bio-button"> View Bio </button>
+                          <button onclick="ShowEducationForm()" className="edu-update-button" onClick={this.showModal2}>+ Add Document</button>
+                          <button onClick={this.viewBio} className="bio-button"> View Bio </button>
                         </div>         
                       </div> 
                       <div className="porfolio-container-documents" align="center">
-                        {/*button onclick="" class="delete-image-button">
-                          <img class="image-button" src="Images/.png">
-                          </button*/}    
-                        <a className="image-padding" href><img className="image" src="assets/Images/User%20Profile/sample%20document.jpg" /></a>
-                        <a className="image-padding" href><img className="image" src="assets/Images/User%20Profile/sample%20document.jpg" /></a>    
-                        <a className="image-padding" href><img className="image" src="assets/Images/User%20Profile/sample%20document.jpg" /></a>
-                        <a className="image-padding" href><img className="image" src="assets/Images/User%20Profile/sample%20document.jpg" /></a>
-                        <a className="image-padding" href><img className="image" src="assets/Images/User%20Profile/sample%20document.jpg" /></a>
-                        <a className="image-padding" href><img className="image" src="assets/Images/User%20Profile/sample%20document.jpg" /></a>
-                        <a className="image-padding" href><img className="image" src="assets/Images/User%20Profile/sample%20document.jpg" /></a>
-                        <a className="image-padding" href><img className="image" src="assets/Images/User%20Profile/sample%20document.jpg" /></a>
+                           
+                        {/* <a className="image-padding" href>
+                          <img className="image" src="assets/Images/User%20Profile/sample%20document.jpg" />
+                          </a> */}
+
+
+                          {this.state.loading || !this.state.documents ? 
+                          <div>Loading</div> :
+                          (
+                          <div>
+                 
+                        { this.state.documents.map(document =>
+                       
+                        <a className="image-padding" target="_blank"><img className="image img-thumbnail" src={`https://sheltered-chamber-63274.herokuapp.com/uploads/userportfolios/documents/${document.doc}`} width="100%"/></a>
+                        )
+                          }
+                          </div>
+                         )}  
                       </div>
                       <div className="online-links-container">
                         <div className="link-cont-2">
@@ -280,15 +379,28 @@ export class Portfolio extends Component {
                    <form onSubmit={this.handleSubmit}>
 
 
-                        {/* <div className="custom-file ">
-                          <input type="file" className="custom-file-input" id="customFile" onChange={this.handleImageChange} value={this.state.filename} name="filename"/>
-                          <label className="custom-file-label" htmlFor="customFile">Choose file</label>
-                        </div> */}
+                              
 
-                          <input type="file" onChange={this.handleImageChange} value={this.state.filename} name="filename" />
+                              <div className="row mt-2">
+                                <div className="col-md-4 mx-auto">
+                                      <img src={this.state.image} width="100%" /> 
+                                </div>
+                              </div>
+
+                              
+
+                                
+                                  <input type="file" name="myImage" onChange={this.onImageChange} required/>
+                                 
+
+
+
+                             
+
+                                
 
                         <div className="mt-4 text-center">
-                             <button type="button" class="btn btn-primary">Upload</button>
+                             <button type="submit" class="btn btn-primary">Upload</button>
                         </div>
 
                         
@@ -300,6 +412,65 @@ export class Portfolio extends Component {
                </Modal>
 
               {/* Modal */}
+
+
+
+                 {/* Modal */}
+
+
+            <Modal
+               
+               //  size="sm"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+                show={this.state.show2} handleClose={this.hideModal2}>
+                <Modal.Header className="modal-header py-2 text-white" style={{background: '#70a1B9'}}>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                    <strong> Upload Document</strong>
+                    </Modal.Title>
+                    <span onClick={this.onHide2} className="close-modal-btn cursor">x</span>
+                </Modal.Header>
+                <Modal.Body>
+                    <form onSubmit={this.handleSubmit2}>
+ 
+ 
+                               
+ 
+                               <div className="row mt-2">
+                                 <div className="col-md-4 mx-auto">
+                                       <img src={this.state.doc} width="100%"  />
+ 
+                                       
+                                 </div>
+                               </div>
+ 
+                               
+ 
+                                 
+                                   <input type="file" name="myImage2" onChange={this.onDocChange} required/>
+                                  
+ 
+ 
+ 
+                              
+ 
+                                 
+ 
+                         <div className="mt-4 text-center">
+                              <button type="submit" class="btn btn-primary">Upload</button>
+                         </div>
+ 
+                         
+ 
+                   </form>
+ 
+                </Modal.Body>
+                
+                </Modal>
+ 
+               {/* Modal */}
+
+               <Footer/>
 
           </>
         )

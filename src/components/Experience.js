@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../commons/Header';
 import NavBar from '../commons/NavBar';
+import Footer from '../commons/Footer';
 import UserBio from '../commons/UserBio';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
@@ -349,6 +350,9 @@ export class Experience extends Component {
                </Modal.Body>
                
                </Modal>
+
+
+               <Footer/>
 
           </>
         )
