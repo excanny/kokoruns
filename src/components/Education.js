@@ -24,6 +24,12 @@ export class Education extends Component {
           ],
           educations: [],
           user: [],
+          show_pro_skill: false,
+          pro_skill: '',
+          proskills: [],
+          show_other_skill: false,
+          other_skill: '',
+          otherskills: [],
           loading: true,
 
         };
@@ -32,7 +38,11 @@ export class Education extends Component {
         this.hideModal = this.hideModal.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmit2 = this.handleSubmit2.bind(this);
+        this.handleSubmit3 = this.handleSubmit3.bind(this);
         this.handleSkillChange = this.handleSkillChange.bind(this);
+        this.AddProfSkill = this.AddProfSkill.bind(this);
+        this.AddOtherSkill = this.AddOtherSkill.bind(this);
   
       }
 
@@ -81,6 +91,18 @@ export class Education extends Component {
       }
 
 
+      AddProfSkill(e)
+      {
+        this.setState({ show_pro_skill: true });
+      }
+
+
+      AddOtherSkill(e)
+      {
+        this.setState({ show_other_skill: true });
+      }
+
+
       async componentDidMount() {
 
         const headers = {
@@ -88,30 +110,41 @@ export class Education extends Component {
           'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
         }
 
-    
-          try 
-          {
-              // fetch data from a url endpoint
-              const response = await  axios.get(`https://sheltered-chamber-63274.herokuapp.com/api/educations`, {headers: headers});
 
-              //console.log(response.data.educations);
+          let one = "https://sheltered-chamber-63274.herokuapp.com/api/educations"
+          let two = "https://sheltered-chamber-63274.herokuapp.com/api/proskills";
+          let three = "https://sheltered-chamber-63274.herokuapp.com/api/otherskills"
+          
+          const requestOne = axios.get(one, {headers: headers});
+          const requestTwo = axios.get(two, {headers: headers});
+          const requestThree = axios.get(three, {headers: headers});
+          
+          axios.all([
+            requestOne, 
+            requestTwo, 
+            requestThree
+          ]).then(axios.spread((...responses) => {
+            const responseOne = responses[0]
+            const responseTwo = responses[1]
+            const responseThree = responses[2]
+            // use/access the results 
 
-              this.setState({ educations: response.data.educations, loading: false });
+            this.setState({ educations: responseOne.data.educations, proskills: responseTwo.data.proskills, otherskills: responseThree.data.otherskills, loading: false });
 
-            console.log(response);
+            console.log(responseThree);
 
-          } 
-          catch(error) 
-          {
-            console.log("error", error);
-            // appropriately handle the error
-          }
+
+          })).catch(errors => {
+            // react on errors.
+            console.log(errors);
+          });
     
       }
 
 
       handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
+        //console.log(this.state);
       }
 
 
@@ -145,6 +178,95 @@ export class Education extends Component {
               console.log(response);
 
               this.setState({ educations: response.data.educations, loading: false, show: false });
+
+              window.location.href = "/user-dashboard-education";
+
+              //this.props.history.push("/user-dashboard-education");
+
+              // console.log(response.data.expe[0]);
+
+          } 
+          catch(error) 
+          {
+            // console.log("error", error);
+            // appropriately handle the error
+            console.log(error.response);
+          }
+
+      }
+
+
+
+      async handleSubmit2(e) {
+        // Form submission logic
+        e.preventDefault();
+
+        this.setState({ show_pro_skill: false });
+
+
+        const headers = {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
+        }
+
+        const data = { pro_skill: this.state.pro_skill };  
+
+        //console.log(data);
+
+
+          try 
+          {
+              // fetch data from a url endpoint
+              //const response = await  axios.post(`http://127.0.0.1:8000/api/addeducation`, data, {headers: headers});
+              const response = await  axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/addproskill`, data, {headers: headers});
+              
+              console.log(response);
+
+
+              window.location.href = "/user-dashboard-education";
+
+              //this.props.history.push("/user-dashboard-education");
+
+              // console.log(response.data.expe[0]);
+
+          } 
+          catch(error) 
+          {
+            // console.log("error", error);
+            // appropriately handle the error
+            console.log(error.response);
+          }
+
+      }
+
+
+
+
+      async handleSubmit3(e) {
+        // Form submission logic
+        e.preventDefault();
+
+        this.setState({ show_other_skill: false });
+
+
+        const headers = {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
+        }
+
+        const data = { other_skill: this.state.other_skill };  
+
+        //console.log(data);
+
+
+          try 
+          {
+              // fetch data from a url endpoint
+              //const response = await  axios.post(`http://127.0.0.1:8000/api/addeducation`, data, {headers: headers});
+              const response = await  axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/addotherskill`, data, {headers: headers});
+              
+              console.log(response);
+
 
               window.location.href = "/user-dashboard-education";
 
@@ -238,50 +360,81 @@ export class Education extends Component {
 
                       <div className="skills-container">
                         <div className="skills-cont-2">
-                          <h2 className="professional-label">Professional Skills</h2>    
-                          <div className="skill-padding"><div className="skill">Numerical Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Creative Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Design Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Legal knowledge&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Communication Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Team working Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Commercial Awareness&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Artistic Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Problem Solving Skills&nbsp;<button className="delete-skill-button">x</button></div></div>   
-                          <div id="add-skill-prof" className="skill-padding">
-                            <button onclick="AddProfSkill()" className="add-skill-button">Add skill +</button></div> 
-                          <div id="form-div-prof" className="form-div">
-                            <form className="add-skill-form">
-                              <input className="skills-input" type="text" id="skill-input-prof" />&nbsp;
+                          <h2 className="professional-label">Professional Skills
+                          <button onClick={this.AddProfSkill} className="add-skill-button bg-danger">Add skill +</button>
+                          
+                          </h2>    
+                          {this.state.show_pro_skill ?
+
+                          <div id="form-div-prof" className="form-divx">
+                            <form className="add-skill-form" onSubmit={this.handleSubmit2}>
+                              <input className="form-control" type="text" id="skill-input-prof" name="pro_skill" value={this.state.pro_skill} onChange={this.handleChange}/>&nbsp;
                               <button onclick="CancelAddProfSkill()" className="cancel-add-skill">Cancel</button>
-                              <button onclick="FinishAddProfSkill()" className="finish-add-skill">Done</button>
+                              <button type="submit" className="finish-add-skill bg-success">Save</button>
                             </form>
-                          </div>   
+                          </div>
+                          :
+                          null
+                          } 
+
+
+                        {this.state.loading || !this.state.proskills ? 
+                          <div>Loading</div> :
+                          (
+                          <div>
+                 
+                        { this.state.proskills.map(proskill =>
+                       
+                       <div className="skill-padding mt-3"><div className="skill">{proskill.pro_skill} &nbsp;<button className="delete-skill-button">x</button></div></div>
+                       
+                        )
+                          }
+                          </div>
+                         )}  
+
+                         
+                          
+                         
+
+                           
                         </div>
                       </div>
 
 
-                      <div className="skills-container mt-5">
+                      <div className="skills-container mt-5 mb-5">
                         <div className="skills-cont-2">
-                          <h2 className="other-label">Other Skills</h2>    
-                          <div className="skill-padding"><div className="skill">Numerical Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Creative Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Design Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Legal knowledge&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Communication Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Team working Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Commercial Awareness&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Artistic Skills&nbsp;<button className="delete-skill-button">x</button></div></div>
-                          <div className="skill-padding"><div className="skill">Problem Solving Skills&nbsp;<button className="delete-skill-button">x</button></div></div>   
-                          <div id="add-skill-other" className="skill-padding">
-                            <button onclick="AddOtherSkill()" className="add-skill-button">Add skill +</button></div> 
-                          <div id="form-div-other" className="form-div">
-                            <form className="add-skill-form">
-                              <input className="skills-input" type="text" id="skill-input-other" />&nbsp;
-                              <button onclick="CancelAddOtherSkill()" className="cancel-add-skill">Cancel</button>
-                              <button onclick="FinishAddOtherSkill()" className="finish-add-skill">Done</button>
-                            </form>
-                          </div>
+                          <h2 className="other-label">Other Skills  <button onClick={this.AddOtherSkill} className="add-skill-button bg-danger">Add skill +</button></h2>    
+                          {this.state.show_other_skill ?
+
+                            <div id="form-div-other" className="form-divx">
+                              <form className="add-skill-form" onSubmit={this.handleSubmit3}>
+                                <input className="form-control" type="text" id="skill-input-other" name="other_skill" value={this.state.other_skill} onChange={this.handleChange}/>&nbsp;
+                                <button onclick="CancelAddOtherSkill()" className="cancel-add-skill">Cancel</button>
+                                <button className="finish-add-skill bg-success">Save</button>
+                              </form>
+                            </div>
+                            :
+                            null
+                              }
+
+
+
+                      {this.state.loading || !this.state.otherskills ? 
+                          <div>Loading</div> :
+                          (
+                          <div>
+                 
+                        { this.state.otherskills.map(otherskill =>
+
+
+                          <div className="skill-padding mt-3"><div className="skill">{otherskill.other_skill}&nbsp;<button className="delete-skill-button">x</button></div></div>
+                          
+                          )
+                        }
+                        </div>
+                       )}  
+
+                     
                         </div>
                       </div>
                     </div>

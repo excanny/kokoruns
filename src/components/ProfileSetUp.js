@@ -166,7 +166,7 @@ export class ProfileSetUp extends Component {
        <Header/>
 
 
-        <section id="UserInfoContainer" className="user-info-container">  
+        {/* <section id="UserInfoContainer" className="user-info-container">  
 
               <form onSubmit={this.handleSubmit}>
                 <div id="rounded-corner" align="center" className="form-table">
@@ -214,7 +214,7 @@ export class ProfileSetUp extends Component {
                       {/*div align="left" class="h3-label"><div style="padding-bottom: 10px">
                     Street / Estate Name</div>
                     <input class="form-input" type="text" id="user_street/estate" name="user_street/estate" placeholder="" required>    
-                    </div*/}
+                    </div*
                       <div  className="row mt-2">
                         <div style={{paddingBottom: 10}}>
                           Academic Level<b>*</b></div>
@@ -289,7 +289,393 @@ export class ProfileSetUp extends Component {
               
               </form>
 
-        </section>
+        </section> */}
+
+
+<div align="center" className="profile-setup-form-container">
+  <form onSubmit={this.handleSubmit}>
+    <div id="rounded-corner" align="center" className="form-table">
+      <div align="left" className="form-header">Profile Setup</div>
+      <div className="profile-setup-body" align="center">
+        <div className="duo">
+          <div align="left" className="h3-label">
+            <div style={{paddingBottom: 5}}>
+              First Name<b>*</b></div>
+            <input className="form-input" type="text" id="first_name" name="first_name" value={this.state.first_name} onChange={this.handleChange} required />  
+          </div>  
+          <div align="left" className="h3-label">
+            <div style={{paddingBottom: 5}}>
+              Last Name (Surname)<b>*</b></div>
+            <input className="form-input" type="text" id="last_name" name="last_name" value={this.state.last_name} onChange={this.handleChange} required />    
+          </div>
+        </div> 
+        <div className="duo">
+          <div align="left" className="h3-label">
+            <div style={{paddingBottom: 10}}>
+              Current Location<b>*</b></div>
+                    <select value={this.state.selectedState} onChange={this.changeState} className="form-select">
+                          <option>Select State</option>
+                          {this.state.states.map((e, key) => {
+                              return <option key={key}>{e.name}</option>;
+                          })}
+                      </select>
+          </div>
+          <div align="left" className="h3-label">
+            <div style={{paddingBottom: 10}}>
+              &nbsp;&nbsp;</div>            
+              <select value={this.state.selectedLGA} onChange={this.changeLGA} className="form-select">
+                  <option>Select LGA</option>
+                      {this.state.lgas.map((e, key) => {
+                          return <option key={key}>{e.name}</option>;
+                      })}
+              </select>
+          </div>    
+        </div>
+        <div className="duo">
+          <div align="left" className="h3-label">
+            <div style={{paddingBottom: 5}}>
+              Email</div>
+            <input className="form-input" type="email" id="user_email" name="user_email" value={this.state.user_email} onChange={this.handleChange} required />
+          </div>
+          <div align="left" className="h3-label">
+            <div style={{paddingBottom: 5}}>
+              Phone Number<b>*</b></div>
+            <input className="form-input" type="text" id="user_phonenum" name="user_phonenum" value={this.state.user_phonenum} onChange={this.handleChange} required />      
+          </div>
+        </div>
+        {/*div align="left" class="h3-label"><div style="padding-bottom: 10px">
+      Street / Estate Name</div>
+      <input class="form-input" type="text" id="user_street/estate" name="user_street/estate" placeholder="" required>    
+      </div*/}
+        <div className="duo">
+          <div align="left" className="h3-label">
+            <div style={{paddingBottom: 5}}>
+              Profession<b>*</b></div>
+            {/* <select className="form-select" id="employment_status" name="employment_status" required>
+              <option value={0} />
+            </select>     */}
+             <input type="text" className="form-select" name="profession_or_craft" id="profession_or_craft" value={this.state.profession_or_craft} onChange={this.handleChange} autoComplete="off" /> 
+          </div>
+          <div align="left" className="h3-label">
+            <div style={{paddingBottom: 5}}>
+              Academic Level<b>*</b></div>
+              <select name="educational_qualification" id className="form-select" value={this.state.educational_qualification} onChange={this.handleChange} required>
+                <option value>Select one</option>
+                <option value="None">None</option>
+                <option value="First School Leaving Certificate">First School Leaving Certificate</option>
+                <option value="Junior Secondary School Certificate">Junior Secondary School Certificate</option>
+                <option value="Senior Secondary School Certificate">Senior Secondary School Certificate</option>
+                <option value="National Certificate of Education">National Certificate of Education</option>
+                <option value="Ordinary National Diploma">Ordinary National Diploma</option>
+                <option value="Higher National Diploma">Higher National Diploma</option>
+                <option value="Bachelor's Degree">Bachelor's Degree</option>
+                <option value="Master's Degree">Master's Degree</option>
+                <option value="Doctorate's Degree">Doctorate's Degree</option>
+              </select>     
+          </div> 
+        </div>   
+        <div className="duo">
+          <div align="left" className="h3-label">
+            <div style={{paddingBottom: 5}}>
+              Gender<b>*</b></div>
+            <select className="form-select" id="gender" name="gender" required>
+              <option value="">Select:</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>    
+          </div>
+          <div align="left" className="h3-label">
+            <div style={{paddingBottom: 5}}>
+              Marital Status<b>*</b></div>
+            <select className="form-select" id="marital_status" name="marital_status" value={this.state.marital_status} onChange={this.handleChange} required>
+              <option value="">Select:</option>
+              <option value="Married">Married</option>
+              <option value="Single">Single</option>
+              <option value="None">None</option>
+            </select>    
+          </div> 
+        </div>   
+        <div align="left" className="h3-label">
+          <div style={{paddingBottom: 5}}>
+            Current Employer</div>
+          <input className="form-input" type="text" id="current_employer" name="current_employer" value={this.state.current_employer} onChange={this.handleChange}  required />    
+        </div>
+        <div align="left" className="h3-label-radio">
+          <div style={{paddingBottom: 5}}>
+            Disabled<b>*</b></div>
+          <div style={{columnCount: 2, columnWidth: '50%'}}>
+            <div>
+              <input type="radio" id="employment_status" name="employment_status" required /><label>&nbsp;&nbsp;Yes</label>
+            </div>
+            <div>
+              <input type="radio" id="age-range" name="age-range" required /><label>&nbsp;&nbsp;No</label>
+            </div> 
+          </div>
+        </div>
+        <div align="left" className="h3-label">
+          <div style={{paddingBottom: 5}}>
+            I Speak <b>(max 5)</b></div>
+          <select className="form-select" id="language" name="language" required>
+            <option value={0}>Select:</option>
+            <option value={1}>English</option>
+            <option value={2}>Yoruba</option>
+            <option value={3}>Igbo</option>
+            <option value={4}>Pidgin English</option>
+            <option value={5}>French</option>
+            <option value={6}>Tiv</option>
+            <option value={7}>Kanuri</option>
+            <option value={8}>Fulfulde</option>
+            <option value={9}>Efik-Ibibio</option>
+            <option value={10}>Ijaw</option>
+            <option value={11}>Urhobo</option>
+            <option value={12}>Sign Language (English)</option>
+            <option value={13}>Sign Language (Hausa)</option>
+            <option value={14}>Edo</option>
+            <option value={15}>Igala</option>
+            <option value={16}>Nupe-Ebira</option>
+            <option value={17}>Izon</option>
+            <option value={18}>Birom</option>
+            <option value={19}>Idoma</option>
+            <option value={20}>Itsekiri</option>
+            <option value={21}>British English</option>
+            <option value={22}>Spanish</option>
+            <option value={23}>Mandarin</option>
+          </select>
+          <select id="prof1" className="form-select" name="language" required>
+            <option value={0}>Select:</option>
+            <option value={1}>English</option>
+            <option value={2}>Yoruba</option>
+            <option value={3}>Igbo</option>
+            <option value={4}>Pidgin English</option>
+            <option value={5}>French</option>
+            <option value={6}>Tiv</option>
+            <option value={7}>Kanuri</option>
+            <option value={8}>Fulfulde</option>
+            <option value={9}>Efik-Ibibio</option>
+            <option value={10}>Ijaw</option>
+            <option value={11}>Urhobo</option>
+            <option value={12}>Sign Language (English)</option>
+            <option value={13}>Sign Language (Hausa)</option>
+            <option value={14}>Edo</option>
+            <option value={15}>Igala</option>
+            <option value={16}>Nupe-Ebira</option>
+            <option value={17}>Izon</option>
+            <option value={18}>Birom</option>
+            <option value={19}>Idoma</option>
+            <option value={20}>Itsekiri</option>
+            <option value={21}>British English</option>
+            <option value={22}>Spanish</option>
+            <option value={23}>Mandarin</option>
+          </select>
+          <select id="prof2" className="form-select" name="language" required>
+            <option value={0}>Select:</option>
+            <option value={1}>English</option>
+            <option value={2}>Yoruba</option>
+            <option value={3}>Igbo</option>
+            <option value={4}>Pidgin English</option>
+            <option value={5}>French</option>
+            <option value={6}>Tiv</option>
+            <option value={7}>Kanuri</option>
+            <option value={8}>Fulfulde</option>
+            <option value={9}>Efik-Ibibio</option>
+            <option value={10}>Ijaw</option>
+            <option value={11}>Urhobo</option>
+            <option value={12}>Sign Language (English)</option>
+            <option value={13}>Sign Language (Hausa)</option>
+            <option value={14}>Edo</option>
+            <option value={15}>Igala</option>
+            <option value={16}>Nupe-Ebira</option>
+            <option value={17}>Izon</option>
+            <option value={18}>Birom</option>
+            <option value={19}>Idoma</option>
+            <option value={20}>Itsekiri</option>
+            <option value={21}>British English</option>
+            <option value={22}>Spanish</option>
+            <option value={23}>Mandarin</option>
+          </select>
+          <select id="prof3" className="form-select" name="language" required>
+            <option value={0}>Select:</option>
+            <option value={1}>English</option>
+            <option value={2}>Yoruba</option>
+            <option value={3}>Igbo</option>
+            <option value={4}>Pidgin English</option>
+            <option value={5}>French</option>
+            <option value={6}>Tiv</option>
+            <option value={7}>Kanuri</option>
+            <option value={8}>Fulfulde</option>
+            <option value={9}>Efik-Ibibio</option>
+            <option value={10}>Ijaw</option>
+            <option value={11}>Urhobo</option>
+            <option value={12}>Sign Language (English)</option>
+            <option value={13}>Sign Language (Hausa)</option>
+            <option value={14}>Edo</option>
+            <option value={15}>Igala</option>
+            <option value={16}>Nupe-Ebira</option>
+            <option value={17}>Izon</option>
+            <option value={18}>Birom</option>
+            <option value={19}>Idoma</option>
+            <option value={20}>Itsekiri</option>
+            <option value={21}>British English</option>
+            <option value={22}>Spanish</option>
+            <option value={23}>Mandarin</option>
+          </select>
+          <select id="prof4" className="form-select" name="language" required>
+            <option value={0}>Select:</option>
+            <option value={1}>English</option>
+            <option value={2}>Yoruba</option>
+            <option value={3}>Igbo</option>
+            <option value={4}>Pidgin English</option>
+            <option value={5}>French</option>
+            <option value={6}>Tiv</option>
+            <option value={7}>Kanuri</option>
+            <option value={8}>Fulfulde</option>
+            <option value={9}>Efik-Ibibio</option>
+            <option value={10}>Ijaw</option>
+            <option value={11}>Urhobo</option>
+            <option value={12}>Sign Language (English)</option>
+            <option value={13}>Sign Language (Hausa)</option>
+            <option value={14}>Edo</option>
+            <option value={15}>Igala</option>
+            <option value={16}>Nupe-Ebira</option>
+            <option value={17}>Izon</option>
+            <option value={18}>Birom</option>
+            <option value={19}>Idoma</option>
+            <option value={20}>Itsekiri</option>
+            <option value={21}>British English</option>
+            <option value={22}>Spanish</option>
+            <option value={23}>Mandarin</option>
+          </select>
+          <button id="profbutton1" align="left" className="add-professions-button" onclick="ProfessionButton1(); return false;">
+            Add Language +    
+          </button>
+          <button id="profbutton2" align="left" className="add-professions-button" onclick="ProfessionButton2(); return false;">
+            Add Language +    
+          </button>
+          <button id="profbutton3" align="left" className="add-professions-button" onclick="ProfessionButton3(); return false;">
+            Add Language +    
+          </button>
+          <button id="profbutton4" align="left" className="add-professions-button" onclick="ProfessionButton4(); return false;">
+            Add Language +    
+          </button>
+        </div>
+        <div align="left" className="h3-label">
+          <div style={{paddingBottom: 5}}>
+            Other Professions<b>*</b></div>
+          <select className="form-select" id="profession_or_craft" name="profession_or_craft" required>
+            <option value={0} />
+          </select>
+          <select id="prof1" className="form-select" name="profession_or_craft" required>
+            <option value={0} />
+          </select>
+          <select id="prof2" className="form-select" name="profession_or_craft" required>
+            <option value={0} />
+          </select>
+          <select id="prof3" className="form-select" name="profession_or_craft" required>
+            <option value={0} />
+          </select>
+          <select id="prof4" className="form-select" name="profession_or_craft" required>
+            <option value={0} />
+          </select>
+          <button id="profbutton1" align="left" className="add-professions-button" onclick="ProfessionButton1(); return false;">
+            Add Profession +    
+          </button>
+          <button id="profbutton2" align="left" className="add-professions-button" onclick="ProfessionButton2(); return false;">
+            Add Profession +    
+          </button>
+          <button id="profbutton3" align="left" className="add-professions-button" onclick="ProfessionButton3(); return false;">
+            Add Profession +    
+          </button>
+          <button id="profbutton4" align="left" className="add-professions-button" onclick="ProfessionButton4(); return false;">
+            Add Profession +    
+          </button>
+        </div>
+        <div className="duo">
+          <div align="left" className="h3-label">
+            <div style={{paddingBottom: 10}}>
+              Employment Type</div>
+            <select className="form-select" id="job_preference" name="job_preference" required>
+              <option value={0}>Full-time</option>
+              <option value={1}>Part-time</option>
+              <option value={2}>Temporary</option>
+              <option value={3}>Volunteer</option>
+              <option value={4}>Contract</option>
+              <option value={5}>Internship</option>
+              <option value={6}>Apprentice/Trainee</option>
+            </select>
+          </div>
+          <div align="left" className="h3-label">
+            <div style={{paddingBottom: 10}}>
+              Present Employment Status</div>
+            <select className="form-select" onchange="ShowEmployerInput(); return false;" id="EmploymentStatusInput" name="employment_status" required>
+              <option id value={0}>Select:</option>
+              <option id value={1}>Available for Employment</option>
+              <option id value={2}>Business Owner</option>
+              {/*script>
+     function ShowEmployerInput() {
+         var x = document.getElementById("EmploymentStatusInput").value;
+         if(x == 2){
+          document.getElementById("CompBrandInput").style.display="grid";  
+         }
+         else if(x == 4) {
+          document.getElementById("CompBrandInput2").style.display="grid";   
+         }
+         
+         else {
+           document.getElementById("CompBrandInput").style.display="none";    
+           
+          document.getElementById("CompBrandInput2").style.display="none";    
+         }
+     }
+          
+          
+      </script*/}
+            </select>    
+          </div>
+        </div>
+        <div id="CompBrandInput" align="left" className="h3-label">
+          <div style={{paddingBottom: 10}}>
+            Employer (Company / Brand)<b>*</b></div>
+          <input className="form-input" type="text" id="user_street/estate" name="user_street/estate" placeholder required />   
+        </div> 
+        <div id="CompBrandInput2" align="left" className="h3-label">
+          <div style={{paddingBottom: 10}}>
+            Company / Business Name<b>*</b></div>
+          <input className="form-input" type="text" id="user_street/estate" name="user_street/estate" placeholder required />   
+        </div>           
+        <br />
+        <div className="duo">
+          <div align="left" className="h3-label">
+            <div style={{paddingBottom: 10}}>
+              Prefered Location</div>
+            <select className="form-select" id="user_state" name="user_state" required>
+              <option value={0}>Select State:</option>
+            </select>
+          </div>
+          <div align="left" className="h3-label">
+            <div style={{paddingBottom: 10}}>
+              &nbsp;&nbsp;</div>            
+            <select className="form-select" id="user_lga" name="user_lga" required>
+              <option value={0}>Select LGA:</option>
+            </select>
+          </div>    
+        </div>
+        <div align="left" className="h3-label">
+          <div style={{paddingBottom: 10}}>
+            About</div>
+          <textarea className="form-textarea" id="job_preference" name="job_preference" required defaultValue={"                                \n                          "} />
+        </div>
+      </div> 
+      <div colSpan={2} align="center">
+        <br />
+        <button type className="profile-setup-proceed-button" id>Proceed</button>
+        <br />
+        <p>
+          <a className="back-to-home" href="index.html">Back to Home</a></p>
+      </div>
+    </div>
+  </form>
+</div>
+
 
 
         <Footer/>  

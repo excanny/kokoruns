@@ -75,24 +75,6 @@ export class Portfolio extends Component {
           'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
         }
 
-    
-          // try 
-          // {
-          //     // fetch data from a url endpoint
-          //     const response = await  axios.get(`https://sheltered-chamber-63274.herokuapp.com/api/portfolios`, {headers: headers});
-
-          //     console.log(response.data.portfolios);
-
-          //    this.setState({ portfolios: response.data.portfolios, loading: false });
-
-          //     // console.log(response.data.expe[0]);
-
-          // } 
-          // catch(error) 
-          // {
-          //   console.log("error", error);
-          //   // appropriately handle the error
-          // }
 
           let one = "https://sheltered-chamber-63274.herokuapp.com/api/portfolios"
           let two = "https://sheltered-chamber-63274.herokuapp.com/api/documents";
