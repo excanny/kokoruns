@@ -410,33 +410,40 @@ export class Dashboard extends Component {
               </div> 
               {/*USER DP SCRIPT*/}   
                 <div>
-                    <label className="bio-info-label-reco"><a href="#">47 Recommendations</a><br style={{lineHeight: 2.0}} />    
+                    <label className="bio-info-label-reco"><a href="#">47 Recommendations</a><br  />    
                     </label>&nbsp;
                     <br />
                     <label className="bio-info-label">{ this.state.selectedState !== null && this.jsUcfirst(this.state.selectedState)},  { this.state.selectedLGA !== null && this.jsUcfirst(this.state.selectedLGA)}   
                     </label>
-                    <br style={{lineHeight: 2.0}} />
+                    {/* <br  />
                     <label className="bio-info-label">{ this.state.email !== null && this.state.email} 
                     </label>
-                    <br style={{lineHeight: 2.0}} />    
+                    <br  />    
                     <label className="bio-info-label">{ this.state.phone !== null && this.jsUcfirst(this.state.phone)}   
-                    </label>
-                    <br style={{lineHeight: 2.0}} />
+                    </label> */}
+                    <br  />
                     <label className="bio-info-label">{ this.state.educational_qualification !== null && this.jsUcfirst(this.state.educational_qualification)}  
                     </label>
-                    <br style={{lineHeight: 2.0}} />
+                    <br  />
                     <label className="bio-info-label">{ this.state.gender !== null && this.jsUcfirst(this.state.gender)}
                     </label>
-                    <br style={{lineHeight: 2.0}} />
-                    <label className="bio-info-label">{ this.state.marital_status !== null && this.jsUcfirst(this.state.marital_status)}  
+                        , &nbsp;
+                       <label className="bio-info-label">{ this.state.marital_status !== null && this.jsUcfirst(this.state.marital_status)}  
                     </label>
-                    <br style={{lineHeight: 2.0}} />
+                    <br  />
                     <label className="bio-info-label">Current Employer:    
                     </label> 
-                    <a href="#">{ this.state.current_employer !== null && this.jsUcfirst(this.state.current_employer)}</a><br style={{lineHeight: 2.0}} /> 
-                    <label className="bio-info-label">No Disability  
-                    </label>
-                    <br style={{lineHeight: 2.0}} />
+                    <a href="#">{ this.state.current_employer !== null && this.jsUcfirst(this.state.current_employer)}</a><br  /> 
+                    
+                      
+                    { this.state.disabled === "Yes" ?
+                      <label className="bio-info-label">Disabled </label>
+                      :
+                      null
+                    }
+
+                    
+                    <br  />
                     <label className="bio-info-label"> I Speak:
                     </label>
                     <div style={{display: 'inline-block'}}>
@@ -477,7 +484,7 @@ export class Dashboard extends Component {
 
 
                     </div>
-                    <br style={{lineHeight: 2.0}} />    
+                    <br  />    
                     <label className="bio-info-label">Other Professions:
                     </label>
                     <div style={{display: 'inline-block'}}>
@@ -506,18 +513,19 @@ export class Dashboard extends Component {
                       <div className="languages">{ this.state.other_professions4 !== null && this.jsUcfirst(this.state.other_professions4)}</div>
                     }
                     </div>
-                    <br style={{lineHeight: 2.0}} />
+                    <br  />
                     <br />
-                    <label className="bio-info-label">Employment Type:   
+                    <h5>Desired Employment</h5>
+                    <label className="bio-info-label"> Type:   
                     </label> { this.state.employment_type !== null && this.jsUcfirst(this.state.employment_type)}
-                    <br style={{lineHeight: 2.0}} />
-                    <label className="bio-info-label">Present Employment Status   
+                    <br  />
+                    <label className="bio-info-label">Present Status:   
                     </label> { this.state.employment_status !== null && this.jsUcfirst(this.state.employment_status)}
-                    <br style={{lineHeight: 2.0}} />
-                    <label className="bio-info-label">Prefered Job Location   
+                    <br  />
+                    <label className="bio-info-label">Prefered Location:   
                     </label> { this.state.selectedState2 !== null && this.jsUcfirst(this.state.selectedState2)}  { this.state.selectedLGA2 !== null && this.jsUcfirst(this.state.selectedLGA2)}
-                    <br style={{lineHeight: 2.0}} />
-                    <label className="bio-info-label">About me   
+                    <br  /><br  />
+                    <label className="bio-info-label">About Me   
                     </label><br />
                     { this.state.about !== null && this.jsUcfirst(this.state.about)}
                   </div>

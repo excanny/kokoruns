@@ -24,6 +24,10 @@ export class Experience extends Component {
           roles: [
             { role_name: '' }
           ],
+          roles_edit: '',
+          roles_edit_array: [
+        
+          ],
           experiences: [],
           user: [],
           loading: true,
@@ -35,6 +39,7 @@ export class Experience extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleRoleChange = this.handleRoleChange.bind(this);
+        this.handleRoleChangeEdit = this.handleRoleChangeEdit.bind(this);
   
       }
 
@@ -51,6 +56,18 @@ export class Experience extends Component {
        
       };
 
+      handleRoleChangeEdit = (index, e) => {
+
+        const newRoles = [...this.state.roles_edit_array];
+       
+          newRoles[index].role_name = e.target.value;
+
+          this.setState({ roles_edit_array: newRoles });
+
+          //console.log(this.state.roles);
+       
+      };
+
 
       handleAddRole = (e) => {
         this.setState((prevState) => ({
@@ -60,6 +77,18 @@ export class Experience extends Component {
       handleRemoveRole = idx => () => {
         this.setState({
             roles: this.state.roles.filter((s, sidx) => idx !== sidx)
+        });
+      };
+
+
+      handleAddRoleEdit = (e) => {
+        this.setState((prevState) => ({
+          roles_edit_array: [...prevState.roles_edit_array, { role_name: "" }],}));
+      }
+    
+      handleRemoveRoleEdit = idx => () => {
+        this.setState({
+          roles_edit_array: this.state.roles_edit_array.filter((s, sidx) => idx !== sidx)
         });
       };
 
@@ -128,6 +157,8 @@ export class Experience extends Component {
     {
       this.setState({ show2: true });
 
+      console.log(id);
+
       const headers = {
         "Content-Type": "application/json",
         'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
@@ -140,8 +171,90 @@ export class Experience extends Component {
             const response = await  axios.get(`https://sheltered-chamber-63274.herokuapp.com/api/experiences/${id}`, {headers: headers});
 
             console.log(response.data.experience);
+            var start_date = response.data.experience.start;
+            var end_date = response.data.experience.end;
 
-            //this.setState({ experience: response.data.experience, loading: false });
+            var arr_start_date = start_date.split('-');
+
+            // console.log('date: ', arr_start_date[2]);
+            // console.log('month: ', arr_start_date[1]);
+            // console.log('year: ', arr_start_date[0]);
+
+
+            var arr_end_date = end_date.split('-');
+
+  
+
+            var roles_string = response.data.experience.roles;
+
+            const roles_string_array = roles_string.split(',');
+
+            
+
+            this.setState({ start_month: arr_start_date[1], start_year:  arr_start_date[0], end_month: arr_end_date[1], end_year: arr_end_date[0], company_name: response.data.experience.company_name,
+               exposition: response.data.experience.position, roles_edit: response.data.experience.roles});
+
+
+               
+              //  const newRoles = [...this.state.roles];
+
+              //  roles_string_array.map(function(role, prevState){
+
+              //       console.log(role);
+              
+              //    });
+
+
+              // const newRoles = [...this.state.roles];
+              
+              // roles_string_array.map(function(role, s ){
+       
+              
+              //   newRoles[0].role_name = role;
+
+              //   //newRoles[1].role_name = role;
+
+              //   //console.log(newRoles);
+                   
+                 
+              //  });
+
+               //console.log(roles_string_array);
+
+              
+              //  var arrayLength = roles_string_array.length;
+              //   for (var i = 1; i < arrayLength; i++) {
+              //       console.log(roles_string_array[i]);
+
+              //       const newRoles = [...this.state.roles];
+
+              //       //Do something
+
+              //       newRoles[0].role_name = roles_string_array[i];
+
+              //       console.log(newRoles);
+              //   }
+
+                
+    
+              
+           
+
+              
+                
+
+                 
+
+                 
+
+
+
+
+               
+               
+              
+
+               //console.log(this.state.roles_edit_array);
 
         
 
@@ -153,6 +266,36 @@ export class Experience extends Component {
         }
   
     }
+
+
+
+
+    async DeleteExperience(id)
+    {
+
+      const headers = {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
+      }
+
+  
+        try 
+        {
+            // fetch data from a url endpoint
+            const response = await  axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/deleteexperience/${id}/`, {headers: headers});
+
+            console.log(response);
+
+        } 
+        catch(error) 
+        {
+          console.log("error", error);
+          // appropriately handle the error
+        }
+  
+    }
+
+
 
       handleSubmit(e) {
         // Form submission logic
@@ -230,19 +373,17 @@ export class Experience extends Component {
                         </div>
 
 
-          {this.state.loading || !this.state.experiences ? 
+              { this.state.experiences ? 
 
-              
-               
                <div className="mb-5" style={{background: '#f2f2f2'}}>{
                 this.state.experiences.map(experience => 
                   
-                  
-                  
+          
                         <div className="experience-post-container mb-4">
                           <div className="exp-cont">
                             <div className="exp-cont-2">    
-                            <button onClick={e => {this.EditExperience(experience.id)} } >Edit</button> 
+                            <button onClick={e => {this.EditExperience(experience.experience_id)} } >Edit</button>
+                            <button onClick={e => {this.DeleteExperience(experience.experience_id)} } >Delete</button> 
                               <span className="exp-date">June</span>&nbsp;
                               <span className="exp-date">2013</span> -    
                               <span className="exp-date">&nbsp;January</span>&nbsp;
@@ -478,16 +619,22 @@ export class Experience extends Component {
                        <div className="row mt-3">
                            <div className="col-sm-12 col-xs-12">
                            <label className="roles-and-respon-label mt-0 mb-0">Roles&nbsp;and&nbsp;Responsibilities</label>
-                           <div id="roles_div">
-                           </div>
-                          
-                           {this.state.roles.map((role, index) => (
+                         
+
+                              {
+                              this.state.roles_edit.split(",").map(entry =>
+                    
+                                <input type="text" className="position form-control rounded-0 mb-3" value={entry} name="roles[]" />
+                              )}
+
+
+                            {this.state.roles_edit_array.map((role, index) => (
                                <div key={index}>
 
-                                   <div className="input-group mb-3">
-                                   <input type="text" className="position form-control rounded-0" value={role.role_name} onChange={e => this.handleRoleChange(index, e)} name="roles[]" />
+                                   <div className="input-group mb-1">
+                                     <input type="text" className="position form-control rounded-0 mt-1" value={role.role_name} onChange={e => this.handleRoleChangeEdit(index, e)} name="roles[]" />
                                    <div className="input-group-append">
-                                       <button className="btn btn-danger rounded-0" type="button" onClick={this.handleRemoveRole(index)}> x </button>
+                                       <button className="btn btn-danger rounded-0 mt-1" type="button" onClick={this.handleRemoveRoleEdit(index)}> x </button>
                                    </div>
                                    </div>
 
@@ -501,11 +648,11 @@ export class Experience extends Component {
                        <div id="input-area3" className="row pt-2">
                        </div> 
                        <div id="add-btn3" className="add-tag-button-div mb-3">   
-                           <button type="button" onClick={this.handleAddRole} className="add-tag-button" style={{border: '1px solid #90EE90', color: '#90EE90', background: '#fff', borderRadius: 5}}>+ Add More</button>
+                           <button type="button" onClick={this.handleAddRoleEdit} className="add-tag-button mt-1" style={{border: '1px solid #90EE90', color: '#90EE90', background: '#fff', borderRadius: 5}}>+ Add More</button>
                        </div> 
                        {/* Modal footer */}
                        <div className="py-1 text-right">
-                           <button type="submit" className="btn btn-success">Create</button>
+                           <button type="submit" className="btn btn-success">Update</button>
                        </div>
                        </form>
 

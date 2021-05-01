@@ -131,7 +131,7 @@ export class Education extends Component {
 
             this.setState({ educations: responseOne.data.educations, proskills: responseTwo.data.proskills, otherskills: responseThree.data.otherskills, loading: false });
 
-            console.log(responseThree);
+            console.log(responseOne);
 
 
           })).catch(errors => {
@@ -322,7 +322,7 @@ export class Education extends Component {
                     </div>
                   </section>
 
-            {this.state.loading || !this.state.educations ?
+            {this.state.educations.length > 0 ?
                
                <div>
                  
@@ -361,7 +361,7 @@ export class Education extends Component {
                         <div className="exp-cont-2">    
                         
                        
-                        <p>Seems you have no educations yet. Create a new education to get started.</p>
+                        <p className="my-4">Seems you have no educations yet. Create a new education to get started.</p>
                          
                           
                         </div>       
@@ -390,9 +390,9 @@ export class Education extends Component {
                           } 
 
 
-                        {this.state.loading || !this.state.proskills ? 
-                          <div>Loading</div> :
-                          (
+                        {this.state.proskills.length > 0 ? 
+                        
+                          
                           <div>
                  
                         { this.state.proskills.map(proskill =>
@@ -402,7 +402,15 @@ export class Education extends Component {
                         )
                           }
                           </div>
-                         )}  
+                          :
+                            
+                            
+                           
+                            <p className="mt-4">Seems you have no professional skills yet. Create a new professional skill to get started.</p>
+                             
+                              
+                          
+                         }  
 
                          
                           
@@ -432,9 +440,9 @@ export class Education extends Component {
 
 
 
-                      {this.state.loading || !this.state.otherskills ? 
-                          <div>Loading</div> :
-                          (
+                      {this.state.otherskills.length > 0 ? 
+                          
+                          
                           <div>
                  
                         { this.state.otherskills.map(otherskill =>
@@ -445,7 +453,9 @@ export class Education extends Component {
                           )
                         }
                         </div>
-                       )}  
+                        :
+                        <p className="mt-4">Seems you have no other skills yet. Create a new other skill to get started.</p>
+                       }  
 
                      
                         </div>

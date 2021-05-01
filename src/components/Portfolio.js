@@ -109,7 +109,7 @@ export class Portfolio extends Component {
 
             this.setState({ portfolios: responseOne.data.portfolios, documents: responseTwo.data.documents, onlinelinks: responseThree.data.onlinelinks, loading: false });
 
-            //console.log(responseThree);
+            //console.log(responseOne);
 
 
           })).catch(errors => {
@@ -168,9 +168,9 @@ export class Portfolio extends Component {
         //console.log(data);
 
          //Display the key/value pairs
-          for (var pair of formData.entries()) {
-            console.log(pair[0]+ ', ' + pair[1]); 
-          }
+  //  `       for (var pair of formData.entries()) {
+  //           console.log(pair[0]+ ', ' + pair[1]); 
+  //         }`
 
          
 
@@ -334,9 +334,9 @@ export class Portfolio extends Component {
                       <div className="porfolio-container-images" align="center">
 
 
-                      {this.state.loading || !this.state.portfolios ? 
-                          <div>Loading</div> :
-                          (
+                      {this.state.portfolios.length > 0 ? 
+                          
+                          
                           <div>
                  
                         { this.state.portfolios.map(portfolio =>
@@ -345,8 +345,11 @@ export class Portfolio extends Component {
                         )
                       }
                       </div>
+                      :
 
-                      )}   
+                      <p>No images yet</p>
+
+                      }   
                       </div>
                       <div className="portfolio-header-container">
                         <div className="edu-update-button-container">
@@ -361,9 +364,8 @@ export class Portfolio extends Component {
                           </a> */}
 
 
-                          {this.state.loading || !this.state.documents ? 
-                          <div>Loading</div> :
-                          (
+                          {this.state.documents.length > 0 ? 
+                         
                           <div>
                  
                         { this.state.documents.map(document =>
@@ -372,7 +374,10 @@ export class Portfolio extends Component {
                         )
                           }
                           </div>
-                         )}  
+
+                          :
+                          <p>No documents yet</p>
+                         }  
                       </div>
                       <div className="online-links-container">
                         <div className="link-cont-2">
@@ -394,9 +399,8 @@ export class Portfolio extends Component {
 
 
 
-                  {this.state.loading || !this.state.onlinelinks ? 
-                          <div>Loading</div> :
-                          (
+                  {this.state.onlinelinks.length > 0 ? 
+                         
                           <div>
                  
                         { this.state.onlinelinks.map(link =>
@@ -407,8 +411,12 @@ export class Portfolio extends Component {
                           )
                         }
                         </div>
+
+                        :
+
+                        <p className="mt-4">Seems you have no online links yet. Create a new link to get started.</p>
   
-                        )} 
+                        } 
                         
 
                         </div>
