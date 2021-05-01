@@ -232,7 +232,7 @@ export class Experience extends Component {
 
           {this.state.loading || !this.state.experiences ? 
 
-              <div style={{background: '#f2f2f2'}}>Loading...</div> :
+              
                
                <div className="mb-5" style={{background: '#f2f2f2'}}>{
                 this.state.experiences.map(experience => 
@@ -267,7 +267,23 @@ export class Experience extends Component {
 
                       )
                       }
-                      </div>}
+                      </div>
+                      :
+
+                        
+                      <div className="experience-post-container mb-4">
+                      <div className="exp-cont">
+                        <div className="exp-cont-2">    
+                        
+                       
+                        <p>Seems you have no job experiences yet. Create a new experience to get started.</p>
+                         
+                          
+                        </div>       
+                      </div>     
+                    </div>
+                    
+                    }
                       </section>    
                     </div>
                 

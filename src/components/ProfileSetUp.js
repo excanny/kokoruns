@@ -297,9 +297,12 @@ export class ProfileSetUp extends Component {
         }
 
         const data = { first_name: this.state.first_name, last_name: this.state.last_name, user_phonenum: this.state.user_phonenum, user_email: this.state.user_email, 
-          educational_qualification: this.state.educational_qualification, profession: this.state.profession_or_craft, employment_type:  this.state.employment_type, employment_status: this.state.employment_status, gender:  this.state.gender, disabled:  this.state.disabled, current_employer: this.state.current_employer, languages1: this.state.languages1, languages2: this.state.languages2, languages3: this.state.languages3, languages4: this.state.languages4, languages5: this.state.languages5, 
+          educational_qualification: this.state.educational_qualification, profession: this.state.profession_or_craft, employment_type:  this.state.employment_type, 
+          employment_status: this.state.employment_status, gender:  this.state.gender, disabled:  this.state.disabled, current_employer: this.state.current_employer, 
+          languages1: this.state.languages1, languages2: this.state.languages2, languages3: this.state.languages3, languages4: this.state.languages4, languages5: this.state.languages5, 
           other_professions1: this.state.other_professions1, other_professions2: this.state.other_professions2, other_professions3: this.state.other_professions3,
-          other_professions4: this.state.other_professions4, selectedState: this.state.selectedState, selectedLGA: this.state.selectedLGA, selectedState2: this.state.selectedState2, selectedLGA2: this.state.selectedLGA2, about: this.state.about};  
+          other_professions4: this.state.other_professions4, selectedState: this.state.selectedState, selectedLGA: this.state.selectedLGA, marital_status: this.state.marital_status,
+          selectedState2: this.state.selectedState2, selectedLGA2: this.state.selectedLGA2, about: this.state.about};  
 
         //console.log(data);
 
@@ -366,7 +369,7 @@ export class ProfileSetUp extends Component {
                             <div align="left" className="h3-label">
                               <div style={{paddingBottom: 10}}>
                                 Current Location<b>*</b></div>
-                                      <select value={this.state.selectedState} onChange={this.changeState} className="form-select">
+                                      <select value={this.state.selectedState} onChange={this.changeState} className="form-select" required>
                                             <option>Select State</option>
                                             {this.state.states.map((e, key) => {
                                                 return <option key={key}>{e.name}</option>;
@@ -376,7 +379,7 @@ export class ProfileSetUp extends Component {
                             <div align="left" className="h3-label">
                               <div style={{paddingBottom: 10}}>
                                 &nbsp;&nbsp;</div>            
-                                <select value={this.state.selectedLGA} onChange={this.changeLGA} className="form-select">
+                                <select value={this.state.selectedLGA} onChange={this.changeLGA} className="form-select" required>
                                     <option>Select LGA</option>
                                         {this.state.lgas.map((e, key) => {
                                             return <option key={key}>{e.name}</option>;
@@ -388,7 +391,7 @@ export class ProfileSetUp extends Component {
                             <div align="left" className="h3-label">
                               <div style={{paddingBottom: 5}}>
                                 Email</div>
-                              <input className="form-input" type="email" id="user_email" name="user_email" value={this.state.user_email} onChange={this.handleChange} required />
+                              <input className="form-input" type="email" id="user_email" name="user_email" value={this.state.user_email} onChange={this.handleChange} />
                             </div>
                             <div align="left" className="h3-label">
                               <div style={{paddingBottom: 5}}>
@@ -396,18 +399,13 @@ export class ProfileSetUp extends Component {
                               <input className="form-input" type="number" id="user_phonenum" name="user_phonenum" value={this.state.user_phonenum} onChange={this.handleChange} required />      
                             </div>
                           </div>
-                          {/*div align="left" class="h3-label"><div style="padding-bottom: 10px">
-                        Street / Estate Name</div>
-                        <input class="form-input" type="text" id="user_street/estate" name="user_street/estate" placeholder="" required>    
-                        </div*/}
+                        
                           <div className="duo">
                             <div align="left" className="h3-label">
                               <div style={{paddingBottom: 5}}>
                                 Profession<b>*</b></div>
-                              {/* <select className="form-select" id="employment_status" name="employment_status" required>
-                                <option value={0} />
-                              </select>     */}
-                              <input type="text" className="form-select" name="profession_or_craft" id="profession_or_craft" value={this.state.profession_or_craft} onChange={this.handleChange} autoComplete="off" /> 
+                             
+                              <input type="text" className="form-select" name="profession_or_craft" id="profession_or_craft" value={this.state.profession_or_craft} onChange={this.handleChange} autoComplete="off" required/> 
                             </div>
                             <div align="left" className="h3-label">
                               <div style={{paddingBottom: 5}}>
@@ -442,16 +440,15 @@ export class ProfileSetUp extends Component {
                                 Marital Status<b>*</b></div>
                               <select className="form-select" id="marital_status" name="marital_status" value={this.state.marital_status} onChange={this.handleChange} required>
                                 <option value="">Select:</option>
-                                <option value="Married">Married</option>
-                                <option value="Single">Single</option>
-                                <option value="None">None</option>
+                                <option value="Yes">Married</option>
+                                <option value="No">Single</option>
                               </select>    
                             </div> 
                           </div>   
                           <div align="left" className="h3-label">
                             <div style={{paddingBottom: 5}}>
                               Current Employer</div>
-                            <input className="form-input" type="text" id="current_employer" name="current_employer" value={this.state.current_employer} onChange={this.handleChange}  required />    
+                            <input className="form-input" type="text" id="current_employer" name="current_employer" value={this.state.current_employer} onChange={this.handleChange} />    
                           </div>
                           <div align="left" className="h3-label-radio">
                             <div style={{paddingBottom: 5}}>
@@ -468,7 +465,7 @@ export class ProfileSetUp extends Component {
                           <div align="left" className="h3-label">
                             <div style={{paddingBottom: 5}}>
                               I Speak <b>(max 5)</b></div>
-                            <select className="form-select" id="language" name="languages1" value={this.state.languages1} onChange={this.handleChange} required>
+                            <select className="form-select" id="language" name="languages1" value={this.state.languages1} onChange={this.handleChange} >
                               <option value="">Select Language 1:</option>
                               <option value="English">English</option>
                               <option value="Yoruba">Yoruba</option>
@@ -638,7 +635,7 @@ export class ProfileSetUp extends Component {
                           </div>
                           <div align="left" className="h3-label">
                             <div style={{paddingBottom: 5}}>
-                              Other Professions <b>*</b></div>
+                              Other Professions </div>
                               <input className="form-input" type="text" name="other_professions1" value={this.state.other_professions1} onChange={this.handleChange} />      
                             
                             <button id="profbutton1x" type="button" align="left" className="add-professions-button" onClick={this.setOtherProf2}>
@@ -670,7 +667,7 @@ export class ProfileSetUp extends Component {
                           <div className="duo">
                             <div align="left" className="h3-label">
                               <div style={{paddingBottom: 10}}>
-                                Employment Type</div>
+                                Employment Type <b>*</b></div>
                               <select className="form-select" name="employment_type" value={this.state.employment_type} onChange={this.handleChange} required>
                                 <option value="">Select one</option>   
                                 <option value="Full Time" >Full Time</option>
@@ -684,7 +681,7 @@ export class ProfileSetUp extends Component {
                             </div>
                             <div align="left" className="h3-label">
                               <div style={{paddingBottom: 10}}>
-                                Present Employment Status</div>
+                                Present Employment Status<b>*</b></div>
                               <select className="form-select" name="employment_status" value={this.state.employment_status} onChange={this.handleChange} required>
                                 <option value="">Select:</option>
                                 <option value="Available for Employment">Available for Employment</option>
@@ -720,7 +717,7 @@ export class ProfileSetUp extends Component {
 
                           <div align="left" className="h3-label">
                             <div style={{paddingBottom: 10}}>
-                              About</div>
+                              About <b>*</b></div>
                             <textarea className="form-textarea" name="about"  value={this.state.about} onChange={this.handleChange} required/>
                           </div>
                       

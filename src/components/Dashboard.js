@@ -113,11 +113,11 @@ export class Dashboard extends Component {
     //this.setState({showBioForm : true});
     //alert("hi");
     this.setState({showBioForm: true });
+    console.log(this.state.showBioForm)
   }
 
   cancelEditBioForm()
   {
-    //this.setState({showBioForm : true});
     //alert("hi");
     this.setState({showBioForm: false });
   }
@@ -416,7 +416,7 @@ export class Dashboard extends Component {
                     <label className="bio-info-label">{ this.state.selectedState !== null && this.jsUcfirst(this.state.selectedState)},  { this.state.selectedLGA !== null && this.jsUcfirst(this.state.selectedLGA)}   
                     </label>
                     <br style={{lineHeight: 2.0}} />
-                    <label className="bio-info-label">{ this.state.email !== null && this.jsUcfirst(this.state.email)} 
+                    <label className="bio-info-label">{ this.state.email !== null && this.state.email} 
                     </label>
                     <br style={{lineHeight: 2.0}} />    
                     <label className="bio-info-label">{ this.state.phone !== null && this.jsUcfirst(this.state.phone)}   
@@ -440,27 +440,71 @@ export class Dashboard extends Component {
                     <label className="bio-info-label"> I Speak:
                     </label>
                     <div style={{display: 'inline-block'}}>
-                      { this.state.languages1 !== null &&
+                      { !this.state.languages1 ?
+                        null
+                        :
                       <div className="languages">{ this.state.languages1 !== null && this.jsUcfirst(this.state.languages1)}</div>
                     
                       }
-                      { this.state.languages1 !== null &&
-                      <div className="languages">{ this.state.languages2 !== null && this.jsUcfirst(this.state.languages2)}</div>
-                     
+                      { !this.state.languages2 ?
+
+                        null
+                      :
+                        <div className="languages">{ this.state.languages2 !== null && this.jsUcfirst(this.state.languages2)}</div>
+
                       }
-                      <div className="languages">{ this.state.languages3 !== null && this.jsUcfirst(this.state.languages3)}</div>
+
+                      { !this.state.languages3 ?
+
+                        null :
+                            <div className="languages">{ this.state.languages3 !== null && this.jsUcfirst(this.state.languages3)}</div>
+                      }
+
+
+                      { !this.state.languages4 ?
+
+                      null :
+
                       <div className="languages">{ this.state.languages4 !== null && this.jsUcfirst(this.state.languages4)}</div>
+                      }
+
+                      { !this.state.languages5 ?
+
+                      null :
+
                       <div className="languages">{ this.state.languages5 !== null && this.jsUcfirst(this.state.languages5)}</div>
+                      }
+
+
                     </div>
                     <br style={{lineHeight: 2.0}} />    
                     <label className="bio-info-label">Other Professions:
                     </label>
                     <div style={{display: 'inline-block'}}>
+
+                    { !this.state.other_professions1 ?
+
+                    null :
                       <div className="languages">{ this.state.other_professions1 !== null && this.jsUcfirst(this.state.other_professions1)}</div>
+                    }
+
+                    { !this.state.other_professions2 ?
+
+                    null :
                       <div className="languages">{ this.state.other_professions2 !== null && this.jsUcfirst(this.state.other_professions2)}</div>
+                    }
+
+                    { !this.state.other_professions3 ?
+
+                    null :
                       <div className="languages">{ this.state.other_professions3 !== null && this.jsUcfirst(this.state.other_professions3)}</div>
+                    }
+
+                    { !this.state.other_professions4 ?
+
+                    null :
                       <div className="languages">{ this.state.other_professions4 !== null && this.jsUcfirst(this.state.other_professions4)}</div>
-                     
+                    }
                     </div>
                     <br style={{lineHeight: 2.0}} />
                     <br />
@@ -692,11 +736,12 @@ export class Dashboard extends Component {
               </form>
             </div>
 
-          :
+              :
 
              null
              
            } 
+
           </div>
 
 

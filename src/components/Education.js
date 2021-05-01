@@ -322,9 +322,8 @@ export class Education extends Component {
                     </div>
                   </section>
 
-            {this.state.loading || !this.state.educations ? 
-              <div>Loading</div> :
-               (
+            {this.state.loading || !this.state.educations ?
+               
                <div>
                  
                { this.state.educations.map(education =>
@@ -356,7 +355,20 @@ export class Education extends Component {
                       }
                       </div>
 
-                      )}
+                      :
+                      <div className="experience-post-container mb-4">
+                      <div className="exp-cont">
+                        <div className="exp-cont-2">    
+                        
+                       
+                        <p>Seems you have no educations yet. Create a new education to get started.</p>
+                         
+                          
+                        </div>       
+                      </div>     
+                    </div>
+
+                      }
 
                       <div className="skills-container">
                         <div className="skills-cont-2">
@@ -404,6 +416,7 @@ export class Education extends Component {
                       <div className="skills-container mt-5 mb-5">
                         <div className="skills-cont-2">
                           <h2 className="other-label">Other Skills  <button onClick={this.AddOtherSkill} className="add-skill-button bg-danger">Add skill +</button></h2>    
+                          
                           {this.state.show_other_skill ?
 
                             <div id="form-div-other" className="form-divx">

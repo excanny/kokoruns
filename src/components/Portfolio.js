@@ -21,6 +21,10 @@ export class Portfolio extends Component {
           loading2: true,
           portfolios: [] ,
           documents: [] ,
+          onlinelinks: [],
+          show_online_links: false,
+          link_title: '',
+          link_address: '',
 
         };
 
@@ -28,10 +32,13 @@ export class Portfolio extends Component {
         this.hideModal = this.hideModal.bind(this);
         this.showModal2 = this.showModal2.bind(this);
         this.hideModal2 = this.hideModal2.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSubmit2 = this.handleSubmit2.bind(this);
+        this.handleSubmit3 = this.handleSubmit3.bind(this);
         this.onImageChange = this.onImageChange.bind(this);
         this.onDocChange = this.onDocChange.bind(this);
+        this.AddOnlineLink = this.AddOnlineLink.bind(this);
   
       }
 
@@ -68,6 +75,12 @@ export class Portfolio extends Component {
       }
 
 
+      AddOnlineLink(e)
+      {
+        this.setState({ show_online_links: true });
+      }
+
+
       async componentDidMount() {
 
         const headers = {
@@ -78,25 +91,25 @@ export class Portfolio extends Component {
 
           let one = "https://sheltered-chamber-63274.herokuapp.com/api/portfolios"
           let two = "https://sheltered-chamber-63274.herokuapp.com/api/documents";
-          // let three = "https://api.storyblok.com/v1/cdn/stories/vue?version=published&token=wANpEQEsMYGOwLxwXQ76Ggtt"
+          let three = "https://sheltered-chamber-63274.herokuapp.com/api/onlinelinks"
           
           const requestOne = axios.get(one, {headers: headers});
           const requestTwo = axios.get(two, {headers: headers});
-          // const requestThree = axios.get(three, {headers: headers});
+          const requestThree = axios.get(three, {headers: headers});
           
           axios.all([
             requestOne, 
             requestTwo, 
-            //requestThree
+            requestThree
           ]).then(axios.spread((...responses) => {
             const responseOne = responses[0]
             const responseTwo = responses[1]
-            // const responesThree = responses[2]
+            const responseThree = responses[2]
             // use/access the results 
 
-            this.setState({ portfolios: responseOne.data.portfolios, documents: responseTwo.data.documents, loading: false });
+            this.setState({ portfolios: responseOne.data.portfolios, documents: responseTwo.data.documents, onlinelinks: responseThree.data.onlinelinks, loading: false });
 
-            //console.log(responseTwo);
+            //console.log(responseThree);
 
 
           })).catch(errors => {
@@ -126,6 +139,11 @@ export class Portfolio extends Component {
           });
         }
       };
+
+
+      handleChange(e) {
+        this.setState({ [e.target.name]: e.target.value });
+      }
 
 
       async handleSubmit(e) {
@@ -240,6 +258,54 @@ export class Portfolio extends Component {
 
 
 
+
+        async handleSubmit3(e) {
+              // Form submission logic
+              e.preventDefault();
+
+              this.setState({ isLoading: true, show2: false });
+            
+
+              const headers = {
+                "Content-Type": "application/json",
+                'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
+              }
+
+              //console.log(data);
+
+              const data = { link_title: this.state.link_title, link_address: this.state.link_address};  
+
+              
+
+
+                try 
+                {
+                    // fetch data from a url endpoint
+                    const response = await  axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/addonlinelink`, data, {headers: headers});
+                    
+                    console.log(response);
+
+                    //this.setState({ educations: response.data.educations, loading: false, show: false });
+
+                    window.location.href = "/user-dashboard-portfolio";
+
+                    //this.props.history.push("/user-dashboard-portfolio");
+
+                    // console.log(response.data.expe[0]);
+
+                } 
+                catch(error) 
+                {
+                  // console.log("error", error);
+                  // appropriately handle the error
+                  console.log(error.response);
+                }
+
+            
+          }
+
+
+
     render() {
 
 
@@ -310,27 +376,41 @@ export class Portfolio extends Component {
                       </div>
                       <div className="online-links-container">
                         <div className="link-cont-2">
-                          <h2 className="online-links-header">Online Links</h2>     
-                          <a href><div className="skill-padding"><div className="skill">Instagram&nbsp;<button className="delete-skill-button">x</button></div></div></a>
-                          <a href><div className="skill-padding"><div className="skill">Twitter&nbsp;<button className="delete-skill-button">x</button></div></div></a>
-                          <a href><div className="skill-padding"><div className="skill">Facebook&nbsp;<button className="delete-skill-button">x</button></div></div></a>
-                          <a href><div className="skill-padding"><div className="skill">YouTube&nbsp;<button className="delete-skill-button">x</button></div></div></a>
-                          <a href><div className="skill-padding"><div className="skill">LinkedIn&nbsp;<button className="delete-skill-button">x</button></div></div></a>
-                          <a href><div className="skill-padding"><div className="skill">Artstation&nbsp;<button className="delete-skill-button">x</button></div></div></a>
-                          <a href><div className="skill-padding"><div className="skill">Behance&nbsp;<button className="delete-skill-button">x</button></div></div></a>
-                          <a href><div className="skill-padding"><div className="skill">Tumblr&nbsp;<button className="delete-skill-button">x</button></div></div></a>
-                          <a href><div className="skill-padding"><div className="skill">Pinterest&nbsp;<button className="delete-skill-button">x</button></div></div></a>   
-                          <div id="add-skill-prof-link" className="skill-padding">
-                            <button onclick="AddProfLink()" className="add-skill-button">Add Link +</button></div> 
+                          <h2 className="online-links-header">Online Links  <button onClick={this.AddOnlineLink} className="add-skill-button">Add Link +</button></h2>   
+
+                            {this.state.show_online_links ?
                           <div id="form-div-prof-link" className="form-div">
-                            <form className="add-skill-form">
-                              <input className="link-title" placeholder="Title" type="text" id="skill-input-prof-link" />
-                              <input className="link-url" type="text" id="skill-input-prof-link" placeholder="URL (e.g http://www.kokoruns.com/)" />   
+                            <form className="add-skill-form" onSubmit={this.handleSubmit3}>
+                              <input className="form-control" placeholder="Title" type="text" id="skill-input-prof-link" name="link_title" value={this.state.link_title} onChange={this.handleChange} required/>
+                              <input className="form-control mt-1" type="text" id="skill-input-prof-link" placeholder="URL (e.g http://www.kokoruns.com/)" name="link_address" value={this.state.link_address} onChange={this.handleChange} required />   
                               <br />
-                              <button onclick="CancelAddProfLink()" className="cancel-add-skill">Cancel</button>
-                              <button onclick="FinishAddProfLink()" className="finish-add-skill">Done</button>
+                              <button type="reset" className="cancel-add-skill">Cancel</button>
+                              <button className="finish-add-skill bg-success">Save</button>
                             </form>
-                          </div>      
+                          </div> 
+                          :
+                          null
+                            }   
+
+
+
+                  {this.state.loading || !this.state.onlinelinks ? 
+                          <div>Loading</div> :
+                          (
+                          <div>
+                 
+                        { this.state.onlinelinks.map(link =>
+                          
+                          <a href><div className="skill-padding"><div className="skill">{link.link_title}&nbsp;<button className="delete-skill-button">x</button></div></div></a>
+                          
+                     
+                          )
+                        }
+                        </div>
+  
+                        )} 
+                        
+
                         </div>
                       </div>
                     </section>
@@ -374,10 +454,6 @@ export class Portfolio extends Component {
                                 
                                   <input type="file" name="myImage" onChange={this.onImageChange} required/>
                                  
-
-
-
-                             
 
                                 
 
@@ -426,18 +502,11 @@ export class Portfolio extends Component {
                                  </div>
                                </div>
  
-                               
- 
-                                 
-                                   <input type="file" name="myImage2" onChange={this.onDocChange} required/>
+                            
+                        <input type="file" name="myImage2" onChange={this.onDocChange} required/>
                                   
  
- 
- 
-                              
- 
-                                 
- 
+
                          <div className="mt-4 text-center">
                               <button type="submit" class="btn btn-primary">Upload</button>
                          </div>

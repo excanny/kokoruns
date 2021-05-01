@@ -360,7 +360,6 @@ b {
   border: 1px solid #d3d3d3;
   border-radius: 2px;
   letter-spacing: 1px; 
-  display: none;  
   overflow-y: auto;       
 }
 
