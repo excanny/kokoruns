@@ -440,8 +440,8 @@ export class ProfileSetUp extends Component {
                                 Marital Status<b>*</b></div>
                               <select className="form-select" id="marital_status" name="marital_status" value={this.state.marital_status} onChange={this.handleChange} required>
                                 <option value="">Select:</option>
-                                <option value="Yes">Married</option>
-                                <option value="No">Single</option>
+                                <option value="Married">Married</option>
+                                <option value="Single">Single</option>
                               </select>    
                             </div> 
                           </div>   
