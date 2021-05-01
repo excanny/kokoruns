@@ -8,6 +8,8 @@
 #user-experience {
   padding-left: 15%;
   padding-right: 15%;
+  background-color: ;
+  display: none;
 }
 
 @media screen and (max-width: 900px) {
@@ -271,7 +273,7 @@
 }
 
 .company-or-business {
-
+width: 95%;  
 padding-top: 10px;
 padding-bottom: 10px;     
 padding-left: 15px;
@@ -293,7 +295,7 @@ border-radius: 2px;
 }
 
 .position {
- 
+ width: 95%;  
 padding-top: 10px;
 padding-bottom: 10px;     
 padding-left: 15px;
@@ -340,7 +342,7 @@ border-radius: 2px;
 
 .roles-text-area {
 width: 95%; 
-max-  
+max-width: 95%;    
 padding-top: 10px;
 padding-bottom: 10px;     
 padding-left: 15px;

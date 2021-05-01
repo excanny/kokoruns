@@ -18,10 +18,14 @@ export class Dashboard extends Component {
         first_name: '',
         last_name: '',
         gender: '',
+        email: '',
+        phone: '',
         profession:'',
         marital_status: '',
         disabled: '', 
         educational_qualification: '', 
+        employment_type: '',
+        employment_status: '',
         other_professions1: '',
         other_professions2: '',
         other_professions3: '',
@@ -47,6 +51,7 @@ export class Dashboard extends Component {
         selectedState2 : '',
         selectedLGA2 : '',
         availability_start_date2_show: false,
+        about: '',
         isLoading: false,
 
     }
@@ -299,9 +304,9 @@ export class Dashboard extends Component {
 
       this.setState({ first_name : responseOne.data.user_details.first_name, last_name : responseOne.data.user_details.last_name, gender : responseOne.data.user_details.gender, profession: responseOne.data.user_details.profession, marital_status : responseOne.data.user_details.marital_status, disabled : responseOne.data.user_details.disabled, current_employer : responseOne.data.user_details.current_employer, other_professions1 :  responseOne.data.user_details.other_professions1,
         other_professions2 :  responseOne.data.user_details.other_professions2, other_professions3 :  responseOne.data.user_details.other_professions3, employment_type: responseOne.data.user_details.employment_type, preferred_job: responseOne.data.user_details.preferred_job,
-        other_professions4 :  responseOne.data.user_details.other_professions4, educational_qualification :  responseOne.data.user_details.educational_qualification, languages1 : responseOne.data.user_details.languages1, selectedState: responseOne.data.user_details.state, selectedLGA: responseOne.data.user_details.lga,
-        selectedState2: responseOne.data.user_details.preferred_job_location_state, selectedLGA2: responseOne.data.user_details.preferred_job_location_lga,
-        languages2 : responseOne.data.user_details.languages2, languages3 : responseOne.data.user_details.languages3, languages4 : responseOne.data.user_details.languages4, languages5 : responseOne.data.user_details.languages5,
+        other_professions4 :  responseOne.data.user_details.other_professions4, educational_qualification :  responseOne.data.user_details.educational_qualification, languages1 : responseOne.data.user_details.languages1, selectedState: responseOne.data.user_details.state, selectedLGA: responseOne.data.user_details.lga, selectedState2: responseOne.data.user_details.preferred_job_location_state, selectedLGA2: responseOne.data.user_details.preferred_job_location_lga,
+        selectedState2: responseOne.data.user_details.preferred_job_location_state, selectedLGA2: responseOne.data.user_details.preferred_job_location_lga, email: responseOne.data.user_details.email, current_employer: responseOne.data.user_details.current_employer, employment_status: responseOne.data.user_details.employment_status,
+        languages2 : responseOne.data.user_details.languages2, languages3 : responseOne.data.user_details.languages3, languages4 : responseOne.data.user_details.languages4, languages5 : responseOne.data.user_details.languages5, about : responseOne.data.user_details.about,
          });
 
       console.log(this.state);
@@ -404,45 +409,77 @@ export class Dashboard extends Component {
                 <div align="left" className="bio-user-profession">{ this.state.profession !== null && this.jsUcfirst(this.state.profession)}</div>       
               </div> 
               {/*USER DP SCRIPT*/}   
+                <div>
+                    <label className="bio-info-label-reco"><a href="#">47 Recommendations</a><br style={{lineHeight: 2.0}} />    
+                    </label>&nbsp;
+                    <br />
+                    <label className="bio-info-label">{ this.state.selectedState !== null && this.jsUcfirst(this.state.selectedState)},  { this.state.selectedLGA !== null && this.jsUcfirst(this.state.selectedLGA)}   
+                    </label>
+                    <br style={{lineHeight: 2.0}} />
+                    <label className="bio-info-label">{ this.state.email !== null && this.jsUcfirst(this.state.email)} 
+                    </label>
+                    <br style={{lineHeight: 2.0}} />    
+                    <label className="bio-info-label">{ this.state.phone !== null && this.jsUcfirst(this.state.phone)}   
+                    </label>
+                    <br style={{lineHeight: 2.0}} />
+                    <label className="bio-info-label">{ this.state.educational_qualification !== null && this.jsUcfirst(this.state.educational_qualification)}  
+                    </label>
+                    <br style={{lineHeight: 2.0}} />
+                    <label className="bio-info-label">{ this.state.gender !== null && this.jsUcfirst(this.state.gender)}
+                    </label>
+                    <br style={{lineHeight: 2.0}} />
+                    <label className="bio-info-label">{ this.state.marital_status !== null && this.jsUcfirst(this.state.marital_status)}  
+                    </label>
+                    <br style={{lineHeight: 2.0}} />
+                    <label className="bio-info-label">Current Employer:    
+                    </label> 
+                    <a href="#">{ this.state.current_employer !== null && this.jsUcfirst(this.state.current_employer)}</a><br style={{lineHeight: 2.0}} /> 
+                    <label className="bio-info-label">No Disability  
+                    </label>
+                    <br style={{lineHeight: 2.0}} />
+                    <label className="bio-info-label"> I Speak:
+                    </label>
+                    <div style={{display: 'inline-block'}}>
+                      { this.state.languages1 !== null &&
+                      <div className="languages">{ this.state.languages1 !== null && this.jsUcfirst(this.state.languages1)}</div>
+                    
+                      }
+                      { this.state.languages1 !== null &&
+                      <div className="languages">{ this.state.languages2 !== null && this.jsUcfirst(this.state.languages2)}</div>
+                     
+                      }
+                      <div className="languages">{ this.state.languages3 !== null && this.jsUcfirst(this.state.languages3)}</div>
+                      <div className="languages">{ this.state.languages4 !== null && this.jsUcfirst(this.state.languages4)}</div>
+                      <div className="languages">{ this.state.languages5 !== null && this.jsUcfirst(this.state.languages5)}</div>
+                    </div>
+                    <br style={{lineHeight: 2.0}} />    
+                    <label className="bio-info-label">Other Professions:
+                    </label>
+                    <div style={{display: 'inline-block'}}>
+                      <div className="languages">{ this.state.other_professions1 !== null && this.jsUcfirst(this.state.other_professions1)}</div>
+                      <div className="languages">{ this.state.other_professions2 !== null && this.jsUcfirst(this.state.other_professions2)}</div>
+                      <div className="languages">{ this.state.other_professions3 !== null && this.jsUcfirst(this.state.other_professions3)}</div>
+                      <div className="languages">{ this.state.other_professions4 !== null && this.jsUcfirst(this.state.other_professions4)}</div>
+                     
+                    </div>
+                    <br style={{lineHeight: 2.0}} />
+                    <br />
+                    <label className="bio-info-label">Employment Type:   
+                    </label> { this.state.employment_type !== null && this.jsUcfirst(this.state.employment_type)}
+                    <br style={{lineHeight: 2.0}} />
+                    <label className="bio-info-label">Present Employment Status   
+                    </label> { this.state.employment_status !== null && this.jsUcfirst(this.state.employment_status)}
+                    <br style={{lineHeight: 2.0}} />
+                    <label className="bio-info-label">Prefered Job Location   
+                    </label> { this.state.selectedState2 !== null && this.jsUcfirst(this.state.selectedState2)}  { this.state.selectedLGA2 !== null && this.jsUcfirst(this.state.selectedLGA2)}
+                    <br style={{lineHeight: 2.0}} />
+                    <label className="bio-info-label">About me   
+                    </label><br />
+                    { this.state.about !== null && this.jsUcfirst(this.state.about)}
+                  </div>
+
               {/*USER DP SCRIPT*/}    
-              <label title="Number of people Recommended by" className="bio-info-label">Recommendations    
-              </label>&nbsp;
-              <a href="#">47</a><br style={{lineHeight: 2.0}} />
-              <label title="Gender" className="bio-info-label">Gender: <span className="text-dark">{ this.state.gender !== null && this.jsUcfirst(this.state.gender)} </span> 
-              </label>
-              <br style={{lineHeight: 2.0}} />
-              <label title="Marital Status" className="bio-info-label">Marital Status: <span className="text-dark">{ this.state.marital_status !== null && this.jsUcfirst(this.state.marital_status)}  </span>  
-              </label>
-              <br style={{lineHeight: 2.0}} />    
-              <label title="Academic Level" className="bio-info-label">Educational Qualification: <span className="text-dark">{ this.state.educational_qualification !== null && this.jsUcfirst(this.state.educational_qualification)}</span>   
-              </label>
-              <br style={{lineHeight: 2.0}} /> 
-              <label title="Location (State, L.G.A)" className="bio-info-label">Location: <span className="text-dark">{ this.state.selectedState !== null && this.jsUcfirst(this.state.selectedState)}  { this.state.selectedLGA !== null && this.jsUcfirst(this.state.selectedLGA)}  </span>
-              </label>
-              <br style={{lineHeight: 2.0}} />
-              <label className="bio-info-label">I work for:   
-              </label> 
-              <a href="#">{ this.state.current_employer !== null && this.jsUcfirst(this.state.current_employer)}</a><br style={{lineHeight: 2.0}} /> 
-              <label className="bio-info-label">My Other Professions: 
-              </label>
-              { this.state.other_professions1 !== null && this.jsUcfirst(this.state.other_professions1)} { this.state.other_professions2 !== null && this.jsUcfirst(this.state.other_professions2)} { this.state.other_professions3 !== null && this.jsUcfirst(this.state.other_professions3)} { this.state.other_professions4 !== null && this.jsUcfirst(this.state.other_professions4)}<br style={{lineHeight: 2.0}} />
-              <label className="bio-info-label"> I Speak:
-              </label>
-              { this.state.languages1 !== null && this.jsUcfirst(this.state.languages1)}, { this.state.languages2 !== null && this.jsUcfirst(this.state.languages2)}, { this.state.languages3 !== null && this.jsUcfirst(this.state.languages3)}, { this.state.languages4 !== null && this.jsUcfirst(this.state.languages4)}, { this.state.languages5 !== null && this.jsUcfirst(this.state.languages5)}<br style={{lineHeight: 2.0}} />    
-              <label className="bio-info-label">Looking for a:    
-              </label>
-              <ul>
-                <li>Fulltime Job as a Chef, in Kosofe.</li>
-                <li>Partime Job as a Waiter, in Lekki Phase I</li>
-                <li>Volunteer work as an Environmental Activist</li>   
-              </ul>  
-              <label className="bio-info-label">About me   
-              </label><br />
-              There are basic things most people know about the 
-              National Assembly such as that it is made of two 
-              chambers – the Senate and House of Representatives - 
-              and that there are 109 elected members in the Senate 
-              and 360 members in the House.
+      
 
             
               <div className="edit-bio-button-div">

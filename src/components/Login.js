@@ -60,18 +60,18 @@ export class Login extends Component {
           //this.props.history.push("/user-dashboard-experience");
           
 
-            // if(response.data.user.active === 0)
-            // {
-            //   this.props.history.push("/profile-setup");
-            //   //window.location.href = "/profile-setup";
-            // }
-            // else
-            // {
-            //   this.props.history.push("/user-dashboard");
-            //   //window.location.href = "/user-dashboard";
-            // }
+            if(response.data.user.active === 0)
+            {
+              this.props.history.push("/profile-setup");
+              //window.location.href = "/profile-setup";
+            }
+            else
+            {
+              this.props.history.push("/user-dashboard");
+              //window.location.href = "/user-dashboard";
+            }
 
-            this.props.history.push("/user-dashboard");
+            //this.props.history.push("/user-dashboard");
 
             console.log(response.data.user.active);
     

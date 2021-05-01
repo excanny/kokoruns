@@ -36,7 +36,7 @@ b {
 
 .banner {
     background-color: ;
-    background-image: url(Images/1.jpg); 
+    background-image: url(Images/new\ banner.png); 
     padding-top: 5px;
     padding-bottom: 5px;
     /* width: 74%; */
@@ -282,8 +282,29 @@ b {
   font-weight: bold;    
 }
 
+.languages {
+  display:inline-block; 
+  margin: 3px; color: white; 
+  background-color: #0991ff; 
+  padding: 3px; 
+  padding-left: 10px; 
+  padding-right: 10px;
+  color: #fff !important;
+}
+
 
 .bio-info-label {
+  font-family: Helvetica;
+  font-size: 18px; 
+  color: dimgray;
+  text-decoration: ;  
+  letter-spacing: 1.5px; 
+  /* text-decoration: underline;
+  text-decoration-color: #0991ff; */    
+}
+
+.bio-info-label-reco {
+  float: right;
   font-family: Helvetica;
   font-size: 18px; 
   color: dimgray;
@@ -339,6 +360,7 @@ b {
   border: 1px solid #d3d3d3;
   border-radius: 2px;
   letter-spacing: 1px; 
+  display: none;  
   overflow-y: auto;       
 }
 
@@ -374,7 +396,7 @@ b {
 
 .start-date-div {
  padding-top: 10px;
- /* display: none; */
+ display: none;
 }
 
 .start-date-day {
