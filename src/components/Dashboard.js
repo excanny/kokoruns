@@ -552,9 +552,9 @@ export class Dashboard extends Component {
                   </div>
                   <div onChange={e => this.setMaritalStatus(e)}>    
                     <div className="bio-form-label">Married<b>*</b></div> 
-                    <input type="radio" id="male" name="marital_status" value="Yes" checked={this.state.marital_status === "Yes"} />
+                    <input type="radio" id="male" name="marital_status" value="Yes" checked={this.state.marital_status === "Married"} />
                     <label htmlFor="male"> &nbsp;Yes</label><br />
-                    <input type="radio" id="female" name="marital_status" value="No" checked={this.state.marital_status === "No"} />
+                    <input type="radio" id="female" name="marital_status" value="No" checked={this.state.marital_status === "Single"} />
                     <label htmlFor="female"> &nbsp;No</label>
                   </div>    
                 </div>

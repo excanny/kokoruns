@@ -296,7 +296,7 @@ export class ProfileSetUp extends Component {
           'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
         }
 
-        const data = { first_name: this.state.first_name, last_name: this.state.last_name, user_phonenum: this.state.user_phonenum, user_email: this.state.user_email, 
+        const data = { first_name: this.state.first_name, last_name: this.state.last_name, phone: this.state.user_phonenum, user_email: this.state.user_email, 
           educational_qualification: this.state.educational_qualification, profession: this.state.profession_or_craft, employment_type:  this.state.employment_type, 
           employment_status: this.state.employment_status, gender:  this.state.gender, disabled:  this.state.disabled, current_employer: this.state.current_employer, 
           languages1: this.state.languages1, languages2: this.state.languages2, languages3: this.state.languages3, languages4: this.state.languages4, languages5: this.state.languages5, 
