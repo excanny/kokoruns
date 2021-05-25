@@ -1,14 +1,51 @@
 import React, { Component } from 'react'
 
 export class Header2 extends Component {
+
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+        
+          loading: true,
+          isLinkDisable2: false,
+          navigate: false,
+          companies: [],
+        
+        }
+
+        this.logout = this.logout.bind(this);
+      
+      }
+
+
+    logout()
+    {
+       
+        localStorage.removeItem("full_token");
+        localStorage.removeItem("access_token");
+        // this.props.history.push("/signin");
+        this.setState({ navigate : true });
+        //alert("hi");
+    }  
+
     render() {
+
+        const  navigate  = this.state.navigate;
+
+        if(navigate){
+            //return <Redirect to="/signin" />
+            window.location.href = "/";
+        }
+
+
         return (
         <header className="container-fluid bg-white" style={{borderBottom: '1px solid #ccc'}}>
             <nav className="p-1">
                 <div className="row">
                 <div className="col-md-3">
                     <a className="navbar-brand pl-1" href="#">
-                    <img src="assets/Images/Header%20and%20Footer/Logo.png" alt="Logo" style={{width: 210}} />
+                    <img src="assets/Images/Header%20and%20Footer/Logo.png" alt="Logo" style={{width: '100%'}} />
                     </a>
                 </div>
                 <div className="col-md-6 pt-3">
@@ -20,7 +57,7 @@ export class Header2 extends Component {
                     </div>
                 </div>
                 <div className="col-md-3">
-                    <a href="<?php echo site_url(); ?>logout" className="float-right pt-4" onclick="return confirm('Are you sure you want to logout?')">
+                    <a onClick={this.logout} className="float-right pt-4">
                     <i className="fa fa-power-off text-primary" data-toggle="tooltip" title="Logout" />
                     </a>
                 </div>

@@ -4,8 +4,7 @@
  
 .user-skills {
    padding-left:17%;
-   padding-right: 17%;
-   display: none;   
+   padding-right: 17%; 
    padding-bottom: 200px;
    /*padding-top: 50px;*/
    padding-top: 0px;    
@@ -113,7 +112,6 @@
 
 .form-div {
   width: 280px; 
-  display: none;
   padding: 5px; 
   padding-top: 20px;      
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 
 export class NavBar extends Component {
@@ -10,14 +11,17 @@ export class NavBar extends Component {
             first_name: '',
             last_name: '',
             profession: '',
-          userdetails: [],
-          loading: true,
+            userdetails: [],
+            loading: true,
+            show: false,
+            profilepic: '',
 
         };
         
 
-        // this.showModal = this.showModal.bind(this);
-        // this.hideModal = this.hideModal.bind(this);
+        this.showModal = this.showModal.bind(this);
+        this.hideModal = this.hideModal.bind(this);
+        this.onImageChange = this.onImageChange.bind(this);
         // this.handleChange = this.handleChange.bind(this);
         // this.handleSubmit = this.handleSubmit.bind(this);
         //this.handleRoleChange = this.handleRoleChange.bind(this);
@@ -29,6 +33,32 @@ export class NavBar extends Component {
     {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
+
+
+    showModal = () => {
+        this.setState({ show: true });
+        //console.log(this.state.show)
+      };
+    
+    hideModal = () => {
+      this.setState({ show: false });
+      alert("hi");
+    };
+
+    onHide = () => {
+      this.setState({ show: false });
+    }
+
+    
+    onImageChange = event => {
+      if (event.target.files && event.target.files[0]) {
+        let img = event.target.files[0];
+        this.setState({
+          image: URL.createObjectURL(img)
+        });
+      }
+    };
+
 
 
  async componentDidMount()
@@ -62,9 +92,10 @@ export class NavBar extends Component {
         
         // console.log(response.data.data.bankAccountNo);
 
-        this.setState({ first_name : response.data.user_details.first_name, last_name: response.data.user_details.last_name, profession: response.data.user_details.profession});
+        this.setState({ first_name : response.data.user_details.first_name, last_name: response.data.user_details.last_name, profession: response.data.user_details.profession, profilepic: response.data.user_details.profile_image});
 
-        console.log(response.data.user_details);
+       
+        //console.log(this.state.profilepic);
 
 
     } 
@@ -77,8 +108,73 @@ export class NavBar extends Component {
   }
 
 
+  async handleSubmit(e) {
+    // Form submission logic
+    e.preventDefault();
+
+    //this.hideModal();
+
+    console.log(localStorage.getItem('access_token'));
+
+  
+
+    const headers = {
+      "Content-Type": "application/json",
+      'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
+    }
+
+    let formData = new FormData();
+    formData.append('profilepic', e.target.myImage.files[0]);
+
+    //console.log(data);
+
+    //Display the key/value pairs
+      //  for (var pair of formData.entries()) {
+      //     console.log(pair[0]+ ', ' + pair[1]); 
+      //   }
+
+  
+
+
+      try 
+      {
+          // fetch data from a url endpoint
+          const response = await  axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/changeprofilepic`, formData, {headers: headers});
+          
+          console.log(response);
+
+          ///this.setState({ show: false });
+
+          //onLoad={this.onHide}
+
+          //location.reload();
+
+          //this.props.history.push("/user-dashboard-portfolio");
+
+          // console.log(response.data.expe[0]);
+          window.location.reload();
+
+
+          // history.go(0)
+
+      } 
+      catch(error) 
+      {
+        // console.log("error", error);
+        // appropriately handle the error
+        console.log(error.response);
+      }
+
+  
+}
+
+
 
     render() {
+
+    
+
+
         return (
            
             <div className="banner">
@@ -86,8 +182,9 @@ export class NavBar extends Component {
                 <div align="center" className="inbox-div">
                 <button className="menu-bar-button-left" style={{border: 'none', outline: 'none'}}><img className="menu-bar" src="assets/Images/User%20Profile/Inbox%20Logo.png" /></button>
                 </div>
-                <div align="center" className="dp-div">  
-                <img className="dp" src="assets/Images/User%20Profile/User%20DP.png" /> 
+                <div align="center" className="dp-div cursor" onClick={this.showModal}>  
+                        <img className="dp" src={`https://kokoruns.s3.us-east-2.amazonaws.com/userprofilepics/${ this.state.profilepic }`} /> 
+
                 </div>
                 <div align="center" className="menu-bar-div">
                            
@@ -98,7 +195,7 @@ export class NavBar extends Component {
                             <a className="dropdown-item" href="user-dashboard">Dashboard</a>
                             <a className="dropdown-item" href="user-teams">Teams</a>
                             <a className="dropdown-item" href="user-messages">Messages</a>
-                            <div className="dropdown-divider" />
+                            <div className="dropdown-divider"/>
                             <div className="dropdown-header pl-3">Job Dash</div>
                             <a className="dropdown-item" href="user-jobs">Your Jobs</a>
                             <a className="dropdown-item" href="user/jobdash">Job Invites</a>
@@ -133,8 +230,50 @@ export class NavBar extends Component {
                     <Link to={"/user-dashboard-portfolio"}><button id="port-b" className="sections-div">Portfolio</button></Link>
                 </div>
                    
-            </div>    
+            </div>   
+
+
+
+            <Modal
+               
+               //  size="sm"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+                show={this.state.show} handleClose={this.hideModal}>
+                <Modal.Header className="modal-header py-2 text-white" style={{background: '#70a1B9'}}>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                    <strong> Change Profile Image</strong>
+                    </Modal.Title>
+                    <span onClick={this.onHide} className="close-modal-btn cursor">x</span>
+                </Modal.Header>
+                <Modal.Body>
+                    <form onSubmit={this.handleSubmit}>
+ 
+                               <div className="row mt-2">
+                                 <div className="col-md-4 mx-auto">
+                                       <img src={this.state.image} width="100%"  />
+ 
+                                       
+                                 </div>
+                               </div>
+ 
+                            
+                        <input type="file" name="myImage" onChange={this.onImageChange} accept="image/*" required/>
+                                  
+ 
+
+                         <div className="mt-4 text-center">
+                              <button type="submit" class="btn btn-primary">Upload</button>
+                         </div>
+ 
+                   </form>
+ 
+                </Modal.Body>
+                
+                </Modal>
+
             </div>
+
         )
     }
 }

@@ -51,7 +51,11 @@
     <link rel="stylesheet" href="assets/Css/Your%20Job%20Posts/Your%20Job%20Posts.css">
     <link rel="stylesheet" href="assets/Css/Post%20Job/Post%20Job.css">
     <link rel="stylesheet" href="assets/Css/Login%20and%20Sign%20up/Profilesetup.css">
+    <link rel="stylesheet" href="/assets/Css/CompanyDashboard/CompanyDashboard.css">
+    <!-- <link rel="stylesheet" href="assets/Css/Company Dashboard/Company Dashboard.css"> -->
     <link rel="shortcut icon" href="assets/Images/favicon.png" />
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
 
     <style>
       .cursor{
@@ -60,7 +64,7 @@
     </style>
 
   </head>
-  <body style="background-color: #F5F5F5;">
+  <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
@@ -76,6 +80,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/plugins/piexif.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/plugins/sortable.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/fileinput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/themes/fas/theme.min.js"></script>
+
+    <script>
+      // with plugin options
+      $(".input-id").fileinput({'showUpload':false, 'previewFileType':'any'});
+        
+   </script>
 
     <script>   
       $(document).scroll(function() {
@@ -86,8 +101,19 @@
       $('.user-bio-dp-container').fadeOut();
        }
        });
-       </script> 
+    </script> 
 
+      <script>   
+        $(document).scroll(function() {
+        var y = $(this).scrollTop();
+        if (y > 200) {
+        $('#dashboardnav').fadeIn();
+        } else {
+        $('#dashboardnav').fadeOut();
+        }
+        });
+      </script> 
+      
 
       <script>
                       
@@ -113,7 +139,39 @@
         </script>
 
 
-   
+    <script>
+      $('#event_start').datetimepicker({
+          uiLibrary: 'bootstrap4',
+          modal: true,
+          footer: true,
+          format: 'HH:MM dd-mm-yyyy' 
+      });
+    </script>
+    <script>
+      $('#event_end').datetimepicker({
+          uiLibrary: 'bootstrap4',
+          modal: true,
+          footer: true,
+          format: 'HH:MM dd-mm-yyyy' 
+      });
+    </script>
+
+    <script>
+
+    /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+      var currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        document.getElementById("navbar").style.top = "100px";
+      } else {
+        document.getElementById("navbar").style.top = "-100px";
+      }
+      prevScrollpos = currentScrollPos;
+    } 
+
+
+    </script>
 
   </body>
 </html>

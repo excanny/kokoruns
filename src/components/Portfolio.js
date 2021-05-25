@@ -146,115 +146,115 @@ export class Portfolio extends Component {
       }
 
 
-      async handleSubmit(e) {
-        // Form submission logic
-        e.preventDefault();
+            async handleSubmit(e) {
+              // Form submission logic
+              e.preventDefault();
 
 
-        console.log(localStorage.getItem('access_token'));
+              console.log(localStorage.getItem('access_token'));
 
-        this.setState({ isLoading: true, show: false });
+              this.setState({ isLoading: true, show: false });
 
-       
+            
 
-        const headers = {
-          "Content-Type": "application/json",
-          'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
-        }
+              const headers = {
+                "Content-Type": "application/json",
+                'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
+              }
 
-        let formData = new FormData();
-        formData.append('portfolio', e.target.myImage.files[0]);
+              let formData = new FormData();
+              formData.append('portfolio', e.target.myImage.files[0]);
 
-        //console.log(data);
+              //console.log(data);
 
-         //Display the key/value pairs
-  //  `       for (var pair of formData.entries()) {
-  //           console.log(pair[0]+ ', ' + pair[1]); 
-  //         }`
+              //Display the key/value pairs
+        //  `       for (var pair of formData.entries()) {
+        //           console.log(pair[0]+ ', ' + pair[1]); 
+        //         }`
 
-         
-
-
-          try 
-          {
-              // fetch data from a url endpoint
-              const response = await  axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/addportfolio`, formData, {headers: headers});
-              //const response = await  axios.post(`https://lit-ridge-07527.herokuapp.com/api/addeducation`, data, {headers: headers});
               
-              console.log(response);
 
-              //this.setState({ educations: response.data.educations, loading: false, show: false });
 
-              window.location.href = "/user-dashboard-portfolio";
+                try 
+                {
+                    // fetch data from a url endpoint
+                    const response = await  axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/addportfolio`, formData, {headers: headers});
+                    //const response = await  axios.post(`https://lit-ridge-07527.herokuapp.com/api/addeducation`, data, {headers: headers});
+                    
+                    console.log(response);
 
-              //this.props.history.push("/user-dashboard-portfolio");
+                    //this.setState({ educations: response.data.educations, loading: false, show: false });
 
-              // console.log(response.data.expe[0]);
+                    window.location.href = "/user-dashboard-portfolio";
 
-          } 
-          catch(error) 
-          {
-            // console.log("error", error);
-            // appropriately handle the error
-            console.log(error.response);
+                    //this.props.history.push("/user-dashboard-portfolio");
+
+                    // console.log(response.data.expe[0]);
+
+                } 
+                catch(error) 
+                {
+                  // console.log("error", error);
+                  // appropriately handle the error
+                  console.log(error.response);
+                }
+
+            
           }
 
-      
-    }
 
 
+          async handleSubmit2(e) {
+            // Form submission logic
+            e.preventDefault();
 
-    async handleSubmit2(e) {
-      // Form submission logic
-      e.preventDefault();
+            this.setState({ isLoading: true, show2: false });
+          
 
-      this.setState({ isLoading: true, show2: false });
-     
+            const headers = {
+              "Content-Type": "application/json",
+              'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
+            }
 
-      const headers = {
-        "Content-Type": "application/json",
-        'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
-      }
+            let formData = new FormData();
+            formData.append('document', e.target.myImage2.files[0]);
 
-      let formData = new FormData();
-      formData.append('document', e.target.myImage2.files[0]);
+            //console.log(data);
 
-      //console.log(data);
+            //Display the key/value pairs
+              // for (var pair of formData.entries()) {
+              //   console.log(pair[0]+ ', ' + pair[1]); 
+              // }
 
-       //Display the key/value pairs
-        // for (var pair of formData.entries()) {
-        //   console.log(pair[0]+ ', ' + pair[1]); 
-        // }
-
-       
-
-
-        try 
-        {
-            // fetch data from a url endpoint
-            const response = await  axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/adddocument`, formData, {headers: headers});
-            //const response = await  axios.post(`https://lit-ridge-07527.herokuapp.com/api/addeducation`, data, {headers: headers});
             
-            console.log(response);
 
-            //this.setState({ educations: response.data.educations, loading: false, show: false });
 
-            window.location.href = "/user-dashboard-portfolio";
+              try 
+              {
+                  // fetch data from a url endpoint
+                  const response = await  axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/adddocument`, formData, {headers: headers});
+                  //const response = await  axios.post(`https://lit-ridge-07527.herokuapp.com/api/addeducation`, data, {headers: headers});
+                  
+                  console.log(response);
 
-            //this.props.history.push("/user-dashboard-portfolio");
+                  //this.setState({ educations: response.data.educations, loading: false, show: false });
 
-            // console.log(response.data.expe[0]);
+                  window.location.href = "/user-dashboard-portfolio";
 
-        } 
-        catch(error) 
-        {
-          // console.log("error", error);
-          // appropriately handle the error
-          console.log(error.response);
+                  //this.props.history.push("/user-dashboard-portfolio");
+
+                  // console.log(response.data.expe[0]);
+
+              } 
+              catch(error) 
+              {
+                // console.log("error", error);
+                // appropriately handle the error
+                console.log(error.response);
+              }
+
+          
         }
-
-    
-  }
 
 
 
@@ -341,7 +341,9 @@ export class Portfolio extends Component {
                  
                         { this.state.portfolios.map(portfolio =>
                        
-                        <a className="image-padding" target="_blank"><img className="image img-thumbnail" src={`https://sheltered-chamber-63274.herokuapp.com/uploads/userportfolios/images/${portfolio.image}`} width="100%"/></a>
+                        // <a className="image-padding" target="_blank"><img className="image img-thumbnail" src={`https://sheltered-chamber-63274.herokuapp.com/uploads/userportfolios/images/${portfolio.image}`} width="100%"/></a>
+                        <a className="image-padding" target="_blank"><img className="image img-thumbnail" src={`https://kokoruns.s3.us-east-2.amazonaws.com/userportfolios/images/${portfolio.image}`} width="100%"/></a>
+                       
                         )
                       }
                       </div>
@@ -353,8 +355,8 @@ export class Portfolio extends Component {
                       </div>
                       <div className="portfolio-header-container">
                         <div className="edu-update-button-container">
-                          <button onclick="ShowEducationForm()" className="edu-update-button" onClick={this.showModal2}>+ Add Document</button>
-                          <button onClick={this.viewBio} className="bio-button"> View Bio </button>
+                          <button onclick="ShowEducationForm()" className="edu-update-button w-100" onClick={this.showModal2}>+ Add Document</button>
+                          
                         </div>         
                       </div> 
                       <div className="porfolio-container-documents" align="center">
@@ -370,7 +372,9 @@ export class Portfolio extends Component {
                  
                         { this.state.documents.map(document =>
                        
-                        <a className="image-padding" target="_blank"><img className="image img-thumbnail" src={`https://sheltered-chamber-63274.herokuapp.com/uploads/userportfolios/documents/${document.doc}`} width="100%"/></a>
+                        // <a className="image-padding" target="_blank"><img className="image img-thumbnail" src={`https://kokoruns.s3.us-east-2.amazonaws.com/userportfolios/documents/${document.doc}`} width="100%"/></a>
+                          <a className="image-padding" target="_blank"><img className="image img-thumbnail" src={`https://kokoruns.s3.us-east-2.amazonaws.com/userportfolios/documents/${document.doc}`} width="100%"/></a>
+                        
                         )
                           }
                           </div>
@@ -445,8 +449,8 @@ export class Portfolio extends Component {
                    </Modal.Title>
                    <span onClick={this.onHide} className="close-modal-btn cursor">x</span>
                </Modal.Header>
-               <Modal.Body>
-                   <form onSubmit={this.handleSubmit}>
+               <Modal.Body className="bg-light">
+                   <form onSubmit={this.handleSubmit} id="form">
 
 
                               
@@ -457,23 +461,20 @@ export class Portfolio extends Component {
                                 </div>
                               </div>
 
-                              
-
+                    
                                 
-                                  <input type="file" name="myImage" onChange={this.onImageChange} required/>
-                                 
-
+                          <input type="file" name="myImage" onChange={this.onImageChange} required/>
                                 
-
-                        <div className="mt-4 text-center">
-                             <button type="submit" class="btn btn-primary">Upload</button>
-                        </div>
 
                         
 
                   </form>
 
                </Modal.Body>
+
+               <div className="modal-footer py-0 text-right">
+                           <button type="submit" form="form" className="btn btn-success">Upload</button>
+                     </div>
                
                </Modal>
 
@@ -496,8 +497,8 @@ export class Portfolio extends Component {
                     </Modal.Title>
                     <span onClick={this.onHide2} className="close-modal-btn cursor">x</span>
                 </Modal.Header>
-                <Modal.Body>
-                    <form onSubmit={this.handleSubmit2}>
+                <Modal.Body className="bg-light">
+                    <form onSubmit={this.handleSubmit2} id="form2">
  
  
                                
@@ -512,18 +513,17 @@ export class Portfolio extends Component {
  
                             
                         <input type="file" name="myImage2" onChange={this.onDocChange} required/>
-                                  
- 
-
-                         <div className="mt-4 text-center">
-                              <button type="submit" class="btn btn-primary">Upload</button>
-                         </div>
+                              
  
                          
  
                    </form>
  
                 </Modal.Body>
+
+                    <div className="modal-footer py-0 text-right">
+                           <button type="submit" form="form2" className="btn btn-success">Upload</button>
+                     </div>
                 
                 </Modal>
  

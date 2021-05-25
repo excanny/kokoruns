@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
+import Footer from '../commons/Footer';
 import axios from 'axios';
 import jwt from 'jwt-decode'; // import dependency
 
@@ -109,12 +110,10 @@ export class Login extends Component {
                     <a className="navbar-brand" href="/">
                         <img src="assets/Images/Header%20and%20Footer/Logo.png" alt="Logo" style={{width: 200}} />
                     </a>
-                    {/* <a href="<?php //echo site_url(); ?>logout" class="float-right pt-4">
-                                    <i class="fa fa-power-off" data-toggle="tooltip" title="Logout"></i>
-                            </a> */}
+      
                     </nav>
                 </header>
-                <div className="container mx-auto" style={{margin: '4rem'}}>
+                <div className="container mx-auto" style={{margin: '4rem', marginTop: '8rem'}}>
                     <div className="row bg-white w-50 mx-auto">
                     <div className="col">
                         <div className="pt-4 pl-4 pr-4">
@@ -154,7 +153,9 @@ export class Login extends Component {
                         </div>
                     </div>
                     </div>
-                </div>      
+                </div>   
+
+                <Footer/>   
             </>
 
         )

@@ -6,7 +6,7 @@ export class Footer extends Component {
             <div className="container-fluid bg-white py-3 w-100">
                 <div className="row">
                 <div className="col-md-2 pl-4">
-                    <img className="kokoruns-footer-logo" src="assets/Images/Header%20and%20Footer/Logo.png" width="100%" />
+                    <img className="kokoruns-footer-logo" src="/assets/Images/Header%20and%20Footer/Logo.png" width="100%" />
                 </div>
                 <div className="col text-center pt-3">
                     <a className="text-primary mx-2 font-weight-bold">

@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 export class Header extends Component {
 
@@ -10,6 +12,7 @@ export class Header extends Component {
           loading: true,
           isLinkDisable2: false,
           navigate: false,
+          companies: [],
         
         }
 
@@ -26,6 +29,56 @@ export class Header extends Component {
         this.setState({ navigate : true });
         //alert("hi");
     }  
+
+
+    async componentDidMount()
+  {
+
+    if(localStorage.getItem('access_token'))
+    {
+      this.setState({ isLogged : true });
+    }
+
+    //console.log(localStorage.getItem('access_token'));
+
+    const headers = {
+
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
+
+    }
+
+
+    let one = "https://sheltered-chamber-63274.herokuapp.com/api/companies"
+    //let two = "https://sheltered-chamber-63274.herokuapp.com/api/companies";
+    // let three = "https://api.storyblok.com/v1/cdn/stories/vue?version=published&token=wANpEQEsMYGOwLxwXQ76Ggtt"
+     
+    const requestOne = axios.get(one, {headers: headers});
+    //const requestTwo = axios.get(two, {headers: headers});
+    // const requestThree = axios.get(three, {headers: headers});
+     
+    axios.all([
+      requestOne, 
+      //requestTwo, 
+      //requestThree
+    ]).then(axios.spread((...responses) => {
+      const responseOne = responses[0]
+      //const responseTwo = responses[1]
+      // const responesThree = responses[2]
+      // use/access the results 
+
+      this.setState({ companies : responseOne.data.companies, 
+         });
+
+      console.log(responseOne);
+
+    })).catch(errors => {
+      // react on errors.
+      console.log(errors);
+    })
+
+
+  }
 
 
     render() {
@@ -67,13 +120,17 @@ export class Header extends Component {
                     <button type="button" className="btn dropdown-toggle p-0 font-weight-bold" data-toggle="dropdown">
                         Pages
                     </button>
-                    <div className="dropdown-menu pt-0 shadow border-0">
+                    <div className="dropdown-menu shadow border-0">
                         <h1 className="dropdown-header mt-0 mb-0" style={{fontSize: '1.1rem'}}>Admin roles</h1>
-                        {/*?php foreach ($association_admin_pages as $page) { ?*/}
-                        <div className="pl-2">
-                        <a className="dropdown-item text-danger mt-0 font-weight-bold" href="<?php echo base_url('association/dashboard/'. $page['fassociation_id']); ?>">{/*?php echo strtoupper($page['fassociation_name']); ?*/}</a>
-                        </div>
-                        {/*?php } ?*/}
+                        
+                        {this.state.companies.map((company, index) => (
+                            <div key={index}>
+                                <div>
+                                    <Link className="dropdown-item text-danger font-weight-bold" to={`/company-dashboard/${company.company_id}`}>{company.company_name}</Link>
+                                </div>
+                            </div>
+                        ))}
+                       
                         {/*?php foreach ($company_admin_pages as $page) { ?*/}
                         <div className="pl-2">
                         <a className="dropdown-item text-info font-weight-bold" href="<?php echo base_url('company/dashboard/'. $page['fcompany_id']); ?>">{/*?php echo strtoupper($page['fcompany_name']); ?*/}</a>
@@ -108,7 +165,7 @@ export class Header extends Component {
                 <div className="col">
                 <div className="pt-4">
                     <div className="dropdown">
-                    <i className="fa fa-plus cursor p-0" data-toggle="dropdown" />
+                    <i className="fa fa-plus cursor p-0" data-toggle="dropdown"/>
                     <div className="dropdown-menu shadow border-0">
                         <a className="dropdown-item font-weight-bold" href="/company-register">Create Company Page</a>
                         <div className="dropdown-divider" />

@@ -16,6 +16,11 @@ import Recommendations from './components/Recommendations';
 import JobBoard from './components/JobBoard';
 import UserEvents from './components/UserEvents';
 import CompanyRegister from './components/CompanyRegister';
+import CompanyDashboard from './components/CompanyDashboard';
+import CompanyEvents from './components/CompanyEvents';
+import CompanyEbroadcasts from './components/CompanyEbroadcasts';
+import CompanyESolutions from './components/CompanyESolutions';
+import CompanyGallery from './components/CompanyGallery';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 
@@ -44,6 +49,13 @@ export class App extends Component {
               <Route path="/user-jobs-board" component={JobBoard} />
               <Route path="/user-recommendations" component={Recommendations} />
               <Route path="/company-register" component={CompanyRegister} />
+              <Route path="/company-dashboard/:id" component={CompanyDashboard} />
+              <Route path="/company-events/:id" component={CompanyEvents} />
+              <Route path="/company-esolutions/:id" component={CompanyESolutions} />
+              <Route path="/company-ebroadcasts/:id" component={CompanyEbroadcasts} />
+              <Route path="/company-gallery/:id" component={CompanyGallery} />
+
+              
             </Switch>
 
         </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
+import Footer from '../commons/Footer';
 
 export class Home extends Component {
     render() {
@@ -185,7 +186,12 @@ export class Home extends Component {
                     </div>    
                     </div>
                 </section>
+
+                <Footer/>  
+                
                 </div>
+
+              
 
         )
     }

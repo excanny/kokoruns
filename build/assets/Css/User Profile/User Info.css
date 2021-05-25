@@ -96,13 +96,13 @@ b {
 
 .menu-bar-div {
    width: 10%; 
-   background-color: ;
 }
 
 
 .dp {    
   /* width: 12%;  */
   width: 20%;  
+  height: 180px;
   min-width: 120px;      
   border-radius: 50%; 
   border: solid 6px white;
@@ -110,7 +110,8 @@ b {
 }
 
 .bio-dp {
-  width: 18%;  
+  width: 18%; 
+  height: 180px; 
   min-width: 120px;      
   border-radius: 50%; 
   border: solid 6px white;
@@ -288,19 +289,16 @@ b {
   background-color: #0991ff; 
   padding: 3px; 
   padding-left: 10px; 
-  padding-right: 10px;
-  color: #fff !important;
+  padding-right: 10px;"
 }
 
 
 .bio-info-label {
   font-family: Helvetica;
   font-size: 18px; 
-  color: dimgray;
-  text-decoration: ;  
+  color: dimgray; 
   letter-spacing: 1.5px; 
-  /* text-decoration: underline;
-  text-decoration-color: #0991ff; */    
+    
 }
 
 .bio-info-label-reco {
@@ -359,8 +357,7 @@ b {
   font-family: sans-serif;    
   border: 1px solid #d3d3d3;
   border-radius: 2px;
-  letter-spacing: 1px; 
-  display: none;  
+  letter-spacing: 1px;  
   overflow-y: auto;       
 }
 
@@ -396,7 +393,7 @@ b {
 
 .start-date-div {
  padding-top: 10px;
- display: none;
+
 }
 
 .start-date-day {
@@ -546,7 +543,7 @@ b {
 .hide-bio-div {
   padding: 3px;
   padding-bottom: 10px;
-  display: none;     
+    
 }
 
 .hide-bio-button {

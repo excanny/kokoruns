@@ -96,13 +96,13 @@ b {
 
 .menu-bar-div {
    width: 10%; 
-   background-color: ;
 }
 
 
 .dp {    
   /* width: 12%;  */
   width: 20%;  
+  height: 180px;
   min-width: 120px;      
   border-radius: 50%; 
   border: solid 6px white;
@@ -110,7 +110,8 @@ b {
 }
 
 .bio-dp {
-  width: 18%;  
+  width: 18%; 
+  height: 180px; 
   min-width: 120px;      
   border-radius: 50%; 
   border: solid 6px white;

@@ -148,6 +148,133 @@ export class Education extends Component {
       }
 
 
+      async EditEducation(id)
+      {
+        this.setState({ show2: true });
+  
+        console.log(id);
+  
+        const headers = {
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
+        }
+  
+    
+          try 
+          {
+              // fetch data from a url endpoint
+              const response = await  axios.get(`https://sheltered-chamber-63274.herokuapp.com/api/education/${id}`, {headers: headers});
+  
+              console.log(response.data.education);
+  
+              var start_date = response.data.experience.start;
+              var end_date = response.data.experience.end;
+  
+              var arr_start_date = start_date.split('-');
+              var arr_end_date = end_date.split('-');
+  
+              // console.log('date: ', arr_start_date[2]);
+              // console.log('month: ', arr_start_date[1]);
+              // console.log('year: ', arr_start_date[0]);
+  
+  
+              // var roles_string = response.data.experience.roles;
+  
+              // const roles_string_array = roles_string.split(',');
+  
+              
+              this.setState({ id: response.data.experience.id, start_month: arr_start_date[1], start_year:  arr_start_date[0], end_month: arr_end_date[1], end_year: arr_end_date[0], company_name: response.data.experience.company_name,
+                 exposition: response.data.experience.position, roles_edit: response.data.experience.roles});
+  
+  
+                 
+                //  const newRoles = [...this.state.roles];
+  
+                //  roles_string_array.map(function(role, prevState){
+  
+                //       console.log(role);
+                
+                //    });
+  
+  
+                // const newRoles = [...this.state.roles];
+                
+                // roles_string_array.map(function(role, s ){
+         
+                
+                //   newRoles[0].role_name = role;
+  
+                //   //newRoles[1].role_name = role;
+  
+                //   //console.log(newRoles);
+                     
+                   
+                //  });
+  
+                 //console.log(roles_string_array);
+  
+                
+                //  var arrayLength = roles_string_array.length;
+                //   for (var i = 1; i < arrayLength; i++) {
+                //       console.log(roles_string_array[i]);
+  
+                //       const newRoles = [...this.state.roles];
+  
+                //       //Do something
+  
+                //       newRoles[0].role_name = roles_string_array[i];
+  
+                //       console.log(newRoles);
+                //   }
+  
+                
+  
+                 //console.log(this.state.roles_edit_array);
+  
+          
+  
+          } 
+          catch(error) 
+          {
+            console.log("error", error);
+            // appropriately handle the error
+          }
+    
+      }
+  
+  
+  
+  
+        async DeleteEducation(id)
+        {
+  
+          const headers = {
+            "Content-Type": "application/json",
+            'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
+          }
+  
+    
+          try 
+          {
+              // fetch data from a url endpoint
+              const response = await  axios.delete(`https://sheltered-chamber-63274.herokuapp.com/api/deleteeducation/${id}`, {headers: headers});
+  
+              console.log(response);
+  
+              this.setState({  show2: false});
+
+              window.location.href = "/user-dashboard-education";
+  
+          } 
+          catch(error) 
+          {
+            console.log("error", error);
+            // appropriately handle the error
+          }
+    
+      }
+
+
       async handleSubmit(e) {
         // Form submission logic
         e.preventDefault();
@@ -322,7 +449,7 @@ export class Education extends Component {
                     </div>
                   </section>
 
-            {this.state.educations.length > 0 ?
+            {this.state.educations ?
                
                <div>
                  
@@ -331,6 +458,24 @@ export class Education extends Component {
                     <div className="education-post-container mb-5">
                       <div className="edu-cont">
                         <div className="edu-cont-2">
+
+                             <div className="row">
+                                  <div className="col">
+                                  
+                                    <i onClick={e => {
+                                      const confirmBox = window.confirm(
+                                        "Do you really want to delete this record?"
+                                      )
+                                      if (confirmBox === true) {
+                                        this.DeleteEducation(education.education_id)}
+                                      }
+                                       } className="float-right fa fa-trash text-warning cursor">
+
+                                    </i>
+                                    <i onClick={e => {this.EditEducation(education.education_id)} } className="float-right fa fa-edit text-danger cursor"></i>
+                                  </div>
+                              </div> 
+
                           <span className="edu-date">June</span>&nbsp;
                           <span className="edu-date">2013</span> - 
                           <span className="edu-date">January</span>&nbsp;&nbsp;<span className="edu-date">2019</span><br /><br />
@@ -356,17 +501,19 @@ export class Education extends Component {
                       </div>
 
                       :
-                      <div className="experience-post-container mb-4">
-                      <div className="exp-cont">
-                        <div className="exp-cont-2">    
-                        
-                       
-                        <p className="my-4">Seems you have no educations yet. Create a new education to get started.</p>
-                         
+
+                     
+                          <div className="experience-post-containerx mb-4">
+                          <div className="exp-cont">
+                            <div className="exp-cont-2">    
+                            
                           
-                        </div>       
-                      </div>     
-                    </div>
+                            <p className="my-4">Seems you have no educations yet. Create a new education to get started.</p>
+                            
+                              
+                            </div>       
+                          </div>     
+                        </div>
 
                       }
 
@@ -390,7 +537,7 @@ export class Education extends Component {
                           } 
 
 
-                        {this.state.proskills.length > 0 ? 
+                        {this.state.proskills ? 
                         
                           
                           <div>
@@ -440,7 +587,7 @@ export class Education extends Component {
 
 
 
-                      {this.state.otherskills.length > 0 ? 
+                      {this.state.otherskills ? 
                           
                           
                           <div>
@@ -484,8 +631,8 @@ export class Education extends Component {
                    </Modal.Title>
                    <span onClick={this.onHide} className="close-modal-btn cursor">x</span>
                </Modal.Header>
-               <Modal.Body className="px-4">
-                   <form onSubmit={this.handleSubmit}>
+               <Modal.Body className="px-4 bg-light">
+                   <form onSubmit={this.handleSubmit} id="eduform">
                        <input type="hidden" name="exp_id" id="exp_id" />
                        <p className="text-center mt-0 mb-0">All fields marked <span className="text-danger">*</span> are compulsory</p> 
                        <div className="col-sm-6 pl-0">
@@ -587,15 +734,17 @@ export class Education extends Component {
                                 <button type="button" onClick={this.handleAddSkill} className="add-tag-button" style={{border: '1px solid #90EE90', color: '#90EE90', background: '#fff', borderRadius: 5}}>+ Add More</button>
                             </div> 
 
-                            <div className="py-1 text-right">
-                              <button type="submit" className="btn btn-success">Create</button>
-                            </div>
+                           
                           </div>
                         </div>
 
                     </form>
 
                </Modal.Body>
+
+                <div className="modal-footer py-0 text-right">
+                           <button type="submit" form="eduform" className="btn btn-success">Create</button>
+                     </div>
                
                </Modal>
 

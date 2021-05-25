@@ -11,29 +11,229 @@ export class CompanyRegister extends Component {
         
             company_name: '',
             company_number: '',
+            company_email: '',
             cac: '',
             company_type:'',
             company_size:'',
             website:'',
-            industry1: '',
             company_address:'',
-            state:'',
-            lga: '',
+            states: [],
+            lgas: [],
+            selectedState : '',
+            selectedLGA : '',
             company_logo:'',
             isLoading: false,
+            category1 : [],
+            category2 : [],
+            category3 : [],
+            selectedCat1 : '',
+            selectedCat2 : '',
+            selectedCat3 : '',
 
         }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    //    this.validatePassword = this.validatePassword.bind(this);
+        this.changeState = this.changeState.bind(this);
+        this.changeLGA = this.changeLGA.bind(this);
+        this.changeCat1 = this.changeCat1.bind(this);
+        this.changeCat2 = this.changeCat2.bind(this);
+        this.changeCat3 = this.changeCat3.bind(this);
       
       }
 
+
       handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
-    
       }
+
+      changeCat1(e) {
+        this.setState({selectedCat1: e.target.value});
+        this.setState({category2 : this.state.category1.find(cat => cat.name === e.target.value).category2});
+            //console.log(e.target.value);
+      }
+    
+      changeCat2(e) {
+        this.setState({selectedCat2: e.target.value});
+        const cat2 = this.state.category1.find(cat => cat.name === this.state.selectedCat1).category2;
+		this.setState({category3 : cat2.find(cat2 => cat2.name === e.target.value).category3});
+        //console.log(cat2);
+      }
+
+      changeCat3(e) 
+      {
+        this.setState({selectedCat3: e.target.value});
+        console.log(e.target.value);
+      }
+
+      changeState(e) {
+        this.setState({selectedState: e.target.value});
+        this.setState({lgas : this.state.states.find(state => state.name === e.target.value).lgas});
+            console.log(e.target.value);
+      }
+    
+      changeLGA(e) {
+        this.setState({selectedLGA: e.target.value});
+            //console.log(e.target.value);
+      }
+
+
+      async componentDidMount()
+        {
+
+            this.setState({
+                category1: [ 
+                    {name: 'Agriculture',  
+                        category2: [ 
+                            {name: 'Animal Production',  
+                                category3: [
+                                    {name: "Cattle Ranching & Farming"},
+                                    {name: "Hog & Pig Farming"}, 
+                            ]}, 
+                            {name: 'Crop Production', 
+                                category3: [
+                                            {name: 'Demsa'},
+                                            {name: 'Fufure'},
+                            ]}, 
+                            {name: 'Forestry and Logging', 
+                                category3: [
+                                            {name: 'Abak'},
+                                            {name: 'Eastern Obolo'},
+                            ]}, 
+                            {name: 'Fishing, Hunting and Trapping', 
+                                category3: [
+                                            {name: 'Aguata'},
+                                            {name: 'Anambra East'},
+                                            {name: 'Anambra West'},
+                            ]}, 
+                            {name: 'Support Activities For Agriculture', 
+                                category3: [
+                                            {name: 'Alkaleri'},
+                                            {name: 'Bauchi'},
+                                            
+                            ]}, 
+                        
+                        ]},
+
+                        {name: 'Mining, Quarrying and Oil& Gas Industry',  
+                        category2: [ 
+                            {name: 'Oil and Gas Extraction',  
+                                category3: [
+                                    {name: "Aba North"},
+                                    {name: "Aba South"}, 
+                            ]}, 
+                            {name: 'Mining', 
+                                    category3: [
+                                            {name: 'Demsa'},
+                                            {name: 'Fufure'},
+                            ]}, 
+                        ]},
+
+                    ] //countries block
+
+             });
+
+
+             this.setState({
+      
+                states: [ {name: 'Abia', code: '1', 
+                lgas: [
+                        {name: "Aba North", code: '1'},
+                        {name: "Aba South", code: '2'},
+                        
+                  ]}, {name: 'Adamawa', code: '2', 
+                          lgas: [
+                                  {name: 'Demsa', code: '1'},
+                                  {name: 'Fufure', code: '2'},
+                  ]}, {name: 'AkwaIbom', code: '3', 
+                  lgas: [
+                                  {name: 'Abak', code: '1'},
+                                  {name: 'Eastern Obolo', code: '2'},
+              ]}, {name: 'Anambra', code: '4', 
+                  lgas: [
+                                  {name: 'Aguata', code: '1'},
+                                  {name: 'Anambra East', code: '2'},
+                                  {name: 'Anambra West', code: '3'},
+              ]}, {name: 'Bauchi', code: '5', 
+                  lgas: [
+                                  {name: 'Alkaleri', code: '1'},
+                                  {name: 'Bauchi', code: '2'},
+                                  
+              ]}, {name: 'Bayelsa', code: '6', 
+                      lgas: [
+                                  {name: 'Brass', code: '1'},
+                                  {name: 'Ekeremor', code: '2'},
+                                  {name: 'Kolokuma Opokuma', code: '3'},
+                                  {name: 'Nembe', code: '4'},
+                                  {name: 'Ogbia', code: '5'},
+                                  {name: 'Sagbama', code: '6'},
+                                  {name: 'Southern Ijaw', code: '7'},
+                                  {name: 'Yenagoa', code: '8'}
+              ]}, {name: 'Benue', code: '7', 
+                      lgas: [
+                                  {name: 'Agatu', code: '1'},
+                                  {name: 'Apa', code: '2'},
+                                  
+              ]}, {name: 'Borno', code: '8', 
+                      lgas: [
+                                  {name: 'Abadam', code: '1'},
+                                  {name: 'Askira-Uba', code: '2'},
+              ]} ],
+          
+            });
+             
+
+        
+
+            if(localStorage.getItem('access_token'))
+            {
+            this.setState({ isLogged : true });
+            }
+
+            //console.log(localStorage.getItem('access_token'));
+
+            const headers = {
+
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
+
+            }
+
+
+            let one = "https://sheltered-chamber-63274.herokuapp.com/api/userdetails"
+            // let two = "https://api.storyblok.com/v1/cdn/stories/vue?version=published&token=wANpEQEsMYGOwLxwXQ76Ggtt";
+            // let three = "https://api.storyblok.com/v1/cdn/stories/vue?version=published&token=wANpEQEsMYGOwLxwXQ76Ggtt"
+            
+            const requestOne = axios.get(one, {headers: headers});
+            // const requestTwo = axios.get(two);
+            // const requestThree = axios.get(three);
+            
+            axios.all([
+            requestOne, 
+            //requestTwo, 
+            //requestThree
+            ]).then(axios.spread((...responses) => {
+            const responseOne = responses[0]
+            // const responseTwo = responses[1]
+            // const responesThree = responses[2]
+            // use/access the results 
+
+            this.setState({ first_name : responseOne.data.user_details.first_name, last_name : responseOne.data.user_details.last_name, gender : responseOne.data.user_details.gender, profession: responseOne.data.user_details.profession, marital_status : responseOne.data.user_details.marital_status, disabled : responseOne.data.user_details.disabled, current_employer : responseOne.data.user_details.current_employer, other_professions1 :  responseOne.data.user_details.other_professions1,
+                other_professions2 :  responseOne.data.user_details.other_professions2, other_professions3 :  responseOne.data.user_details.other_professions3, employment_type: responseOne.data.user_details.employment_type, preferred_job: responseOne.data.user_details.preferred_job,
+                other_professions4 :  responseOne.data.user_details.other_professions4, educational_qualification :  responseOne.data.user_details.educational_qualification, languages1 : responseOne.data.user_details.languages1, 
+               email: responseOne.data.user_details.email, current_employer: responseOne.data.user_details.current_employer, employment_status: responseOne.data.user_details.employment_status,
+                languages2 : responseOne.data.user_details.languages2, languages3 : responseOne.data.user_details.languages3, languages4 : responseOne.data.user_details.languages4, languages5 : responseOne.data.user_details.languages5, about : responseOne.data.user_details.about,
+                });
+
+            console.log(this.state);
+
+            })).catch(errors => {
+            // react on errors.
+            console.log(errors);
+            })
+
+
+        }
 
 
       handleSubmit(e) {
@@ -46,6 +246,7 @@ export class CompanyRegister extends Component {
 
         const headers = {
           "Content-Type": "application/json",
+          'Authorization': 'Bearer ' + localStorage.getItem('access_token'), 
         }
 
 
@@ -56,16 +257,17 @@ export class CompanyRegister extends Component {
         //formData.append('uploadIDPath', this.state.file);
         formData.append('company_name', e.target.company_name.value);
         formData.append('company_number', e.target.company_number.value);
+        formData.append('company_email', e.target.company_email.value);
         formData.append('cac', e.target.cac.value);
         formData.append('company_type', e.target.company_type.value);
         formData.append('company_size', e.target.company_size.value);
-        formData.append('dob', e.target.dob.value);
         formData.append('website', e.target.website.value);
-        formData.append('industry1', e.target.industry1.value);
+        formData.append('company_industry', e.target.selectedCat1.value);
+        formData.append('company_industry2', e.target.selectedCat2.value);
+        formData.append('company_industry3', e.target.selectedCat3.value);
         formData.append('company_address', e.target.company_address.value);
-
-        formData.append('state', e.target.state.value);
-        formData.append('lga', e.target.lga.value);
+        formData.append('state', this.state.selectedState);
+        formData.append('lga', this.state.selectedLGA);
         formData.append('company_logo', e.target.company_logo.value);
 
 
@@ -78,30 +280,30 @@ export class CompanyRegister extends Component {
 
         //console.log(data);
 
-    //    axios.post(`https://lit-ridge-07527.herokuapp.com/api/register`, data, {headers: headers})
-    //     .then((response) => {
+       axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/cregister`, formData, {headers: headers})
+        .then((response) => {
            
-    //       //  if (response.data.success === true) 
-    //       //  {
-    //       //     this.setState({
-    //       //       isVerifyComplete: 1,
-    //       //     });
+          //  if (response.data.success === true) 
+          //  {
+          //     this.setState({
+          //       isVerifyComplete: 1,
+          //     });
              
-    //       //     this.props.history.push("/get-started");
-    //       //  }  
-    //       //  else 
-    //       //  {
-    //       //     this.props.history.push('/signup'); 
-    //       //  }  
+          //     this.props.history.push("/get-started");
+          //  }  
+          //  else 
+          //  {
+          //     this.props.history.push('/signup'); 
+          //  }  
 
-    //        this.props.history.push("/registersuccess");
+          this.props.history.push(`/company-dashboard/${response.data.company.company_id}`);
          
-    //        console.log(response);
+           //console.log(response.data.company.company_id);
 
-    //      })
-    //      .catch( error => {
-    //        console.log(error.response);
-    //      });
+         })
+         .catch( error => {
+           console.log(error.response);
+         });
     
 
       }
@@ -117,7 +319,7 @@ export class CompanyRegister extends Component {
                         <h3 className="mb-4">Create A Company Account</h3>
                         <p><span className="text-danger">*</span> Required Information</p>
                      
-                        <form encType="multipart/form-data" onSubmit={this.handleSubmit} className="needs-validation" noValidate>
+                        <form encType="multipart/form-data" onSubmit={this.handleSubmit} className="needs-validation">
                         <div className="row">
                             <div className="col">
                             <div className="form-group p-floating-container">
@@ -185,6 +387,12 @@ export class CompanyRegister extends Component {
                                 <label className="text-primary">Enter Website </label>
                             </div>
                             </div>
+                            <div className="col">
+                            <div className="form-group p-floating-container">
+                                <input type="email" className="form-control rounded-0" placeholder="Enter Email" name="company_email" value={this.state.company_email} onChange={this.handleChange} autoComplete="off" />
+                                <label className="text-primary">Enter Email </label>
+                            </div>
+                            </div>
                         </div>
                         <div className="row">
                             <div className="col text-center text-primary">
@@ -192,36 +400,35 @@ export class CompanyRegister extends Component {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col">
-                            <div className="form-group">
-                                <select name="industry1" id="industry1" value={this.state.industry1} onChange={this.handleChange} className="form-control rounded-0" required>
-                                <option value>Select one*</option>
-                                <option value="Agriculture">Agriculture</option>
-                                <option value="Construction">Construction</option>
-                                <option value="Manufacturing">Manufacturing</option>
-                                <option value="Financial Services">Financial Services</option>
-                                <option value="Health Care">Health Care</option>
-                                <option value="Information and Communication Technology">Information and Communication Technology</option>
-                                <option value="Oil and Gas">Oil and Gas</option>
-                                <option value="Natural Resources">Natural Resources</option>
-                                <option value="Services">Services</option>
-                                <option value="Utilities">Utilities</option>
-                                <option value="Conglomorate">Conglomorate</option>
+                            <div className="col-md-4">
+                            <div className="form-gfroup">
+                                  <select value={this.state.selectedCat1} name="selectedCat1" onChange={this.changeCat1} className="form-control" required>
+                                    <option>Select one</option>
+                                    {this.state.category1.map((e, key) => {
+                                        return <option key={key}>{e.name}</option>;
+                                    })}
                                 </select>
                             </div>
                             </div>
-                            <div className="col">
+                            <div className="col-md-4">
                             <div className="form-group">
-                                <select name="industry2" id="industry2" className="form-control rounded-0">
-                                <option value>Select one*</option>
-                                </select>
+            
+                                <select value={this.state.selectedCat2} name="selectedCat2" onChange={this.changeCat2} className="form-control" required>
+                                    <option>Select one</option>
+                                        {this.state.category2.map((e, key) => {
+                                            return <option key={key}>{e.name}</option>;
+                                        })}
+                                </select> 
                             </div>
                             </div>
-                            <div className="col">
+                            <div className="col-md-4">
                             <div className="form-group">
-                                <select name="industry3" id="industry3" className="form-control rounded-0">
-                                <option value>Select one*</option>
-                                </select>
+                                <select value={this.state.selectedCat3} name="selectedCat3" onChange={this.changeCat3} className="form-control" required>
+                                    <option>Select one</option>
+                                        {this.state.category3.map((e, key) => {
+                                            return <option key={key}>{e.name}</option>;
+                                        })}
+                                </select> 
                             </div>
                             </div>
                         </div>
@@ -241,62 +448,25 @@ export class CompanyRegister extends Component {
                         <div className="row">
                             <div className="col">
                             <div className="form-group">
-                                <select name="state" id="state" className="form-control rounded-0" value={this.state.state} onChange={this.handleChange} required>
-                                <option value selected="selected"> Select State* </option>
-                                <option value="Abia">Abia</option>
-                                <option value="Adamawa">Adamawa</option>
-                                <option value="AkwaIbom">AkwaIbom</option>
-                                <option value="Anambra">Anambra</option>
-                                <option value="Bauchi">Bauchi</option>
-                                <option value="Bayelsa">Bayelsa</option>
-                                <option value="Benue">Benue</option>
-                                <option value="Borno">Borno</option>
-                                <option value="Cross River">Cross River</option>
-                                <option value="Delta">Delta</option>
-                                <option value="Ebonyi">Ebonyi</option>
-                                <option value="Edo">Edo</option>
-                                <option value="Ekiti">Ekiti</option>
-                                <option value="Enugu">Enugu</option>
-                                <option value="FCT">FCT</option>
-                                <option value="Gombe">Gombe</option>
-                                <option value="Imo">Imo</option>
-                                <option value="Jigawa">Jigawa</option>
-                                <option value="Kaduna">Kaduna</option>
-                                <option value="Kano">Kano</option>
-                                <option value="Katsina">Katsina</option>
-                                <option value="Kebbi">Kebbi</option>
-                                <option value="Kogi">Kogi</option>
-                                <option value="Kwara">Kwara</option>
-                                <option value="Lagos">Lagos</option>
-                                <option value="Nasarawa">Nasarawa</option>
-                                <option value="Niger">Niger</option>
-                                <option value="Ogun">Ogun</option>
-                                <option value="Ondo">Ondo</option>
-                                <option value="Osun">Osun</option>
-                                <option value="Oyo">Oyo</option>
-                                <option value="Plateau">Plateau</option>
-                                <option value="Rivers">Rivers</option>
-                                <option value="Sokoto">Sokoto</option>
-                                <option value="Taraba">Taraba</option>
-                                <option value="Yobe">Yobe</option>
-                                <option value="Zamfara">Zamfara</option>
+                                <select name="selectedState" value={this.state.selectedState} onChange={this.changeState} className="form-control">
+                                    <option >Select State</option>
+                                    {this.state.states.map((e, key) => {
+                                        return <option key={key}>{e.name}</option>;
+                                    })}
                                 </select>
                             </div>
                             </div>
                             <div className="col">
                             <div className="form-group">
-                                <select name="lga" id="lga" value={this.state.lga} onChange={this.handleChange} className="form-control rounded-0" required>
-                                <option value>Select LGA*</option>
+                                <select name="selectedLGA" value={this.state.selectedLGA} onChange={this.changeLGA} className="form-control">
+                                    <option>Select LGA</option>
+                                    {this.state.lgas.map((e, key) => {
+                                        return <option key={key}>{e.name}</option>;
+                                    })}
                                 </select>
                             </div>
                             </div>
-                            <div className="col">
-                            <div className="form-group">
-                                <select name="area" id="area" className="form-control rounded-0">
-                                <option value>Select Area*</option>
-                                </select>
-                            </div>
-                            </div>
+                           
                         </div>
                         <div className="row mt-2">
                             <div className="col text-center text-primary">
