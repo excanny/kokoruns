@@ -9,25 +9,25 @@ export class Footer extends Component {
                     <img className="kokoruns-footer-logo" src="/assets/Images/Header%20and%20Footer/Logo.png" width="100%" />
                 </div>
                 <div className="col text-center pt-3">
-                    <a className="text-primary mx-2 font-weight-bold">
+                    <a className="text-primary mx-2">
                     Contact Us 
                     </a>
-                    <a className="text-primary mx-2 font-weight-bold">
+                    <a className="text-primary mx-2">
                     About Us 
                     </a>
-                    <a className="text-primary mx-2 font-weight-bold">
+                    <a className="text-primary mx-2">
                     Our Community Guidelines 
                     </a>
-                    <a className="text-primary mx-2 font-weight-bold">
+                    <a className="text-primary mx-2">
                     FAQ
                     </a>
-                    <a className="text-primary font-weight-bold">
+                    <a className="text-primary">
                     Terms&nbsp;of&nbsp;Use 
                     </a>
-                    <a className="text-primary font-weight-bold">
+                    <a className="text-primary">
                     Terms&nbsp;of&nbsp;Service
                     </a> 
-                    <a className="text-primary mx-2 font-weight-bold">
+                    <a className="text-primary mx-2">
                     Privacy&nbsp;Policy 
                     </a>
                 </div>

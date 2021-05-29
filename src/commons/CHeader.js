@@ -50,37 +50,64 @@ class CHeader extends Component {
         }
 
         return (
-            <header style={{width:'100%'}}>
-              <div className="dashboard-header" >
-                <div className="logo-div">    
-                <img src="Images/Header%20and%20Footer/Logo.png" className="logo" />
-                </div>   
-                <div className="search-bar-div">
-                <input type="text" placeholder="Search for something..." className="search-bar" />
-                <button className="search-button" type="submit"><img className="search-icon" src="Images/Header%20and%20Footer/search.png" /></button>
+           
+           <>
+                <header className="bg-white w-100" style={{position: 'fixed', top: 0, width: '100%', zIndex: 9, borderBottom: '1px solid #ccc'}}>
+                    <nav>
+                    <div className="row">
+                        <div className="col-md-3">
+                        <a className="navbar-brand" href="#">
+                            <img src="/assets/Images/Header%20and%20Footer/Logo.png" alt="Logo" style={{width: 210}} />
+                        </a>
+                        </div>
+                        <div className="col-md-6 pt-3">
+                        <div className="input-group mb-2">
+                            <input type="text" className="rounded-0 header-search-bar  w-75" placeholder="Search for something..." style={{backgroundImage: 'linear-gradient(45deg, #0691f8, #0691f8, #b73650)', width: '87.5% !important', border: '1px solid #ced4da', height: '2.5rem'}} />
+                            <div className="input-group-append">
+                            <button className="btn btn-success rounded-0" type="submit" style={{background: '#B23955', border: 'none'}}><i className="fa fa-search" /></button>
+                            </div>
+                        </div>
+                        </div>
+                        <div className="col-md-3">
+                        <a className href="<?php echo site_url(); ?>user/dashboard"> <i className="fas fa-arrows-alt-h" /></a>
+                        <a href="<?php echo site_url(); ?>logout" className="float-right pt-4" onclick="return confirm('Are you sure you want to logout?')">
+                            <i className="fa fa-power-off text-primary" data-toggle="tooltip" title="Logout" />
+                        </a>
+                        </div>
+                    </div>
+                    </nav>
+                </header>
+                <div id="navbar" style={{display: 'ncone'}}>
+                    <div className="row pt-3 pl-5" style={{borderBottom: '1px solid #ccc'}}>
+                    <div className="col-md-12 text-center">
+                        <h4 className="text-center"> Company Name</h4>
+                    </div>
+                    </div>
+                    {/* <div class="row pt-3 pl-4 bg-white" style="border-bottom: 1px solid #ccc; margin-top: 12rem;">
+                        <div class="col-md-12 text-left">
+                            <h6 class="text-left"><strong> fwefewfwe </strong> </h6>
+                        </div>
+                    </div> */}
+                    <div className="row bg-white py-2 text-center" style={{boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)', paddingLeft: '21.7rem', paddingRight: '24.26rem'}}>
+                    <div className="col pl-1 pr-1">
+                        <button id="profile_tab_btn2" className="btn btn-danger btn-sm btn-block rounded-0" onclick="ProfileFunction()">Profile</button>
+                    </div>
+                    <div className="col pl-1 pr-1">
+                        <button id="events_tab_btn2" className="btn btn-danger btn-sm btn-block rounded-0" onclick="EventFunction();">Events</button>
+                    </div>
+                    <div className="col pl-1 pr-1">
+                        <button id="esolutions_tab_btn2" className="btn btn-danger btn-sm btn-block rounded-0" onclick="ESolutionsFunction()">E-Solutions</button>
+                    </div>
+                    <div className="col pl-1 pr-1">
+                        <button id="ebroadcast_tab_btn2" className="btn btn-danger btn-sm btn-block rounded-0" onclick="EBroadcastFunction()">E-Broadcast</button>
+                    </div>
+                    <div className="col pl-1 pr-1">
+                        <button id="gallery_tab_btn2" className="btn btn-danger btn-sm btn-block rounded-0" onclick="GalleryFunction()">Gallery</button>
+                    </div>
+                    </div>
                 </div>
-                <div align="right" className="header-buttons">
-                <a href="<?php echo site_url(); ?>user/dashboard"> <i className="fas fa-arrows-alt-h" /></a>
-                <a href="<?php echo site_url(); ?>logout" onclick="return confirm('Are you sure you want to logout?')">
-                    <i className="fa fa-power-off text-primary" data-toggle="tooltip" title="Logout" />
-                </a>
-                </div>
-            </div>
-            <div id="navbar" className="top-sections">
-                <div align="center" className="dashboard-navbar-company-name">
-                ABC Nigeria Limited {/*?php echo $company_details['fcompany_name']; ?*/}
-                <img className="navbar-logo" src="Images/Company  Profile/Company Logo.png" />
-                </div>
-                <div align="center" className="navbar-sections">
-                <button id="profile_tab_btn2" className="navbar-sections-buttons" onclick="ProfileFunction()">Profile</button>
-                <button id="events_tab_btn2" className="navbar-sections-buttons" onclick="EventFunction();">Events</button>
-                <button id="esolutions_tab_btn2" className="navbar-sections-buttons" onclick="ESolutionsFunction()">E-Solutions</button>
-                <button id="ebroadcast_tab_btn2" className="navbar-sections-buttons" onclick="EBroadcastFunction()">E-Broadcast</button>
-                <button id="gallery_tab_btn2" className="navbar-sections-buttons" onclick="GalleryFunction()">Gallery</button>
-                </div>
-            </div>
-            </header>
-
+   
+            </>
 
         );
     }

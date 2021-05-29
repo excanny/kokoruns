@@ -2142,8 +2142,11 @@ export class Dashboard extends Component {
                        <label className="bio-info-label">{ this.state.marital_status !== null && this.jsUcfirst(this.state.marital_status)}  
                     </label>
                     <br  />
-                    <label className="bio-info-label">Current Employer:    
+                    
+                    
+                    <label className="bio-info-label">Current Employer:  
                     </label> 
+
                     <a href="#">{ this.state.current_employer !== null && this.jsUcfirst(this.state.current_employer)}</a><br  /> 
                     
                       
@@ -2226,21 +2229,21 @@ export class Dashboard extends Component {
                     </div>
                     <br  />
                     <br />
-                     <h5 style={{fontSize: 18 }}>Desired Employment</h5>
+                     <h5 className="bio-info-label">Desired Employment</h5>
                         <div className="px-3">
-                          <label className="bio-info-label"> Type:   
-                          </label> { this.state.employment_type !== null && this.jsUcfirst(this.state.employment_type)}
+                          <label className="bio-info-label" style={{fontSize: 17}}> Type:   
+                          </label> <span className="bio-info-label" style={{fontSize: 17}}>{ this.state.employment_type !== null && this.jsUcfirst(this.state.employment_type)}</span>
                           <br  />
-                          <label className="bio-info-label">Present Status:   
-                          </label> { this.state.employment_status !== null && this.jsUcfirst(this.state.employment_status)}
+                          <label className="bio-info-label" style={{fontSize: 17}}>Present Status:   
+                          </label> <span className="bio-info-label" style={{fontSize: 17}}>{ this.state.employment_status !== null && this.jsUcfirst(this.state.employment_status)}</span>
                           <br  />
-                          <label className="bio-info-label">Prefered Location:   
-                          </label> { this.state.selectedState2 !== null && this.jsUcfirst(this.state.selectedState2)},  { this.state.selectedLGA2 !== null && this.jsUcfirst(this.state.selectedLGA2)}
+                          <label className="bio-info-label" style={{fontSize: 17}}>Prefered Location:   
+                          </label> <span className="bio-info-label" style={{fontSize: 17}}>{ this.state.selectedState2 !== null && this.jsUcfirst(this.state.selectedState2)},  { this.state.selectedLGA2 !== null && this.jsUcfirst(this.state.selectedLGA2)}</span>
                           <br  />
                           </div>
-                          <h5 style={{fontSize: 18 }}>About Me   
+                          <h5 className="bio-info-label">About Me   
                       </h5>
-                      { this.state.about !== null && this.jsUcfirst(this.state.about)}
+                      <span className="bio-info-label" style={{fontSize: 17}}> { this.state.about !== null && this.jsUcfirst(this.state.about)}</span>
                       
                   </div>
 

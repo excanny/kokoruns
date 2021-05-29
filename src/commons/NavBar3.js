@@ -238,44 +238,58 @@ class NavBar3 extends Component {
       
 
         return (
-            <div className="company-dashboard-banner">
-            <div className="banner-top">
-            <div align="center" className="inbox-div">
-                {/*img class="inbox-icon" src="<?php echo base_url();?>/public/assets/Images/User%20Profile/Inbox%20Logo.png" */}
-                <img className="inbox-icon" src="/assets/Images/User Profile/Inbox Logo.png" />
-            </div>
-            <div align="center" className="banner-logo-div w-25">
-                {/*img class="company-logo" src="<?php echo site_url('public/companygalleries/logos/'. $company_details['flogo']); ?>"*/}
-                <img className="company-logo" src="/assets/Images/Company  Profile/Company Logo.png"/>
-            </div>
-            <div align="center" className="dropdown-div">
-                <div align="left" className="dropdown-menu">
-                <a className="dropdown-item" href="<?php echo site_url();?>company/dashboard">Dashboard</a>
-                <a className="dropdown-item" href="<?php echo site_url();?>company/messages/inbox">Messages</a>
-                <a className="dropdown-item" href="<?php echo site_url();?>company/jobdash">JobDash</a>
-                <a className="dropdown-item" href="<?php echo site_url();?>company/jobs">Jobs Board</a>
-                <a className="dropdown-item" href="<?php echo site_url();?>company/settings">Settings</a>
-                </div>
-                <img className="dropdown-icon float-right" src="/assets/Images/User Profile/Bars.png" />
-            </div>
-            </div>
-            <div align="center" className="company-name">
-
-              {this.state.company_name}
-              
-            {/*?php 
-                $out = strlen(ucwords(strtolower($company_details['fcompany_name']))) > 45 ? substr(ucwords(strtolower($company_details['fcompany_name'])),0,45)."..." : ucwords(strtolower($company_details['fcompany_name']));
-                echo $out; ?*/} 
-           
-            </div>
-            <div align="center" className="company-banner-buttons">
-            <Link to={`/company-dashboard/${id}`} id="profile_tab_btn" className="banner-button" >Profile</Link>
-            <Link to={`/company-events/${id}`} id="events_tab_btn" className="banner-button">Events</Link>
-            <Link id="esolutions_tab_btn" className="banner-button">E-Solutions</Link>
-            <Link to={`/company-ebroadcasts/${id}`} id="ebroadcast_tab_btn" className="banner-button">E-Broadcast</Link>
-            <Link to={`/company-gallery/${id}`} id="gallery_tab_btn" className="banner-button">Gallery</Link>
-            </div>
-        </div>
+                  <div className="row" style={{marginTop: '8rem'}}>
+                    <div className="col-lg-8 mx-auto px-0">
+                      <div className="p-3 bg-dark background_image" style={{backgroundImage: 'url("/assets/Css/CompanyDashboard/image/company banner.jpg")', backgroundColor: '#cccccc', height: 305, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
+                        <div className="row py-2">
+                          <div className="col-lg-1">
+                            {/* <i class="far fa-envelope text-white" style="font-size: 1.5rem;"></i> */}
+                            <img src="<?php echo base_url();?>/public/assets/Images/User%20Profile/Inbox%20Logo.png" alt width="55%" />
+                          </div>
+                          <div className="col-lg-6 text-right pt-3" style={{paddingRight: '1.3rem'}}>
+                            <img src="Company%20Logo.png" style={{border: '10px solid #fff'}} alt="logo" width="120px" height="120px" />
+                          </div>
+                          <div className="col-lg-5 text-right">
+                            {/* //<i class="fas fa-bars fa-lg text-white"></i> */}
+                            <div className="dropdown dropleft float-right">
+                              <i className="fas fa-bars text-white cursor" data-toggle="dropdown" style={{fontSize: '1.5rem'}} />
+                              <div className="dropdown-menu">
+                                <a className="dropdown-item" href="<?php echo site_url();?>company/dashboard">Dashboard</a>
+                                <a className="dropdown-item" href="<?php echo site_url();?>company/messages/inbox">Messages</a>
+                                <a className="dropdown-item" href="<?php echo site_url();?>company/jobdash">JobDash</a>
+                                <a className="dropdown-item" href="<?php echo site_url();?>company/jobs">Jobs Board</a>
+                                <a className="dropdown-item" href="<?php echo site_url();?>company/settings">Settings</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="row py-2">
+                          <div className="col-lg-12 text-center text-white">
+                            <h4 className="header-title" data-toggle="tooltip" data-placement="bottom" title="<?php echo ucwords(strtolower($company_details['fcompany_name'])); ?>" style={{fontSize: 45}}> 
+                              efeferferg
+                            </h4>
+                          </div>
+                        </div>
+                        <div className="row py-2">
+                          <div className="col m-0 p-1">
+                            <button id="profile_tab_btn" className="btn btn-block rounded-0" onclick="ProfileFunction()" style={{background: '#fff'}}>Profile</button>
+                          </div>
+                          <div className="col m-0 p-1">
+                            <button id="events_tab_btn" className="btn btn-danger btn-block rounded-0" onclick="EventFunction();">Events</button>
+                          </div>
+                          <div className="col m-0 p-1">
+                            <button id="esolutions_tab_btn" className="btn btn-danger btn-block rounded-0 tab" style={{background: '#DC232D'}} onclick="ESolutionsFunction()">E-Solutions</button>
+                          </div>
+                          <div className="col m-0 p-1">
+                            <button id="ebroadcast_tab_btn" className="btn btn-danger btn-block rounded-0 tab" onclick="EBroadcastFunction()">E-Broadcast</button>
+                          </div>
+                          <div className="col m-0 p-1">
+                            <button id="gallery_tab_btn" className="btn btn-danger btn-block rounded-0" onclick="GalleryFunction()">Gallery</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
         );
     }
 }

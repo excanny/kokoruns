@@ -14,6 +14,7 @@ export class Login extends Component {
             user_email_or_phone_number: '',
             password: '',
             loggedIn: false,
+            isLoading: false,
     
         }
     
@@ -30,8 +31,11 @@ export class Login extends Component {
       handleSubmit(e) {
         // Form submission logic
         e.preventDefault();
-    
-    
+
+
+        this.setState({isLoading : true });
+
+  
         const headers = {
           "Content-Type": "application/json",
         }
@@ -127,7 +131,7 @@ export class Login extends Component {
                             <input type="password" className="form-control rounded-0" value={this.state.password} onChange={this.handleChange} placeholder="Enter password" id="password" name="password" autoComplete="off" required />
                             </div>
                             <div className="form-group">
-                            <button type="submit" className="btn btn-block rounded-0 text-white w-50 mx-auto" style={{background: 'red'}} id="submit">Login</button>
+                            {this.state.isLoading ? <button type="submit" className="btn btn-block rounded-0 text-white w-50 mx-auto disabled" style={{background: 'red'}} id="submit">Login <i className="fa fa-spinner fa-spin"></i></button> : <button type="submit" className="btn btn-block rounded-0 text-white w-50 mx-auto" style={{background: 'red'}} id="submit">Login</button> }
                             </div>
                         </form>
                         <h5 className="text-center text-primary">OR</h5>

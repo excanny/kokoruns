@@ -2162,62 +2162,62 @@ export class CompanyDashboard extends Component {
 
         <NavBar3/>
     
-        <div className="company-info">
-        <div className="border p-3 bg-white rounded-bottom">
+        <div className="company-info" style={{ zIndex: -999}}>
+            <div className="">
             <div id="info_sections">
-            <h2 style={{fontWeight: 'normal'}}>Employees on Kokoruns</h2>
-            <a href style={{color: '#0991ff', fontSize: 18}}>554</a> 
-            <div className="row">
-                <div className="col">
-                <h2 style={{fontWeight: 'normal'}}> Founded </h2>
-                <span style={{color: '#606060', fontSize: 18}}>{/*?php echo $company_details['ffounded']; ?*/} July 1998</span>
-                <h2 style={{fontWeight: 'normal'}}> Field </h2>
-                <span style={{color: '#606060', fontSize: 18}}>{/*?php echo $company_details['ffield']; ?*/} Banking &amp; Finance</span>
-                <h2 style={{fontWeight: 'normal'}}> No. of followers </h2>
-                <span style={{color: '#606060', fontSize: 18}}>3300</span>
-                </div>
-                <div className="col">
-                <div id="user-bio-dp-container" className="user-bio-dp-container" style={{display: 'none'}}>
-                    <div align="center" className="bio-dp-div">  
-                    <img className="dp" src="<?php echo site_url('public/companygalleries/logos/'. $company_details['flogo']); ?>" style={{border: '1px solid #000'}} width="100px;" height="100px" /> 
+                <h2 style={{fontWeight: 'normal'}} className="my-3">Employees on Kokoruns</h2>
+                <a href style={{color: '#0991ff', fontSize: 18}}>554</a> 
+                <div className="row">
+                    <div className="col">
+                        <h2 style={{fontWeight: 'normal'}} className="my-3"> Founded </h2>
+                        <span style={{color: '#606060', fontSize: 18}}> {this.state.founded_month} {this.state.founded_year}</span>
+                        <h2 style={{fontWeight: 'normal'}} className="my-3"> Field </h2>
+                        <span style={{color: '#606060', fontSize: 18}}>{/*?php echo $company_details['ffield']; ?*/} {this.state.field} </span>
+                        <h2 style={{fontWeight: 'normal'}} className="my-3"> No. of followers </h2>
+                        <span style={{color: '#606060', fontSize: 18}}>3300</span>
                     </div>
-                    <div align="center" className="bio-user-name">  {/*?php echo ucwords(strtolower($applicant_details['fcompany_name'])); ?*/} {/*?php echo ucwords(strtolower($applicant_details['flast_name'])); ?*/} <img src className="verification" /> </div>
+                    <div className="col">
+                        <div id="user-bio-dp-container" className="user-bio-dp-container" style={{display: 'none'}}>
+                        <div align="center" className="bio-dp-div">  
+                            <img className="dpx" src="/assets/Images/Company Profile/Company Logo.png" style={{border: '1px solid #000', width: '30%'}} /> 
+                        </div>
+                        <div align="center" className="bio-user-name">  {/*?php echo ucwords(strtolower($applicant_details['fcompany_name'])); ?*/} {/*?php echo ucwords(strtolower($applicant_details['flast_name'])); ?*/} <img src className="verification" /> </div>
+                        </div>
+                    </div>
                 </div>
-                </div>
-            </div>
             </div>
             <br />
-            <button className="company-info-edit" id="info-btn" data-recno="<?php echo $company_details['frecno']; ?>" data-founded="<?php echo $company_details['ffounded']; ?>" data-field="<?php echo $company_details['ffield']; ?>"> Edit </button>
+            <button className="company-info-edit" id="info-btn" onClick={this.showModal}> Edit </button>
             <button className="company-info-follow"> + Follow </button> 
-        </div>
-        <br />
-        <div className="sub-admin">
+            </div>
+            <br />
+            <div className="sub-admin">
             <div id="info_section">
-            <h2 style={{fontWeight: 'normal'}} data-toggle="popover" data-trigger="hover" data-content="Some content">Add a sub-admin to this page</h2>
-            <form action="<?php echo site_url(); ?>company/makeadmin" method="post">
-                <div className="input-group mb-3" style={{display: 'flex', alignContent: 'flex-start', justifyContent: 'flex-start'}}>
-                <input type="hidden" name="company_id" defaultValue="<?php echo $company_details['fcompany_id']; ?>" />
-                <input className="sub-admin-input" type="text" name="user_id" placeholder="Enter User's Kokoruns' ID e.g john.smith" />
-                <div className="input-group-append">
+                <h2 style={{fontWeight: 'normal'}} data-toggle="popover" data-trigger="hover" data-content="Some content">Add a sub-admin to this page</h2>
+                <form onSubmit={this.handleSubmit2}>
+                <div className="input-group mb-3" style={{display: 'flex', alignContent: 'flex-start', justifyContent: 'flex-start'}}  >
+                    <input className="sub-admin-input" type="text" name="sub_admin_id" placeholder="Enter User's Kokoruns' ID e.g john.smith" value={this.state.sub_admin_id} onChange={this.handleChange} required/>
+                    <div className="input-group-append">
                     <button className="add" type="submit">Add</button>
+                    </div>
                 </div>
-                </div>
-            </form>
+                </form>
             </div>
             <br />
             <div>
-            {/* <p>Sub-Admins List</p> */}
-            <ol>
+                {/* <p>Sub-Admins List</p> */}
+                <ol>
                 {/*?php foreach ($company_admins as $admin) { ?*/}
                 <li>{/*?php echo $admin['fsubadmin_name']; ?*/} <a href="<?php echo site_url('company/removeadmin/'. $admin['frecno']); ?>">remove</a></li>
                 {/*?php } ?*/}
-            </ol>
+                </ol>
+            </div>
             </div>
         </div>
-        </div>
-
 
         
+        {/*- company info*/}
+        {/*COMPANY PROFILE*/}
         <div id="profile-box" className="company-profile">
             <div className="about-edit mt-4">
             <h4 className="company-about-title"> About 

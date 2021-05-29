@@ -1100,17 +1100,32 @@ font-size: 18px;
     margin-left: 5px;
 }
 
-
-
-
-
-
-
-
 #dashboardnav {
     display: none;
     z-index: -1;
 }
+
+
+#navbar {
+    background-color: #fff;
+    position: fixed;
+    top: -145px;
+    width: 100%;
+    height: 55px;
+    display: block;
+    transition: top 0.3s;
+    z-index: 1;
+    }
+
+
+    C:\Users\DELL\Desktop\Kokoruns Project\KokorunsUI\public\assets\Css\CompanyDashboard\image\company banner.jpg
+
+    background-image: url('company banner.jpg'); 
+    background-color: #cccccc;
+    height: 305px; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;
 
 
 

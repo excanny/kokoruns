@@ -56,7 +56,7 @@ class CHeader extends Component {
                 <img src="/assets/Images/Header%20and%20Footer/Logo.png" className="logo" />
                 </div>   
                 <div className="search-bar-div">
-                <input type="text" placeholder="Search for something..." className="search-bar" />
+                <input type="text" placeholder="Search for something..." className="search-bar w-75" />
                 <button className="search-button" type="submit"><img className="search-icon" src="/assets/Images/Header%20and%20Footer/search.png" /></button>
                 </div>
                 <div align="right" className="header-buttons">
