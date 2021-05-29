@@ -2021,9 +2021,9 @@ export class CompanyRegister extends Component {
 
 
        // Display the key/value pairs
-        for (var pair of formData.entries()) {
-          console.log(pair[0]+ ', ' + pair[1]); 
-        }
+        // for (var pair of formData.entries()) {
+        //   console.log(pair[0]+ ', ' + pair[1]); 
+        // }
 
         //const data = { email: this.state.user_email_or_phone_number, password: this.state.password };  
 

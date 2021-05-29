@@ -13,6 +13,7 @@ export class Header extends Component {
           isLinkDisable2: false,
           navigate: false,
           companies: [],
+          associations: [],
         
         }
 
@@ -50,27 +51,27 @@ export class Header extends Component {
 
 
     let one = "https://sheltered-chamber-63274.herokuapp.com/api/companies"
-    //let two = "https://sheltered-chamber-63274.herokuapp.com/api/companies";
+    let two = "https://sheltered-chamber-63274.herokuapp.com/api/associations";
     // let three = "https://api.storyblok.com/v1/cdn/stories/vue?version=published&token=wANpEQEsMYGOwLxwXQ76Ggtt"
      
     const requestOne = axios.get(one, {headers: headers});
-    //const requestTwo = axios.get(two, {headers: headers});
+    const requestTwo = axios.get(two, {headers: headers});
     // const requestThree = axios.get(three, {headers: headers});
      
     axios.all([
       requestOne, 
-      //requestTwo, 
+      requestTwo, 
       //requestThree
     ]).then(axios.spread((...responses) => {
       const responseOne = responses[0]
-      //const responseTwo = responses[1]
+      const responseTwo = responses[1]
       // const responesThree = responses[2]
       // use/access the results 
 
-      this.setState({ companies : responseOne.data.companies, 
+      this.setState({ companies : responseOne.data.companies, associations : responseTwo.data.associations, 
          });
 
-      console.log(responseOne);
+      //console.log(responseTwo);
 
     })).catch(errors => {
       // react on errors.
@@ -133,14 +134,17 @@ export class Header extends Component {
                        
                         {/*?php foreach ($company_admin_pages as $page) { ?*/}
                         <div className="pl-2">
-                        <a className="dropdown-item text-info font-weight-bold" href="<?php echo base_url('company/dashboard/'. $page['fcompany_id']); ?>">{/*?php echo strtoupper($page['fcompany_name']); ?*/}</a>
+                            {this.state.associations.map((association, index) => (
+                                <div key={index}>
+                                    <div>
+                                        <Link className="dropdown-item text-primary font-weight-bold" to={`/association-dashboard/${association.association_id}`}>{association.association_name}</Link>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                        {/*?php } ?*/}
-                        {/*?php foreach ($school_admin_pages as $page) { ?*/}
-                        <div className="pl-2">
-                        <a className="dropdown-item text-sucess font-weight-bold" href="<?php echo base_url('school/dashboard/'.$page['fschool_id']); ?>">{/*?php echo strtoupper($page['fschool_name']); ?*/}</a>
-                        </div>
-                        {/*?php } ?*/}
+
+                       
+
                         <div className="dropdown-divider" />
                         <h1 className="dropdown-header mt-0" style={{fontSize: '1.1rem'}}>Sub-admin roles</h1>
                         {/*?php foreach ($association_subadmin_pages as $page) { ?*/}

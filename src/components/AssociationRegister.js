@@ -2064,9 +2064,9 @@ export class AssociationRegister extends Component {
 
 
        // Display the key/value pairs
-        for (var pair of formData.entries()) {
-          console.log(pair[0]+ ', ' + pair[1]); 
-        }
+        // for (var pair of formData.entries()) {
+        //   console.log(pair[0]+ ', ' + pair[1]); 
+        // }
 
        
 
@@ -2086,9 +2086,9 @@ export class AssociationRegister extends Component {
           //     this.props.history.push('/signup'); 
           //  }  
 
-          //this.props.history.push(`/association-dashboard/${response.data.Association.Association_id}`);
+          this.props.history.push(`/association-dashboard/${response.data.association.association_id}`);
          
-           console.log(response);
+           //console.log(response);
 
          })
          .catch( error => {

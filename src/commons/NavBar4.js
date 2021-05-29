@@ -190,7 +190,7 @@ class NavBar3 extends Component {
     }
 
 
-    let one = `https://sheltered-chamber-63274.herokuapp.com/api/company/${id}`
+    let one = `https://sheltered-chamber-63274.herokuapp.com/api/association/${id}`
     // let two = `https://sheltered-chamber-63274.herokuapp.com/api/companybranches/${this.state.company_id}`;
     // let three = "https://api.storyblok.com/v1/cdn/stories/vue?version=published&token=wANpEQEsMYGOwLxwXQ76Ggtt"
      
@@ -239,12 +239,12 @@ class NavBar3 extends Component {
 
         return (
                   <div className="row" style={{marginTop: '8rem'}}>
-                    <div className="col-lg-11 mx-auto px-0">
-                      <div className="p-3 bg-dark background_image" style={{backgroundImage: 'url("/assets/Css/CompanyDashboard/image/company banner.jpg")', backgroundColor: '#cccccc', height: 305, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
+                    <div className="col-lg-11 mx-auto px-0" style={{width: '70%'}}>
+                      <div className="p-3 bg-dark background_image w-100" style={{backgroundImage: 'url("/assets/Css/CompanyDashboard/image/company banner.jpg")', backgroundColor: '#cccccc', height: 305, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
                         <div className="row py-2">
                           <div className="col-lg-1">
                             {/* <i class="far fa-envelope text-white" style="font-size: 1.5rem;"></i> */}
-                            <img src="<?php echo base_url();?>/public/assets/Images/User%20Profile/Inbox%20Logo.png" alt width="55%" />
+                            <img src="/assets/Images/User%20Profile/Inbox%20Logo.png" alt width="55%" />
                           </div>
                           <div className="col-lg-6 text-right pt-3" style={{paddingRight: '1.3rem'}}>
                             <img src="Company%20Logo.png" style={{border: '10px solid #fff'}} alt="logo" width="120px" height="120px" />
@@ -252,7 +252,7 @@ class NavBar3 extends Component {
                           <div className="col-lg-5 text-right">
                             {/* //<i class="fas fa-bars fa-lg text-white"></i> */}
                             <div className="dropdown dropleft float-right">
-                              <i className="fas fa-bars text-white cursor" data-toggle="dropdown" style={{fontSize: '1.5rem'}} />
+                              <i className="fa fa-bars text-white cursor" data-toggle="dropdown" style={{fontSize: '1.5rem'}} />
                               <div className="dropdown-menu">
                                 <a className="dropdown-item" href="<?php echo site_url();?>company/dashboard">Dashboard</a>
                                 <a className="dropdown-item" href="<?php echo site_url();?>company/messages/inbox">Messages</a>

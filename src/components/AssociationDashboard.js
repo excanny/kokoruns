@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import CHeader from '../commons/CHeader';
-import NavBar3 from '../commons/NavBar3';
+import NavBar4 from '../commons/NavBar4';
 import Footer from '../commons/Footer';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from 'react-router';
@@ -10,41 +10,41 @@ export class CompanyDashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          show: false,
-          show2: false,
-          show3: false,
-          show4: false,
-          company_id: '',
-          company_name: '',
-          company_number: '',
-          company_email: '',
-          cac: '',
-          company_type:'',
-          company_size:'',
-          company_about: '',
-          company_director: '',
-          website:'',
-          company_address:'',
-          company_state:'',
-          company_lga:'',
-          founded_month: '',
-          founded_year: '',
-          field: '',
-          states : [],
-          lgas : [],
-          selectedState : '',
-          selectedLGA : '',
-          states2 : [],
-          lgas2 : [],
-          selectedState2 : '',
-          selectedLGA2 : '',
-          sub_admin_id: '',
-          branch_name: '',
-          branch_manager: '',
-          branch_address:'',
-          branch_phone: '',
-          companybranches: [],
-          loading: true,
+            show: false,
+            show2: false,
+            show3: false,
+            show4: false,
+            association_id: '',
+            association_name: '',
+            association_number: '',
+            association_email: '',
+            cac: '',
+            association_type:'',
+            association_size:'',
+            association_about: '',
+            association_director: '',
+            website:'',
+            association_address:'',
+            association_state:'',
+            association_lga:'',
+            founded_month: '',
+            founded_year: '',
+            field: '',
+            states : [],
+            lgas : [],
+            selectedState : '',
+            selectedLGA : '',
+            states2 : [],
+            lgas2 : [],
+            selectedState2 : '',
+            selectedLGA2 : '',
+            sub_admin_id: '',
+            branch_name: '',
+            branch_manager: '',
+            branch_address:'',
+            branch_phone: '',
+            associationbranches: [],
+            loading: true,
 
         };
 
@@ -1973,32 +1973,34 @@ export class CompanyDashboard extends Component {
     }
 
 
-    let one = `https://sheltered-chamber-63274.herokuapp.com/api/company/${id}`
-    let two = `https://sheltered-chamber-63274.herokuapp.com/api/companybranches/${id}`;
+    let one = `https://sheltered-chamber-63274.herokuapp.com/api/association/${id}`
+    //let two = `https://sheltered-chamber-63274.herokuapp.com/api/associationbranches/${id}`;
     // let three = "https://api.storyblok.com/v1/cdn/stories/vue?version=published&token=wANpEQEsMYGOwLxwXQ76Ggtt"
      
     const requestOne = axios.get(one, {headers: headers});
-    const requestTwo = axios.get(two, {headers: headers});
+    //const requestTwo = axios.get(two, {headers: headers});
     // const requestThree = axios.get(three, {headers: headers});
      
     axios.all([
       requestOne, 
-      requestTwo, 
+      //requestTwo, 
       //requestThree
     ]).then(axios.spread((...responses) => {
       const responseOne = responses[0]
-      const responseTwo = responses[1]
+      //const responseTwo = responses[1]
       // const responesThree = responses[2]
       // use/access the results 
 
-      this.setState({  company_id : responseOne.data.companydetails.company_id, company_name : responseOne.data.companydetails.company_name, founded_month : responseOne.data.companydetails.founded_month, founded_year : responseOne.data.companydetails.founded_year, field : responseOne.data.companydetails.field,
-        company_about : responseOne.data.companydetails.about, company_number : responseOne.data.companydetails.phone,
-        cac : responseOne.data.companydetails.cac, company_director : responseOne.data.companydetails.company_director, 
-        website : responseOne.data.companydetails.website, company_address : responseOne.data.companydetails.company_address,
-        selectedState : responseOne.data.companydetails.main_office_location_state, selectedLGA : responseOne.data.companydetails.main_office_location_lga,
+      this.setState({  association_id : responseOne.data.associationdetails.association_id, association_name : responseOne.data.associationdetails.association_name, founded_month : responseOne.data.associationdetails.founded_month, founded_year : responseOne.data.associationdetails.founded_year, field : responseOne.data.associationdetails.field,
+        association_about : responseOne.data.associationdetails.about, association_number : responseOne.data.associationdetails.phone,
+        cac : responseOne.data.associationdetails.cac, association_director : responseOne.data.associationdetails.association_director, 
+        website : responseOne.data.associationdetails.website, association_address : responseOne.data.associationdetails.association_address,
+        selectedState : responseOne.data.associationdetails.main_office_location_state, selectedLGA : responseOne.data.associationdetails.main_office_location_lga,
          });
 
-      this.setState({ companybranches : responseTwo.data.companybranches});
+     // this.setState({ associationbranches : responseTwo.data.associationbranches});
+
+      console.log(responseOne);
 
     })).catch(errors => {
       // react on errors.
@@ -2027,7 +2029,7 @@ export class CompanyDashboard extends Component {
 
         //console.log(data);
 
-       axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/updatecompanyinfo/${id}`, data, {headers: headers})
+       axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/updateassociationinfo/${id}`, data, {headers: headers})
         .then((response) => {
            
 
@@ -2114,7 +2116,7 @@ export class CompanyDashboard extends Component {
           try 
           {
               // fetch data from a url endpoint
-              const response = await  axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/createcompanybranch/${this.state.company_id}`, data, {headers: headers});
+              const response = await  axios.post(`https://sheltered-chamber-63274.herokuapp.com/api/createassociationbranch/${this.state.company_id}`, data, {headers: headers});
               //const response = await  axios.post(`https://lit-ridge-07527.herokuapp.com/api/addeducation`, data, {headers: headers});
               
               console.log(response);
@@ -2160,12 +2162,12 @@ export class CompanyDashboard extends Component {
 
         <div className="company-dashboard-body mb-5">
 
-        <NavBar3/>
+        <NavBar4/>
     
         <div className="company-info" style={{ zIndex: -999}}>
             <div className="">
             <div id="info_sections">
-                <h2 style={{fontWeight: 'normal'}} className="my-3">Employees on Kokoruns</h2>
+                <h2 style={{fontWeight: 'normal'}} className="my-3">Members on Kokoruns</h2>
                 <a href style={{color: '#0991ff', fontSize: 18}}>554</a> 
                 <div className="row">
                     <div className="col">
@@ -2268,7 +2270,7 @@ export class CompanyDashboard extends Component {
             <br /><br />
             <div className="branch-content">
                 <div className="row">
-                {this.state.companybranches.map(branch => 
+                {this.state.associationbranches.map(branch => 
                 <div className="col-lg-4">
                     <fieldset className="shadow-sm p-2 rounded mb-2 bg-light">
                     <div className="branch-details-title">Branch Details</div>
