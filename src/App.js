@@ -21,6 +21,12 @@ import CompanyEvents from './components/CompanyEvents';
 import CompanyEbroadcasts from './components/CompanyEbroadcasts';
 import CompanyESolutions from './components/CompanyESolutions';
 import CompanyGallery from './components/CompanyGallery';
+import AssociationRegister from './components/AssociationRegister';
+import AssociationDashboard from './components/AssociationDashboard';
+import AssociationEvents from './components/AssociationEvents';
+import AssociationEbroadcasts from './components/AssociationEbroadcasts';
+import AssociationESolutions from './components/AssociationESolutions';
+import AssociationGallery from './components/AssociationGallery';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 
@@ -54,8 +60,13 @@ export class App extends Component {
               <Route path="/company-esolutions/:id" component={CompanyESolutions} />
               <Route path="/company-ebroadcasts/:id" component={CompanyEbroadcasts} />
               <Route path="/company-gallery/:id" component={CompanyGallery} />
+              <Route path="/association-register" component={AssociationRegister} />
+              <Route path="/association-dashboard/:id" component={AssociationDashboard} />
+              <Route path="/association-events/:id" component={AssociationEvents} />
+              <Route path="/association-esolutions/:id" component={AssociationESolutions} />
+              <Route path="/association-ebroadcasts/:id" component={AssociationEbroadcasts} />
+              <Route path="/association-gallery/:id" component={AssociationGallery} />
 
-              
             </Switch>
 
         </div>

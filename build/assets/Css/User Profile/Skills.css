@@ -91,7 +91,7 @@
 }
 
 .add-skill-button {
-  background-color: #0991ff;
+  /* background-color: #0991ff; */
   padding: 4px;
   padding-left: 12.5px;
   padding-right: 12.5px;    
@@ -99,7 +99,6 @@
   font-family: sans-serif;
   font-size: 15px;
   color: white; 
-  border-color: #0991ff;
   font-weight: bold;    
 }
 

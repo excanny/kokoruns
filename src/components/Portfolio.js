@@ -385,7 +385,7 @@ export class Portfolio extends Component {
                       </div>
                       <div className="online-links-container">
                         <div className="link-cont-2">
-                          <h2 className="online-links-header">Online Links  <button onClick={this.AddOnlineLink} className="add-skill-button">Add Link +</button></h2>   
+                          <h2 className="online-links-header">Online Links  <button onClick={this.AddOnlineLink} className="add-skill-button" style={{outline: 'none'}}>Add Link +</button></h2>   
 
                             {this.state.show_online_links ?
                           <div id="form-div-prof-link" className="form-div">

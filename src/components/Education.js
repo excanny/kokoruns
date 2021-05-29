@@ -520,7 +520,7 @@ export class Education extends Component {
                       <div className="skills-container">
                         <div className="skills-cont-2">
                           <h2 className="professional-label">Professional Skills
-                          <button onClick={this.AddProfSkill} className="add-skill-button bg-danger">Add skill +</button>
+                          <button onClick={this.AddProfSkill} className="add-skill-button" style={{outline: 'none'}}>Add skill +</button>
                           
                           </h2>    
                           {this.state.show_pro_skill ?
@@ -570,7 +570,7 @@ export class Education extends Component {
 
                       <div className="skills-container mt-5 mb-5">
                         <div className="skills-cont-2">
-                          <h2 className="other-label">Other Skills  <button onClick={this.AddOtherSkill} className="add-skill-button bg-danger">Add skill +</button></h2>    
+                          <h2 className="other-label">Other Skills  <button onClick={this.AddOtherSkill} className="add-skill-button" style={{outline: 'none'}}>Add skill +</button></h2>    
                           
                           {this.state.show_other_skill ?
 
