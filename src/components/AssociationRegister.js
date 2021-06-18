@@ -2106,7 +2106,7 @@ export class AssociationRegister extends Component {
                 <div className="row bg-white mx-auto">
                     <div className="col-md-8">
                     <div className="pt-4 pl-4 pr-4">
-                        <h3 className="mb-4">Create A Association Account</h3>
+                        <h3 className="mb-4">Create An Association Account</h3>
                         <p><span className="text-danger">*</span> Required Information</p>
                      
                         <form encType="multipart/form-data" onSubmit={this.handleSubmit} className="needs-validation">
